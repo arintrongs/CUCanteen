@@ -4,21 +4,13 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <title>CU Canteen</title>
     <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
     <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="css/bootstrap-grid.css">
-    <link rel="stylesheet" type="text/css" href="css/bootstrap-reboot.css">
+    <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <!-- Custom CSS -->
-    <link href="css/bootstrap-social.css" rel="stylesheet">
-    <link href="css/font-awesome.css" rel="stylesheet">
-    <!-- Custom Fonts -->
-    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Kanit" rel="stylesheet" type="text/css">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -32,16 +24,13 @@
     <!-- Body -->
     <br>
     <br>
-    <div class="container-fulid">
+    <div class="container">
         <div class="row">
             <div class="col-lg-2 col-md-2"></div>
-            <div class="col-lg-8 col-md-8 header">
-
-                    <center>
-                        <h1>CU Canteen</h1>
-                        <h2><br>Let's make it better!</h2>
-                    </center>
-
+            <div class="col-lg-8 col-md-8">
+                <center>
+                    <h1 class="header">CU Canteen</h1>
+                </center>
             </div>
             <div class="col-lg-2 col-md-2"></div>
         </div>
@@ -63,31 +52,91 @@
         <div class="row pad-bottom">
             <div class="col-lg-2 col-md-2"></div>
             <div class="col-lg-8 col-md-8">
-                <div class="jumbotron-fluid jumbotron">
+                <div class="jumbotron">
+                    <img src="img/header.jpg" class="img-fluid">
+                    <h1 class="display-3 store">#1 ร้านเหนียวไก่ วิดวะ <span class="badge badge-danger">Hot!!</span></h1>
+                    <hr class="my-4">
+                    <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+                    <div class="clearfix">
+                        <div class="btn-group float-right">
+                            <button type="button" id="testBtn" class="btn btn-success" data-loading-text=" ... ">
+                                <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>0</button>
+                            <button type="button" id="testBtnDown" class="btn btn-danger" data-loading-text=" ... "><i class="fa fa-thumbs-o-down" aria-hidden="true"></i>0</button>
+                        </div>
+                    </div>
+                    <hr class="my-4">
+                    <div class="card">
+                        <div class="card-header">
+                            Username
+                        </div>
+                        <div class="card-block">
+                            <div class="row">
+                                <div class="col-lg-2">
+                                    <img class="user-photo" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png"></div>
+                                <div class="col-lg-10">
+                                    Content Review Content Review Content Review Content Review Content Review Content Review
+                                    <div class="clearfix">
+                                        <button type="button" id="testBtn" class="btn btn-success float-right" data-loading-text=" ... ">
+                                            <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>0</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            Username
+                        </div>
+                        <div class="card-block">
+                            <div class="row">
+                                <div class="col-lg-2">
+                                    <img class="user-photo" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png"></div>
+                                <div class="col-lg-10">
+                                    Content Review
+                                    <div class="clearfix">
+                                        <button type="button" id="testBtn" class="btn btn-success float-right" data-loading-text=" ... ">
+                                            <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>0</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            Username
+                        </div>
+                        <div class="card-block">
+                            <div class="row">
+                                <div class="col-lg-2">
+                                    <img class="user-photo" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png"></div>
+                                <div class="col-lg-10">
+                                    Content Review
+                                    <div class="clearfix">
+                                        <button type="button" id="testBtn" class="btn btn-success float-right" data-loading-text=" ... ">
+                                            <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>0</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="card-deck pad-bottom">
-                    <div class="card" style="width: 20rem;">
+                    <div class="card">
                         <img class="card-img-top img-fluid hidden-xs-down" src="img/header.jpg" alt="Card image cap">
                         <div class="card-block">
                             <h4 class="card-title">I-Canteen</h4>
-                            <p class="card-text"></p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
                         </div>
                     </div>
-                    <div class="card" style="width: 20rem;">
+                    <div class="card">
                         <img class="card-img-top img-fluid" src="img/header.jpg" alt="Card image cap">
                         <div class="card-block">
                             <h4 class="card-title">I-Canteen</h4>
-                            <p class="card-text"></p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
                         </div>
                     </div>
-                    <div class="card " style="width: 20rem;">
+                    <div class="card ">
                         <img class="card-img-top img-fluid" src="img/header.jpg" alt="Card image cap">
                         <div class="card-block">
                             <h4 class="card-title">โรงอาหารอักษร</h4>
-                            <p class="card-text"></p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
                         </div>
                     </div>
                 </div>
