@@ -1,2 +1,0 @@
-# CUCanteen
-Evaluating our life
