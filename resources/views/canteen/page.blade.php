@@ -19,18 +19,6 @@
         <![endif]-->
     </head>
     <body>
-        <!-- <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @if (Auth::check())
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ url('/login') }}">Login</a>
-                        <a href="{{ url('/register') }}">Register</a>
-                    @endif
-                </div>
-            @endif
--->
     <!-- Body -->
         <br>
         <br>
@@ -63,28 +51,15 @@
                 <div class="col-lg-2 col-md-2"></div>
                 <div class="col-lg-8 col-md-8" id="store">
                     <div class="card-deck pad-bottom">
-                        <div class="card">
-                            <img class="card-img-top img-fluid hidden-xs-down" src="img/header.jpg" alt="Card image cap">
-                            <div class="card-block">
-                                <h4 class="card-title">I-Canteen</h4>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <img class="card-img-top img-fluid" src="img/header.jpg" alt="Card image cap">
-                            <div class="card-block">
-                                <h4 class="card-title">I-Canteen</h4>
-                            </div>
-                        </div>
-                        <div class="card ">
-                            <img class="card-img-top img-fluid" src="img/header.jpg" alt="Card image cap">
-                            <div class="card-block">
-                                <h4 class="card-title">โรงอาหารอักษร</h4>
-                            </div>
-                        </div>
+                        
                     </div>
                 </div>
                 <div class="col-lg-2 col-md-2"></div>
             </div>
+            <script type="text/javascript">
+                var stores_recomment = {!!$data['recomment'] !!};
+                var stores_name = {!!$data['name'] !!};
+            </script>
             <!-- jQuery -->
             <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>

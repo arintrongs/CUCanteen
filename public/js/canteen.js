@@ -1,74 +1,82 @@
-var store_html = '';
-var store_name = [ "I-Canteen", "โรงอาหารอักษร", "Card title", "javascript", "asp", "ruby" ];
-var autocomplete = $( "input.form-control.main-search" ).autocomplete({
- 	source: store_name,
- 	create: function( event, ui) {
- 		store_html = $('#store').html();
- 	},
- 	select: function( event, ui ) {
- 		$('#store').html('');
- 	},
- 	change: function(event, ui) {
- 		if ($( "input.form-control.main-search" ).val() == ''){
- 			$('#store').html(store_html);
- 		}
- 	},
- 	messages: {
-        noResults: '',
-        results: function() {}
-    }
+$(document).ready(function() {
+	var stores_html = '';
+	
+	$.each( stores_recomment, function(index, val) {
+		var div = $('div.card-deck.pad-bottom');
+		store_card(div, val);
+	});
+
+	var autocomplete = $( "input.form-control.main-search" ).autocomplete({
+	 	source: stores_name,
+	 	create: function( event, ui) {
+	 		stores_html = $('#store').html();
+	 	},
+	 	select: function( event, ui ) {
+	 		$('#store').html('');
+	 		store(ui.item.value);
+	 	},
+	 	change: function(event, ui) {
+	 		if ($( "input.form-control.main-search" ).val() == ''){
+	 			$('#store').html(stores_html);
+	 		}
+	 	},
+	 	messages: {
+	        noResults: '',
+	        results: function() {}
+	    }
+	});
+
+	autocomplete.data('ui-autocomplete')._renderMenu = function( ul, items ) {
+		var that = this;
+		$.each( items, function( index, item ) {
+			that._renderItemData( ul, item );
+		});
+		$( ul ).addClass('list-group');
+		$( '.ui-helper-hidden-accessible' ).css('display', 'none');
+	};
+
+	autocomplete.data('ui-autocomplete')._renderItem = function( ul, item ) {
+		var a = $( "<a>" );
+		var m = $( "<div>" ).addClass("media");
+		var img = $('<img>').attr({ class: "d-flex mr-3", src: "img/bg.png" }).appendTo(m);
+		var mb = $( "<div>" ).addClass("media-body").appendTo( m );
+		var h = $( "<h5>" ).addClass("mt-0").append(item.label).appendTo( mb );
+		return $('<li>').addClass('list-group-item').append(m).appendTo( ul );
+	};
+
+	autocomplete.data('ui-autocomplete')._resizeMenu = function() {
+	  this.menu.element.outerWidth( $( "input.form-control.main-search" ).parent().width() );
+	}
 });
 
-autocomplete.data('ui-autocomplete')._renderMenu = function( ul, items ) {
-	var that = this;
-	$.each( items, function( index, item ) {
-		that._renderItemData( ul, item );
-	});
-	$( ul ).addClass('list-group');
-	$( '.ui-helper-hidden-accessible' ).css('display', 'none');
-};
-
-autocomplete.data('ui-autocomplete')._renderItem = function( ul, item ) {
-	var a = $( "<a>" );
-	var m = $( "<div>" ).addClass("media");
-	var img = $('<img>').attr({ class: "d-flex mr-3", src: "img/bg.png" }).appendTo(m);
-	var mb = $( "<div>" ).addClass("media-body").appendTo( m );
-	var h = $( "<h5>" ).addClass("mt-0").append(item.label).appendTo( mb );
-	return $('<li>').addClass('list-group-item').append(m).appendTo( ul );
-};
-
-autocomplete.data('ui-autocomplete')._resizeMenu = function() {
-  this.menu.element.outerWidth( $( "input.form-control.main-search" ).parent().width() );
-}
-
-var store = function( id, name ) {
-	var div = $('<div>').addClass('jumbotron');
+var store = function( shop ) {
 	$.ajax({
-		url: '/path/to/file',
-		type: 'GET',
+		url: '/canteen/' + shop,
+		type: 'get',
 		dataType: 'json',
-		data: {id: id, name: name},
-	})
-	.done(function( data ) {
-		$('<img>').addClass('img-fluid').attr('src', data.img).appendTo(div);
-		$('<h1>').addClass('display-3 store').append(data.header)
-		div.append('<hr class="my-4">')
-		div.append($('<p>').append(data.description));
-		div.append('<div class="clearfix">\
-        <div class="btn-group float-right">\
-            <button type="button" id="testBtn" class="btn btn-success" data-loading-text=" ... ">\
-                <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>0</button>\
-            <button type="button" id="testBtnDown" class="btn btn-danger" data-loading-text=" ... "><i class="fa fa-thumbs-o-down" aria-hidden="true"></i>0</button>\
-	        </div>\
-	    </div>');
-	    div.append('<hr class="my-4">');
-	    comment_box( div );
-		div.append('<hr class="my-4">');
-		$.each( data.comments, function(index, el) {
-			comment(div, el);
-		});
-	})	
-}
+		success: function( data ) {
+			var div = $('<div>').addClass('jumbotron');
+			$('<img>').addClass('img-fluid').appendTo(div); //.attr('src', data.img)
+			$('<h1>').addClass('display-3 store').append(data.name).appendTo(div);
+			div.append('<hr class="my-4">')
+			div.append($('<p>').append(data.description));
+			div.append('<div class="clearfix">\
+	        <div class="btn-group float-right">\
+	            <button type="button" id="testBtn" class="btn btn-success" data-loading-text=" ... ">\
+	                <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>0</button>\
+	            <button type="button" id="testBtnDown" class="btn btn-danger" data-loading-text=" ... "><i class="fa fa-thumbs-o-down" aria-hidden="true"></i>0</button>\
+		        </div>\
+		    </div>');
+		    div.append('<hr class="my-4">');
+		    comment_box(div);
+			div.append('<hr class="my-4">');
+			$.each( data.comments, function(index, el) {
+				comment(div, el);
+			});
+			$('#store').append(div);
+		}
+	});
+};
 
 var comment = function( div, item) {
 	var dh = $('<div>').addClass('card-header').append(item.name);
@@ -84,11 +92,18 @@ var comment = function( div, item) {
 };
 
 var comment_box = function ( div ) {
-	var d = $('<div>').addClass('form-group').appendTo(div);
-	d.append('<label for="exampleTextarea" class="padText">Comment</label>');
-	d.append('<textarea class="form-control" id="exampleTextarea" rows="3" placeholder="Write your comment here."></textarea>');
-	var dc = $('div').addClass('clearfix').appendTo(d);
-	var dbg = $('div').addClass('btn-group float-right comment').appendTo('dc');
+	var dbg = $('<div>').addClass('btn-group float-right comment');
 	dbg.append('<button type="button" id="testBtn" class="btn btn-fail" data-loading-text=" ... ">Clear</button>');
 	dbg.append('<button type="button" id="testBtn" class="btn btn-success" data-loading-text=" ... ">Submit</button>');
+	var dc = $('<div>').addClass('clearfix').append(dbg);
+	var d = $('<div>').addClass('form-group');
+	d.append('<label for="exampleTextarea" class="padText">Comment</label>');
+	d.append('<textarea class="form-control" id="exampleTextarea" rows="3" placeholder="Write your comment here."></textarea>');
+	return d.append(dc).appendTo(div);
+}
+
+var store_card = function( div, item ){
+	var img = $('<img>').addClass('card-img-top img-fluid hidden-xs-down').attr('src', item.img);
+	var d = $('<div>').addClass('card-block').append('<h4 class="card-title" onclick="store(\''+item.name+'\');">' + item.name + '</h4>')
+	return $('<div>').addClass('card').append(img).append(d).appendTo(div);
 }

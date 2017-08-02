@@ -15,10 +15,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('/canteen', 'CanteenController');
+Route::namespace('Canteen')->group(function () {
+	Route::get('/canteen/recomment', 'CanteenController@recomment');
+    Route::resource('/canteen', 'CanteenController');
+    Route::resource('/backdoor', 'BackdoorController');
+});
+
 //Route::get('/canteen', 'CanteenController@index');
 
+Route::domain('{canteen}.ojudge.com')->group(function () {
 
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
+});

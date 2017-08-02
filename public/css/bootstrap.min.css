@@ -10,6 +10,18 @@ body {
     background: url("../img/bg2.png") repeat;
 }
 
+.padText{
+    padding-left: 1.5em;
+    font-family: 'Kanit', sans-serif;
+    line-height:  1.15;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%
+    font-size: 1.5em;
+}
+
+.comment{
+    padding-top: 0.7em;
+}
 .top-buffer {
     margin-top: 20px;
 }
