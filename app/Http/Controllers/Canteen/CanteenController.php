@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Canteen;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 
 class CanteenController extends Controller
 {
@@ -32,21 +33,22 @@ class CanteenController extends Controller
      *
      * @return Response json
      */
-    public function show( $name )
+    public function show( $id )
     {
         $data = array(
             'img' => '#',
             'name' => 'ร้านไก่ทอด อักษร สาขา สอง',
             'description' => 'Test test test description',
-            'comments' => array(
-                array(
-                    'name' => '1234',
-                    'comment' => 'น่าเบื่อ',
-                ),
-                array(
-                    'name' => '1234',
-                    'comment' => 'น่าเบื่อ',
-                ),
+            'comments' => array( ), //get_comment_shop
+        );
+        $data['comments'] = array(
+            array(
+                'name' => '1234',
+                'comment' => 'น่าเบื่อ',
+            ),
+            array(
+                'name' => '1234',
+                'comment' => 'น่าเบื่อ',
             ),
         );
         return response()->json($data);
@@ -57,8 +59,10 @@ class CanteenController extends Controller
      *
      * @return Array
      */
-    public function store()
+    public function store(Request $request)
     {
+        $comment = $request->input('comment');
 
+        return response()->json(array('Response' + $comment));
     }
 }

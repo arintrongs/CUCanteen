@@ -12,7 +12,6 @@ $(document).ready(function() {
 	 		stores_html = $('#store').html();
 	 	},
 	 	select: function( event, ui ) {
-	 		$('#store').html('');
 	 		store(ui.item.value);
 	 	},
 	 	change: function(event, ui) {
@@ -50,6 +49,12 @@ $(document).ready(function() {
 });
 
 var store = function( shop ) {
+	$('#store').html('');
+	$.ajaxSetup({
+	  headers: {
+	    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+	  }
+	});
 	$.ajax({
 		url: '/canteen/' + shop,
 		type: 'get',
@@ -62,9 +67,9 @@ var store = function( shop ) {
 			div.append($('<p>').append(data.description));
 			div.append('<div class="clearfix">\
 	        <div class="btn-group float-right">\
-	            <button type="button" id="testBtn" class="btn btn-success" data-loading-text=" ... ">\
+	            <button type="button" class="btn btn-success"">\
 	                <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>0</button>\
-	            <button type="button" id="testBtnDown" class="btn btn-danger" data-loading-text=" ... "><i class="fa fa-thumbs-o-down" aria-hidden="true"></i>0</button>\
+	            <button type="button" class="btn btn-danger"><i class="fa fa-thumbs-o-down" aria-hidden="true"></i>0</button>\
 		        </div>\
 		    </div>');
 		    div.append('<hr class="my-4">');
@@ -85,7 +90,7 @@ var comment = function( div, item) {
 		src: 'https://ssl.gstatic.com/accounts/ui/avatar_2x.png',
 	});
 	var dcl = $('<div>').addClass('col-lg-2 col-md-3').append(i);
-	var cl = '<div class="clearfix"><button type="button" id="testBtn" class="btn btn-success float-right" data-loading-text=" ... "><i class="fa fa-thumbs-o-up" aria-hidden="true"></i>0</button></div>';
+	var cl = '<div class="clearfix"><button type="button" class="btn btn-success float-right"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i>0</button></div>';
 	var dcr = $('<div>').addClass('col-lg-10 col-md-9').append(item.comment).append(cl);
 	var db = $('<div>').addClass('card-block').append($('<div>').addClass('row').append(dcl).append(dcr));
 	return $('<div>').addClass('card').append(dh).append(db).appendTo(div);
@@ -93,12 +98,12 @@ var comment = function( div, item) {
 
 var comment_box = function ( div ) {
 	var dbg = $('<div>').addClass('btn-group float-right comment');
-	dbg.append('<button type="button" id="testBtn" class="btn btn-fail" data-loading-text=" ... ">Clear</button>');
-	dbg.append('<button type="button" id="testBtn" class="btn btn-success" data-loading-text=" ... ">Submit</button>');
+	dbg.append('<button type="button" class="btn btn-fail" onclick="clear();">Clear</button>');
+	dbg.append('<button type="button" class="btn btn-success" onclick="send();">Submit</button>');
 	var dc = $('<div>').addClass('clearfix').append(dbg);
 	var d = $('<div>').addClass('form-group');
-	d.append('<label for="exampleTextarea" class="padText">Comment</label>');
-	d.append('<textarea class="form-control" id="exampleTextarea" rows="3" placeholder="Write your comment here."></textarea>');
+	d.append('<label class="padText">Comment</label>');
+	d.append('<textarea class="form-control" rows="3" placeholder="Write your comment here."></textarea>');
 	return d.append(dc).appendTo(div);
 }
 
@@ -106,4 +111,14 @@ var store_card = function( div, item ){
 	var img = $('<img>').addClass('card-img-top img-fluid hidden-xs-down').attr('src', item.img);
 	var d = $('<div>').addClass('card-block').append('<h4 class="card-title" onclick="store(\''+item.name+'\');">' + item.name + '</h4>')
 	return $('<div>').addClass('card').append(img).append(d).appendTo(div);
+}
+
+var send = function() {
+	$.post('/canteen', {comment: $('textarea.form-control').val()}, function(data, textStatus, xhr) {
+		$('textarea.form-control').val(data);
+	});
+}
+
+var clear = function() {
+	$('textarea.form-control').val('');
 }
