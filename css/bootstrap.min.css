@@ -10,25 +10,25 @@ body {
     background: url("../img/bg2.png") repeat;
 }
 
-.padText{
-	padding-left: 1.5em;
-	font-family: 'Kanit', sans-serif;
+.padText {
+    padding-left: 1.5em;
+    font-family: 'Kanit', sans-serif;
     line-height: 1.15;
     -ms-text-size-adjust: 100%;
     -webkit-text-size-adjust: 100%;
-    font-size : 1.5em;
+    font-size: 1.5em;
 }
 
-.comment{
-	padding-top : 0.7em;
+.comment {
+    padding-top: 0.7em;
 }
+
 .top-buffer {
     margin-top: 20px;
 }
-.btn-group{
 
+.btn-group {}
 
-}
 .card {
     padding: 0;
     margin: 1 em;
@@ -58,24 +58,48 @@ body {
     -webkit-text-size-adjust: 100%;
     font-size: 5em;
 }
-.store{
-    	font-size:3em;
-    }
+
+.store {
+    font-size: 3em;
+}
+
 .card {
     font-family: 'Kanit', sans-serif;
 }
-.card-title{
-	text-align: center;
+
+.card-title {
+    text-align: center;
 }
+
 .jumbotron .img-fluid {
     max-height: 250px;
     width: 100%;
     margin-bottom: 2em;
 }
 
-.user-photo{
-	width : 100%;
+.user-photo {
+    width: 100%;
 }
+
+.navbar.transparent.navbar-inverse .navbar-inner {
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.login-icon{
+    margin-top: 0.3em;
+    margin-left: 90%;
+    position : relative;
+}
+.login-icon img{
+    margin-right : 0.5em;
+}
+.login-btn{
+    max-width: 6em;
+
+    color : black;
+    border-color: black;
+}
+
 @media screen and (max-width: 767px) {
     .card-img-top {
         display: none;
@@ -89,8 +113,8 @@ body {
     .header {
         font-size: 3em;
     }
-    .user-photo{
-    	display: none;
+    .user-photo {
+        display: none;
     }
 }
 
