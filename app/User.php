@@ -26,4 +26,13 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+    
+    /**
+     * Adding new user to tb_user
+     */
+
+    public function new_User(Request $request)
+    {
+        $this->create($request->all());
+    }
 }
