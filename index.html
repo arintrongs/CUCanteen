@@ -24,7 +24,7 @@
     <!-- Navbar -->
     <nav class="navbar transparent navbar-inverse navbar-fixed-top">
         <a class="navbar-brand login-icon">
-            <button type="button" class="btn btn-outline-primary login-btn float-right" data-toggle="modal" data-target = "#myModal" >Login</button>
+            <button type="button" class="btn btn-outline-primary login-btn float-right" data-toggle="modal" data-target="#myModal">Login</button>
         </a>
     </nav>
     <nav class="navbar transparent navbar-inverse navbar-fixed-top">
@@ -43,7 +43,6 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                
                 <div class="modal-body">
                     <div class="input-group">
                         <span class="input-group-addon" id="basic-addon1"><i class="fa fa-user" aria-hidden="true"></i></span>
@@ -127,30 +126,11 @@
                             <div class="row">
                                 <div class="col-lg-12 col-md-12">
                                     <div class="container card-con">
-                                    Content Review Content Review Content Review Content Review Content Review Content Review
-
-                                    <div class="clearfix">
-                                        <button type="button" id="testBtn" class="btn btn-success float-right" data-loading-text=" ... ">
-                                            <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>0</button>
-                                    </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-header">
-                            Username
-                        </div>
-                        <div class="card-block">
-                            <div class="row">
-                                <div class="col-lg-12 col-md-12">
-                                    <div class="container card-con">
-                                    Content Review
-                                    <div class="clearfix">
-                                        <button type="button" id="testBtn" class="btn btn-success float-right" data-loading-text=" ... ">
-                                            <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>0</button>
-                                    </div>
+                                        Content Review Content Review Content Review Content Review Content Review Content Review
+                                        <div class="clearfix">
+                                            <button type="button" id="testBtn1" class="btn btn-success float-right" data-loading-text=" ... ">
+                                                <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>0</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -164,11 +144,30 @@
                             <div class="row">
                                 <div class="col-lg-12 col-md-12">
                                     <div class="container card-con">
-                                    Content Review
-                                    <div class="clearfix">
-                                        <button type="button" id="testBtn" class="btn btn-success float-right" data-loading-text=" ... ">
-                                            <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>0</button>
-                                    </div></div>
+                                        Content Review
+                                        <div class="clearfix">
+                                            <button type="button" id="testBtn2" class="btn btn-success float-right" data-loading-text=" ... ">
+                                                <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>0</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            Username
+                        </div>
+                        <div class="card-block">
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12">
+                                    <div class="container card-con">
+                                        Content Review
+                                        <div class="clearfix">
+                                            <button type="button" id="testBtn3" class="btn btn-success float-right" data-loading-text=" ... ">
+                                                <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>0</button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -224,9 +223,22 @@
             <div class="col-lg-2 col-md-2"></div>
         </div>
         <!-- jQuery -->
+        <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
         <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+        <script>
+        $(document).ready(function() {
+            $("button").click(function() {
+                if (typeof $(this).data('counter') == "undefined") {
+                    $(this).data('counter', 1);
+                } else {
+                    $(this).data('counter',$(this).data('counter')+1);
+                }
+                $(this).html('<i class="fa fa-thumbs-o-up" aria-hidden="true"></i>' + $(this).data('counter'));
+            });
+        });
+        </script>
 </body>
 
 </html>
