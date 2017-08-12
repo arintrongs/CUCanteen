@@ -99,9 +99,9 @@
                     <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
                     <div class="clearfix">
                         <div class="btn-group float-right">
-                            <button type="button" id="testBtn" class="btn btn-success" data-loading-text=" ... ">
+                            <button type="button" id="testBtn1" class="btn btn-success" data-loading-text=" ... ">
                                 <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>0</button>
-                            <button type="button" id="testBtnDown" class="btn btn-danger" data-loading-text=" ... "><i class="fa fa-thumbs-o-down" aria-hidden="true"></i>0</button>
+                            <button type="button" id="testBtn2" class="btn btn-danger" data-loading-text=" ... "><i class="fa fa-thumbs-o-down" aria-hidden="true"></i>0</button>
                         </div>
                     </div>
                     <hr class="my-4">
@@ -110,9 +110,9 @@
                         <textarea class="form-control" id="exampleTextarea" rows="3" placeholder="Write your comment here."></textarea>
                         <div class="clearfix">
                             <div class="btn-group float-right comment">
-                                <button type="button" id="testBtn" class="btn btn-fail" data-loading-text=" ... ">
+                                <button type="button" id="Clear" class="btn btn-fail" data-loading-text=" ... ">
                                     Clear</button>
-                                <button type="button" id="testBtn" class="btn btn-success" data-loading-text=" ... ">
+                                <button type="button" id="Submit" class="btn btn-success" data-loading-text=" ... ">
                                     Submit</button>
                             </div>
                         </div>
@@ -128,43 +128,43 @@
                                     <div class="container card-con">
                                         Content Review Content Review Content Review Content Review Content Review Content Review
                                         <div class="clearfix">
-                                            <button type="button" id="testBtn1" class="btn btn-success float-right" data-loading-text=" ... ">
-                                                <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>0</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-header">
-                            Username
-                        </div>
-                        <div class="card-block">
-                            <div class="row">
-                                <div class="col-lg-12 col-md-12">
-                                    <div class="container card-con">
-                                        Content Review
-                                        <div class="clearfix">
-                                            <button type="button" id="testBtn2" class="btn btn-success float-right" data-loading-text=" ... ">
-                                                <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>0</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-header">
-                            Username
-                        </div>
-                        <div class="card-block">
-                            <div class="row">
-                                <div class="col-lg-12 col-md-12">
-                                    <div class="container card-con">
-                                        Content Review
-                                        <div class="clearfix">
                                             <button type="button" id="testBtn3" class="btn btn-success float-right" data-loading-text=" ... ">
+                                                <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>0</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            Username
+                        </div>
+                        <div class="card-block">
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12">
+                                    <div class="container card-con">
+                                        Content Review
+                                        <div class="clearfix">
+                                            <button type="button" id="testBtn4" class="btn btn-success float-right" data-loading-text=" ... ">
+                                                <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>0</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            Username
+                        </div>
+                        <div class="card-block">
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12">
+                                    <div class="container card-con">
+                                        Content Review
+                                        <div class="clearfix">
+                                            <button type="button" id="testBtn5" class="btn btn-success float-right" data-loading-text=" ... ">
                                                 <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>0</button>
                                         </div>
                                     </div>
@@ -229,7 +229,7 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
         <script>
         $(document).ready(function() {
-            $("button").click(function() {
+            $('button[id^="testBtn"]').click(function() {
                 if (typeof $(this).data('counter') == "undefined") {
                     $(this).data('counter', 1);
                 } else if($(this).data('clicked')==0){
