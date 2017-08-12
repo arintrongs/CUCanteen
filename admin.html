@@ -8,7 +8,7 @@
     <title>CU Canteen</title>
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
-    <link href="css/my_bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="css/admin.css" rel="stylesheet" type="text/css">
     <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <!-- Custom CSS -->
     <link href="https://fonts.googleapis.com/css?family=Kanit" rel="stylesheet" type="text/css">
@@ -21,10 +21,10 @@
 </head>
 
 <body>
+    <!-- Login Panel -->
     <div class="row">
         <div class="col-lg-3"></div>
         <div class="col-lg-6">
-            
             <div class="row admin-box">
                 <div class="col-lg-4">
                     <h1 class="login-title">Admin Login</h1>
@@ -43,18 +43,117 @@
                     </div>
                 </div>
                 <div class="col-lg-4">
-                       <button type="button" class="btn btn-primary">Login</button>
+                    <button type="button" class="btn btn-primary">Login</button>
                 </div>
             </div>
         </div>
     </div>
     <div class="col-lg-3"></div>
     </div>
+    <!-- Logged In -->
+    <br>
+    <div class="row">
+        <div class="col-lg-2"></div>
+        <div class="col-lg-8">
+            <div class="row content-box">
+                <p class="display-4">Shop Management</p>
+                <table class="table table-hover" id="myTable">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Name</th>
+                            <th>Canteen</th>
+                            <th>Description</th>
+                            <th>Card IMG</th>
+                            <th>Header IMG</th>
+                            <th>Edit/Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="table-dark">
+                            <th scope="row"></th>
+                            <td><input class="form-control" type="text" placeholder="ชื่อร้าน"></td>
+                            <td><input class="form-control" type="text" placeholder="โรงอาหาร"></td>
+                            <td><input class="form-control" type="text" placeholder="Description"></td>
+                            <td>
+                                <button type="button" class="btn btn-secondary">None</button>
+                            </td>
+                            <td>
+                                <button type="button" class="btn btn-secondary">None</button>
+                            </td>
+                            <td class="btn-group">
+                                <button type="button" class="btn btn-success">Add</button>
+                            </td>
+                        </tr>
+                        <tr class="clickable">
+                            <th scope="row">1</th>
+                            <td>เหนียวไก่</td>
+                            <td>I-Canteen</td>
+                            <td>ใส่ข้อมูล เมนู ของร้านนั้นๆ</td>
+                            <td>
+                                <button type="button" class="btn btn-success">OK!</button>
+                            </td>
+                            <td>
+                                <button type="button" class="btn btn-success">OK!</button>
+                            </td>
+                            <td class="btn-group">
+                                <button type="button" class="btn btn-warning"><i class="fa fa-wrench" aria-hidden="true"></i></button>
+                                <button type="button" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></button>
+                            </td>
+                        </tr>
+                        <tr class="clickable">
+                            <th scope="row">2</th>
+                            <td>ก๋วยเตี๋ยวตึกจุล</td>
+                            <td>โรงอาหารตึกจุล</td>
+                            <td>ใส่ข้อมูล เมนู ของร้านนั้นๆ</td>
+                            <td>
+                                <button type="button" class="btn btn-success">OK!</button>
+                            </td>
+                            <td>
+                                <button type="button" class="btn btn-secondary">None</button>
+                            </td>
+                            <td class="btn-group">
+                                <button type="button" class="btn btn-warning"><i class="fa fa-wrench" aria-hidden="true"></i></button>
+                                <button type="button" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></button>
+                            </td>
+                        </tr>
+                        <tr class="clickable">
+                            <th scope="row">3</th>
+                            <td>ปังเย็นครุ</td>
+                            <td>โรงอาหารครุ</td>
+                            <td>ใส่ข้อมูล เมนู ของร้านนั้นๆ</td>
+                            <td>
+                                <button type="button" class="btn btn-secondary">None</button>
+                            </td>
+                            <td>
+                                <button type="button" class="btn btn-secondary">None</button>
+                            </td>
+                            <td class="btn-group">
+                                <button type="button" class="btn btn-warning"><i class="fa fa-wrench" aria-hidden="true"></i></button>
+                                <button type="button" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col-lg-2"></div>
+    </div>
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
-
+    <script>
+    $(document).ready(function() {
+        $('#myTable').on('click', '.clickable', function(event) {
+            if ($(this).hasClass('selected')) {
+                $(this).removeClass('selected');
+            } else {
+                $(this).addClass('selected');
+            }
+        });
+    });
+    </script>
 </body>
 
 </html>
