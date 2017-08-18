@@ -35,7 +35,7 @@ class Comment extends Model
     protected $connection = 'mysql';
 
 
-    public function get_comment_shop($shop_id = 0,$count = 10)
+    public function getCommentShop($shop_id = 0,$count = 10)
     {
     	$comments = $this->where('shop_id', $shop_id)
     	->leftJoin('user', 'tb_comment.user_id', '=', 'tb_user_profile.user_id')
