@@ -1,0 +1,15 @@
+{
+  "name": "CUCanteen",
+  "scripts": {
+  },
+  "env": {
+  },
+  "formation": {
+  },
+  "addons": [
+
+  ],
+  "buildpacks": [
+
+  ]
+}
