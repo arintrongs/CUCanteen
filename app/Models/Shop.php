@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Comment;
 
 class Shop extends Model
 {
@@ -24,14 +25,14 @@ class Shop extends Model
      * Get all shop picture (For making Background)
      * @var array
      */
-    public function get_all_picture(){
-        $shops = $this->all()->get();
+    public function getAllPicture(){
+        $shops = self::all()->get();
         
     }
 
-    public function get_shop($shop_id = 0)
+    public function getShop($shop_id = 0)
     {
-    	$shop = $this->where('shop_id', $shop_id)->first();;
+    	$shop = self::where('shop_id', $shop_id)->first();;
 
         $data = array(
         	'img' => $shop->shop_img,
@@ -39,5 +40,24 @@ class Shop extends Model
             'description' => $shop->shop_description,
         );
 		return $data;
+    }
+
+    /**
+     * get average shop rating (return negative value on error)
+     *
+     * @var double
+     */
+    public function getShopRating($shop_id = 0){
+        if($shop_id != 0){
+            double $sum = 0;
+            $comments = Comment::where('shop_id',$shop_id)->get();
+            foreach ($comments as $comment){
+                $sum += $comment['comment_rating'];
+            }
+            
+            return $sum/count($comments);
+        }
+
+        return -1;
     }
 }
