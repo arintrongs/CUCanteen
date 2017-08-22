@@ -21,15 +21,6 @@ class Shop extends Model
      */
     protected $connection = 'mysql';
 
-    /**
-     * Get all shop picture (For making Background)
-     * @var array
-     */
-    public function getAllPicture(){
-        $shops = self::all()->get();
-        
-    }
-
     public function getShop($shop_id = 0)
     {
     	$shop = self::where('shop_id', $shop_id)->first();;
