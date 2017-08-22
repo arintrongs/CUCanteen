@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\Canteen;
 
+use App\Models\Comment;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class CanteenController extends Controller
@@ -15,11 +17,18 @@ class CanteenController extends Controller
     public function index()
     {
         $recomment = array(
-            array('name' => 'I-Canteen', 'img' => 'img/header.jpg', 'description' => 'test'),
-            array('name' => 'I-Canteen', 'img' => 'img/header.jpg', 'description' => 'test'),
-            array('name' => 'โรงอาหารอักษร', 'img' => 'img/header.jpg', 'description' => 'test'),
+            array('name' => 'I-Canteen', 'img' => 'img/header.jpg', 'description' => 'test', 'value' => 1),
+            array('name' => 'I-Canteen', 'img' => 'img/header.jpg', 'description' => 'test', 'value' => 2),
+            array('name' => 'โรงอาหารอักษร', 'img' => 'img/header.jpg', 'description' => 'test', 'value' => 3),
         );
-        $name = array("I-Canteen", "โรงอาหารอักษร", "Card title", "javascript", "asp", "ruby");
+        $name = array(
+            ['label' => "I-Canteen", 'value' => 1],
+            ['label' => "โรงอาหารอักษร", 'value' => 2],
+            ['label' => "Card title", 'value' => 3],
+            ['label' => "javascript", 'value' => 4],
+            ['label' => "asp", 'value' => 5],
+            ['label' => "ruby", 'value' => 6],
+        );
         $data = array(
             'recomment' => json_encode($recomment),
             'name' => json_encode($name),
@@ -33,23 +42,15 @@ class CanteenController extends Controller
      *
      * @return Response json
      */
-    public function show( $id )
+    public function show(Request $request, $id)
     {
+        $request->session()->put('shop', $id);
+
         $data = array(
             'img' => '#',
             'name' => 'ร้านไก่ทอด อักษร สาขา สอง',
             'description' => 'Test test test description',
-            'comments' => array( ), //get_comment_shop
-        );
-        $data['comments'] = array(
-            array(
-                'name' => '1234',
-                'comment' => 'น่าเบื่อ',
-            ),
-            array(
-                'name' => '1234',
-                'comment' => 'น่าเบื่อ',
-            ),
+            'comments' => Comment::getCommentShop( ),
         );
         return response()->json($data);
     }
@@ -61,8 +62,22 @@ class CanteenController extends Controller
      */
     public function store(Request $request)
     {
-        $comment = $request->input('comment');
+        if (! $request->ajax()) {
+            return response('Unauthorized.', 401);
+        }
 
-        return response()->json(array('Response' + $comment));
+        $comment = new Comment;
+        $comment->comment_text = $request->input('comment');
+        $comment->shop_id = $request->session()->get('shop');
+        $comment->comment_rating = 1.0;
+        $comment->user_id = 0;
+
+        if (Auth::check())
+        {
+            // Get the currently authenticated user's ID...
+            $comment->user_id = Auth::id();
+        }
+
+        return ($comment->save()) ? 'true' : 'false';;
     }
 }

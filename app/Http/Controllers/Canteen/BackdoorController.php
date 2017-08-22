@@ -13,6 +13,6 @@ class BackdoorController extends Controller
      */
     public function index()
     {
-        return view('canteen/page');
+        return view('canteen/back');
     }
 }

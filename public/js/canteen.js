@@ -39,7 +39,7 @@ $(document).ready(function() {
 		var m = $( "<div>" ).addClass("media");
 		var img = $('<img>').attr({ class: "d-flex mr-3", src: "img/bg.png" }).appendTo(m);
 		var mb = $( "<div>" ).addClass("media-body").appendTo( m );
-		var h = $( "<h5>" ).addClass("mt-0").append(item.label).appendTo( mb );
+		var h = $( "<h5>" ).addClass("mt-0").append(item.label).attr( "data-value", item.value ).appendTo( mb );
 		return $('<li>').addClass('list-group-item').append(m).appendTo( ul );
 	};
 
@@ -80,6 +80,10 @@ var store = function( shop ) {
 			});
 			$('#store').append(div);
 		}
+	})
+	.error(function(data){
+		var errors = data.responseText;
+		console.log(errors);
 	});
 };
 
@@ -109,13 +113,21 @@ var comment_box = function ( div ) {
 
 var store_card = function( div, item ){
 	var img = $('<img>').addClass('card-img-top img-fluid hidden-xs-down').attr('src', item.img);
-	var d = $('<div>').addClass('card-block').append('<h4 class="card-title" onclick="store(\''+item.name+'\');">' + item.name + '</h4>')
+	var d = $('<div>').addClass('card-block').append('<h4 class="card-title" onclick="store(\''+item.value+'\');">' + item.name + '</h4>')
 	return $('<div>').addClass('card').append(img).append(d).appendTo(div);
 }
 
 var send = function() {
-	$.post('/canteen', {comment: $('textarea.form-control').val()}, function(data, textStatus, xhr) {
-		$('textarea.form-control').val(data);
+	$.post('/canteen', 
+	{
+		comment: $('textarea.form-control').val()
+	}, function(data, textStatus, xhr) {
+		$('textarea.form-control').val('');
+		alert('Comment completed.');
+	})
+	.error(function(data){
+		var errors = data.responseText;
+		console.log(errors);
 	});
 }
 
