@@ -42,7 +42,7 @@ class User extends Model implements AuthenticatableContract,
      *
      * @param \Illuminate\Database\Eloquent\Builder $query
      * @param string $type Role type
-     * @return \Illuminate\Database\Eloquent\Builder
+     * @return \Illuminate\Database\Eloquent\Builder 
      */
     public function scopeRole($query,$type)
     {
@@ -84,27 +84,27 @@ class User extends Model implements AuthenticatableContract,
      * @param form input array $data  
      * @var string, Failure Cause, "Succeed" returned if successfully added an user
      */
-    public static function updateUser($data = null){
-        if($data != null){
-            if(self::where(['user_id' => $data['id'], 'user_username' => $data['username'])->first() == null) return "Error: user does not exist";
-            else $user = self::where(['user_id' => $data['id'], 'user_username' => $data['username'])->first() == null;
-            if(!Hash::check($data['password'],$user['user_hpassword']))return "Error: password mismatch";
-            $hash = Hash::make($data['password']);
+    // public static function updateUser($data = null){
+    //     if($data != null){
+    //         if(self::where(['user_id' => $data['id'], 'user_username' => $data['username'])->first() == null) return "Error: user does not exist";
+    //         else $user = self::where(['user_id' => $data['id'], 'user_username' => $data['username'])->first() == null;
+    //         if(!Hash::check($data['password'],$user['user_hpassword']))return "Error: password mismatch";
+    //         $hash = Hash::make($data['password']);
             
-            while(Hash::needsRehash($hash)){ 
-                $hash = Hash::make($data);
-            }
+    //         while(Hash::needsRehash($hash)){ 
+    //             $hash = Hash::make($data);
+    //         }
             
-            $user['user_hpassword'] = $hash;
-            if(array_key_exists(studentid, $data)) $user['user_studentid'] = $data['studentid'];
-            if(array_key_exists(fbid, $data)) $user['user_fbid'] = $data['fbid'];
-            if(array_key_exists(dispname, $data)) $user['user_dispname'] = $data['dispname'];
-            else $user['user_dispname'] = $data['username'];
-            $user['comment_text'] = $data['comment'];
-            $user['comment_food'] = $data['food'];
-            $user->save();
-            return "Succeed";
-        }
-        return "Error: call method with null";
-    }
+    //         $user['user_hpassword'] = $hash;
+    //         if(array_key_exists(studentid, $data)) $user['user_studentid'] = $data['studentid'];
+    //         if(array_key_exists(fbid, $data)) $user['user_fbid'] = $data['fbid'];
+    //         if(array_key_exists(dispname, $data)) $user['user_dispname'] = $data['dispname'];
+    //         else $user['user_dispname'] = $data['username'];
+    //         $user['comment_text'] = $data['comment'];
+    //         $user['comment_food'] = $data['food'];
+    //         $user->save();
+    //         return "Succeed";
+    //     }
+    //     return "Error: call method with null";
+    // }
 }
