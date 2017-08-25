@@ -55,23 +55,33 @@ class Shop extends Model
     }
 
     /**
-     * get average shop rating (return zero on error)
+     * get average shop rating
      *
      * @var double
      */
     public function getShopRating($shop_id = 0){
         $su = 0;
-        if($shop_id != 0){
-            $comments = Comment::where('shop_id',$shop_id)->pluck('comment_rating');
+            $comments = Comment::where('shop_id',($shop_id == 0)?$this->shop_id:$shop_id)->pluck('comment_rating');
             if(count($comments)==0)return 0;
-            foreach ($comments as $comment){
-                $su += (double)$comment;
-            }
-            
+            foreach ($comments as $comment)
+                $su += (double)$comment;           
             return $su/count($comments);
-        }
+    }
 
-        return 0;
+    /**
+     * get poppular food
+     *
+     * @param int $shop_id (0 for current class shop_id)
+     * @param 
+     * @var double
+     */
+    public function getShopRating($shop_id = 0){
+        $su = 0;
+            $comments = Comment::where('shop_id',($shop_id == 0)?$this->shop_id:$shop_id)->pluck('comment_rating');
+            if(count($comments)==0)return 0;
+            foreach ($comments as $comment)
+                $su += (double)$comment;           
+            return $su/count($comments);
     }
 
     /**
@@ -80,7 +90,7 @@ class Shop extends Model
      * @param form input array $data  (required: name, location, picture; optional: id, time, description, lat, lng, isVeg, isHalal)
      * @var string, Failure Cause, "Succeed" returned if successfully added an user
      */
-    public static function addShop($data){
+    public static function updateShop($data){
         if($data['id'] != 0){
             $shop = Shop::where('shop_id',$data['id']);
             if(array_key_exists(name, $data))$shop['shop_name'] = $data['name'];

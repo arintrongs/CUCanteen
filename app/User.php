@@ -37,6 +37,7 @@ class User extends Model implements AuthenticatableContract,
      */
     protected $hidden = ['user_hpassword', 'user_session', 'user_role'];
 
+
     /**
      * Scope a query by specific $type
      *
