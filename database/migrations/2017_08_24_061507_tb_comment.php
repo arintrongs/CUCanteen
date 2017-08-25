@@ -22,19 +22,19 @@ class TbComment extends Migration
             $table -> string('comment_text') -> nullable;
         });
 
-        Schema::table('tb_comment', function(Blueprint $table){
-            $table -> foreign('shop_id') -> references('shop_id') -> on('tb_shop')
-                        -> onDelete('cascade')
-                        -> onUpdate('cascade');
+        // Schema::table('tb_comment', function(Blueprint $table){
+        //     $table -> foreign('shop_id') -> references('shop_id') -> on('tb_shop')
+        //                 -> onDelete('cascade')
+        //                 -> onUpdate('cascade');
 
-            $table -> foreign('user_id') -> references('user_id') -> on('tb_user')
-                        -> onDelete('cascade')
-                        -> onUpdate('cascade');
+        //     $table -> foreign('user_id') -> references('user_id') -> on('tb_user')
+        //                 -> onDelete('cascade')
+        //                 -> onUpdate('cascade');
 
-            $table -> foreign('food_id') -> references('food_id') -> on('tb_food')
-                        -> onDelete('set_null')
-                        -> onUpdate('cascade');
-        });
+        //     $table -> foreign('food_id') -> references('food_id') -> on('tb_food')
+        //                 -> onDelete('set_null')
+        //                 -> onUpdate('cascade');
+        // });
     }
 
     /**
