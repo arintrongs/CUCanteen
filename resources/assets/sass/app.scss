@@ -1,9 +1,48 @@
+@import "~bootstrap/scss/bootstrap.scss";
 
-// Fonts
-@import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
+$color_ripple: #d8ebf1;
+$color_crush: #fd424d;
+$color_seafloor: #1ca5b7;
+$color_cyprus: #002d40;
+$font_color: #383838;
+$font_Pacifico: 'Pacifico',
+cursive;
 
-// Variables
-@import "variables";
+html body {
+    font-size: 14px;
+}
 
-// Bootstrap
-@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+.navbar {
+    min-height: 70px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+}
+
+.brand {
+    font-family: $font_Pacifico;
+    font-size: 2em;
+    color : $color_crush;
+}
+
+$card_columns_set :(
+	xs:1,
+	sm:1,
+	md:4,
+	lg:5,
+	xl:6,
+);
+.card-columns {
+	padding: 1.5em;
+}
+@each $view , $columns in $card_columns_set{
+	@include media-breakpoint-up($view) {
+      .card-columns {
+        column-count: $columns;
+        column-gap: 1.25rem;
+
+        .card {
+          display: inline-block;
+          width: 100%; // Don't let them exceed the column width
+        }
+      }
+    }
+}
