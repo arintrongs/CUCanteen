@@ -3,15 +3,9 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Auth\Authenticatable;
-use Illuminate\Auth\Passwords\CanResetPassword;
-use Illuminate\Foundation\Auth\Access\Authorizable;
-use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
-use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
-use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
-use App\User;
 
-class Comment extends Model{
+class Comment extends Model
+{
     /**
      * The table associated with the model.
      *
@@ -68,17 +62,16 @@ class Comment extends Model{
      *
      * @var bool
      */
-    public function deleteComment(){
-        $comment = settype();
-        if($comment == null) return False;
-        return gettype($comment);
-        if(gettype($comment)=='App\Comment'){
-        	$comment -> delete();
+    public function delete_comment_shop($comment_id = 0)
+    {
+        if($comment_id != 0)
+        {
+            $comment = $this->where('comment_id',$comment_id)->get();
+            if($comment == null) return False;
+            $comment -> forceDelete();
             return True;
         }
-        return False;
+        else return False;
     }
-
-    
 
 }
