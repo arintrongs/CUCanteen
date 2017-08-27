@@ -10,13 +10,14 @@
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
-
+        <link href="https://fonts.googleapis.com/css?family=Athiti" rel="stylesheet">
         <!-- CSS-->
         <link rel="stylesheet" type="text/css" href="{{ URL :: asset('css/app.css')}}">
           
     </head>
     <body>
-        <nav class="navbar sticky-top navbar-light" >
+        <!-- NAV -->
+        <nav class="navbar navbar-light fixed-top" >
             <div class="col-lg-2">
                 <a class="brand float-right" href="#">Rate My Canteen.</a>
             </div>
@@ -27,10 +28,23 @@
                 <a>Location : </a>
             </div>
         </nav>
-        <div class="container-fluid">
+        <!-- Header -->
+        <div class="container-fluid header">
 
-                @yield('content')
-
+        </div>
+        <!-- Content -->
+        <div class="container pad-top">
+            <div class="row">
+            <div class="col-lg-4">
+                @yield('content_1')
+            </div>
+            <div class="col-lg-4">
+                @yield('content_2')
+            </div>
+            <div class="col-lg-4">
+                @yield('content_3')
+            </div>
+            </div>
         </div>
         <!-- Script -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>    
