@@ -51,7 +51,8 @@ class Shop extends Model
      * @return \Illuminate\Database\Eloquent\Builder
      */ 
     public function scopeDist($query, $lat, $lng, $ths){
-        return $query->whereRaw("($lat-shop_lat)*($lat-shop_lat) + ($lng-shop_lng)*($lng-shop_lng) <= $ths*$ths");
+        return $query -> whereRaw("($lat-shop_lat)*($lat-shop_lat) + ($lng-shop_lng)*($lng-shop_lng) <= $ths*$ths")
+                    -> orderByRaw("($lat-shop_lat)*($lat-shop_lat) + ($lng-shop_lng)*($lng-shop_lng)", " DESC");
     }
 
     /**

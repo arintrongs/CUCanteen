@@ -20,4 +20,12 @@ class Food extends Model
      */
     protected $connection = 'mysql';
 
+    /**
+     * Add new food (new s         hop if id is not given) 
+     *
+     * @param form input array $data  (required: name, location, picture; optional: id, time, description, lat, lng, isVeg, isHalal)
+     * @var string, Failure Cause, "Succeed" returned if successfully added an user
+     */
+
+
 }
