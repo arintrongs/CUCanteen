@@ -71,8 +71,6 @@
 
 <br><br>
 <script>
-    $('#myModal').on('shown.bs.modal', function () {
-  $('#myInput').focus()
-})
+    
 </script>
 @endsection

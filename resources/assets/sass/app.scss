@@ -31,6 +31,14 @@ button:focus {
     min-height: 70px;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
     background-color: white;
+    .login{
+    text-align: right;
+    font-family: $font_Athiti;
+    font-size: 20px;
+    .icon{
+        font-size: 30px;
+    }
+}
 }
 
 .brand {
@@ -63,14 +71,7 @@ button:focus {
     position:absolute;
     display: inline;
 }
-.login{
-	text-align: right;
-	font-family: $font_Athiti;
-	font-size: 20px;
-	.icon{
-		font-size: 30px;
-	}
-}
+
 
 .inlineRight {
     right:0;
@@ -211,8 +212,6 @@ $columns in $card_columns_set {
     padding: 1em 1em 1em 1em;
 }
 
-//Modal
-@import url(http://fonts.googleapis.com/css?family=Roboto);
 
 /****** LOGIN MODAL ******/
 .loginmodal-container {
@@ -224,13 +223,13 @@ $columns in $card_columns_set {
   border-radius: 2px;
   box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
   overflow: hidden;
-  font-family: roboto;
+  font-family: $font_Athiti;
 }
 
 .loginmodal-container h1 {
   text-align: center;
   font-size: 1.8em;
-  font-family: roboto;
+  font-family: $font_Athiti;
 }
 
 .loginmodal-container input[type=submit] {
@@ -266,7 +265,7 @@ $columns in $card_columns_set {
 .loginmodal {
   text-align: center;
   font-size: 14px;
-  font-family: 'Arial', sans-serif;
+  font-family: $font_Athiti;
   font-weight: 700;
   height: 36px;
   padding: 0 8px;
@@ -282,7 +281,7 @@ $columns in $card_columns_set {
   text-shadow: 0 1px rgba(0,0,0,0.1); 
   background-color: #4d90fe;
   padding: 17px 0px;
-  font-family: roboto;
+  font-family: $font_Athiti;
   font-size: 14px;
   /* background-image: -webkit-gradient(linear, 0 0, 0 100%,   from(#4d90fe), to(#4787ed)); */
 }
