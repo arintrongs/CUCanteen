@@ -1,4 +1,4 @@
-@extends('canteen/layout')
+@extends('canteen/layouts/layout2')
 
 @section('body')
 
@@ -24,9 +24,9 @@
                     <tbody>
                         <tr class="table-dark">
                             <th scope="row"></th>
-                            <td><input class="form-control" type="text" placeholder="ชื่อร้าน"></td>
-                            <td><input class="form-control" type="text" placeholder="โรงอาหาร"></td>
-                            <td><input class="form-control" type="text" placeholder="Description"></td>
+                            <td><input class="form-control" type="text" id="name" placeholder="ชื่อร้าน"></td>
+                            <td><input class="form-control" type="text" id="location" placeholder="โรงอาหาร"></td>
+                            <td><input class="form-control" type="text" id="description" placeholder="Description"></td>
                             <td>
                                 <button type="button" class="btn btn-secondary">None</button>
                             </td>
@@ -34,14 +34,15 @@
                                 <button type="button" class="btn btn-secondary">None</button>
                             </td>
                             <td class="btn-group">
-                                <button type="button" class="btn btn-success">Add</button>
+                                <button type="button" class="btn btn-success" onclick="add();">Add</button>
                             </td>
                         </tr>
+                        @for ($i = 0; $i < count($shops); $i++)
                         <tr class="clickable">
-                            <th scope="row">1</th>
-                            <td>เหนียวไก่</td>
-                            <td>I-Canteen</td>
-                            <td>ใส่ข้อมูล เมนู ของร้านนั้นๆ</td>
+                            <th scope="row">{{ $shops[$i]['shop_id'] }}</th>
+                            <td>{{ $shops[$i]['shop_name'] }}</td>
+                            <td>{{ $shops[$i]['shop_location'] }}</td>
+                            <td>{{ $shops[$i]['shop_description'] }}</td>
                             <td>
                                 <button type="button" class="btn btn-success">OK!</button>
                             </td>
@@ -53,38 +54,7 @@
                                 <button type="button" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></button>
                             </td>
                         </tr>
-                        <tr class="clickable">
-                            <th scope="row">2</th>
-                            <td>ก๋วยเตี๋ยวตึกจุล</td>
-                            <td>โรงอาหารตึกจุล</td>
-                            <td>ใส่ข้อมูล เมนู ของร้านนั้นๆ</td>
-                            <td>
-                                <button type="button" class="btn btn-success">OK!</button>
-                            </td>
-                            <td>
-                                <button type="button" class="btn btn-secondary">None</button>
-                            </td>
-                            <td class="btn-group">
-                                <button type="button" class="btn btn-warning"><i class="fa fa-wrench" aria-hidden="true"></i></button>
-                                <button type="button" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></button>
-                            </td>
-                        </tr>
-                        <tr class="clickable">
-                            <th scope="row">3</th>
-                            <td>ปังเย็นครุ</td>
-                            <td>โรงอาหารครุ</td>
-                            <td>ใส่ข้อมูล เมนู ของร้านนั้นๆ</td>
-                            <td>
-                                <button type="button" class="btn btn-secondary">None</button>
-                            </td>
-                            <td>
-                                <button type="button" class="btn btn-secondary">None</button>
-                            </td>
-                            <td class="btn-group">
-                                <button type="button" class="btn btn-warning"><i class="fa fa-wrench" aria-hidden="true"></i></button>
-                                <button type="button" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></button>
-                            </td>
-                        </tr>
+                        @endfor
                     </tbody>
                 </table>
             </div>
