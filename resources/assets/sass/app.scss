@@ -5,8 +5,10 @@ $color_crush: #fd424d;
 $color_seafloor: #1ca5b7;
 $color_cyprus: #002d40;
 $font_color: #383838;
-$font_Pacifico: 'Pacifico',cursive;
-$font_Athiti : 'Athiti', sans-serif;
+$font_Pacifico: 'Pacifico',
+cursive;
+$font_Athiti: 'Athiti',
+sans-serif;
 
 html body {
     font-size: 14px;
@@ -21,56 +23,120 @@ html body {
 .brand {
     font-family: $font_Pacifico;
     font-size: 2em;
-    color : $color_crush;
+    color: $color_crush;
 }
-.header{
-	min-height: 400px;
-	background-color: $color_seafloor;
+
+.header {
+    min-height: 400px;
+    background-color: $color_seafloor;
 }
-.card{
-	-webkit-appearance: none;
+
+.card {
+    -webkit-appearance: none;
     -webkit-border-radius: 0px;
     font-family: $font_Athiti;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+    margin-top: 2em;
 }
-.pad-top{
-	padding-top: 2em;
+
+.pad-top {
+    padding-top: 2em;
 }
-.pad-bot{
-	padding-bottom: 2em; 
+
+.pad-bot {
+    padding-bottom: 2em;
 }
-.fill {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden
+.inlineLeft, .inlineRight {
+    position:absolute;
+    display: inline;
 }
-.fill img {
-    flex-shrink: 0;
-    min-width: 100%;
-    min-height: 100%
+.login{
+	text-align: right;
+	font-family: $font_Athiti;
+	font-size: 20px;
+	.icon{
+		font-size: 30px;
+	}
 }
-$card_columns_set :(
-	xs:1,
-	sm:1,
-	md:4,
-	lg:3,
-	xl:3,
+.inlineRight {
+    right:0;
+}
+.goBack{
+	padding-right: 1em;
+	font-size: 20px;
+}
+$card_columns_set :( xs:1,
+sm:1,
+md:4,
+lg:3,
+xl:3,
 );
 .card-columns {
-	padding-top: 1.5em;
-
+    padding-top: 1.5em;
 }
-@each $view , $columns in $card_columns_set{
-	@include media-breakpoint-up($view) {
-      .card-columns {
-        column-count: $columns;
-        column-gap: 1.25rem;
 
-        .card {
-          display: inline-block;
-          width: 100%; // Don't let them exceed the column width
+.card-info {
+    font-size: 16px;
+}
+
+.select {
+    font-family: $font_Athiti;
+    font-size: 16px;
+    padding: 0;
+}
+
+@each $view,
+$columns in $card_columns_set {
+    @include media-breakpoint-up($view) {
+        .card-columns {
+            column-count: $columns;
+            column-gap: 1.25rem;
+
+            .card {
+                display: inline-block;
+                width: 100%; // Don't let them exceed the column width
+            }
         }
-      }
     }
 }
 
+.store {
+    font-family: $font_Athiti;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+    margin-top: 2em;
+    min-height: 300px;
+ 	padding: 0 0 0 0;
+
+    img {
+        width: 100%;
+        height: 100%;
+    }
+
+    .title {
+        h1 {
+            padding-left: 1.5em;
+        }
+        position:relative;
+        font-size: 1.5em;
+        margin: 1em 1em 1em 0;
+        padding-right: 1em;
+        width: 100%;
+        overflow: hidden;
+    }
+    
+    .description{
+    	font-size: 16px;
+    	padding: 0 1em 1em 1em;
+    	width: 100%;
+    }	
+
+}
+.rating{
+	font-family: $font_Athiti;
+	color: $font_color;
+	text-align: center;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+    margin-top: 2em;
+    min-height: 150px;
+    padding: 1em 1em 1em 1em;
+}

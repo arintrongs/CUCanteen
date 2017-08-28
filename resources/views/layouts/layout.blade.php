@@ -13,27 +13,48 @@
         <link href="https://fonts.googleapis.com/css?family=Athiti" rel="stylesheet">
         <!-- CSS-->
         <link rel="stylesheet" type="text/css" href="{{ URL :: asset('css/app.css')}}">
+        <link rel="stylesheet" type="text/css" href="{{ URL :: asset('css/font-awesome.min.css')}}">
           
     </head>
     <body>
         <!-- NAV -->
         <nav class="navbar navbar-light fixed-top" >
             <div class="col-lg-2">
-                <a class="brand float-right" href="#">Rate My Canteen.</a>
+                <div class="brand float-right" href="#">Rate My Canteen.</div>
             </div>
             <div class="col-lg-7">
                 <input class="form-control form-control-lg mr-sm-2" type="text" placeholder="Search" aria-label="Search">
             </div>
             <div class="col-lg-3">
-                <a>Location : </a>
+                <div class="login">
+                    <i class="fa fa-user icon" aria-hidden="true"></i>
+
+                </div>
             </div>
         </nav>
+
         <!-- Header -->
-        <div class="container-fluid header">
+        <div class="container-fluid header pad-bot">
 
         </div>
-        <!-- Content -->
-        <div class="container pad-top">
+        <!-- Store's Content -->
+        <div class="row">
+            <div class="col-lg-2"></div>
+            <div class="col-lg-7">
+        <div class="container-fluid store">
+            @yield('store')
+        </div>
+        </div>
+        <div class="col-lg-2">
+            <div class="container-fluid rating">
+                <h2>Rating</h2>
+                <h2><i class="fa fa-star-o" aria-hidden="true"></i><i class="fa fa-star-o" aria-hidden="true"></i><i class="fa fa-star-o" aria-hidden="true"></i><i class="fa fa-star-o" aria-hidden="true"></i><i class="fa fa-star-o" aria-hidden="true"></i></h2>
+                <h3>5.00</h3>
+            </div>
+        </div>
+        </div>
+        <!-- Card's Content -->
+        <div class="container">
             <div class="row">
             <div class="col-lg-4">
                 @yield('content_1')

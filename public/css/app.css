@@ -9212,6 +9212,9 @@ html body {
   -webkit-appearance: none;
   -webkit-border-radius: 0px;
   font-family: "Athiti", sans-serif;
+  -webkit-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+          box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+  margin-top: 2em;
 }
 
 .pad-top {
@@ -9222,28 +9225,43 @@ html body {
   padding-bottom: 2em;
 }
 
-.fill {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  overflow: hidden;
+.inlineLeft,
+.inlineRight {
+  position: absolute;
+  display: inline;
 }
 
-.fill img {
-  -ms-flex-negative: 0;
-      flex-shrink: 0;
-  min-width: 100%;
-  min-height: 100%;
+.login {
+  text-align: right;
+  font-family: "Athiti", sans-serif;
+  font-size: 20px;
+}
+
+.login .icon {
+  font-size: 30px;
+}
+
+.inlineRight {
+  right: 0;
+}
+
+.goBack {
+  padding-right: 1em;
+  font-size: 20px;
 }
 
 .card-columns {
   padding-top: 1.5em;
+}
+
+.card-info {
+  font-size: 16px;
+}
+
+.select {
+  font-family: "Athiti", sans-serif;
+  font-size: 16px;
+  padding: 0;
 }
 
 .card-columns {
@@ -9312,5 +9330,49 @@ html body {
     display: inline-block;
     width: 100%;
   }
+}
+
+.store {
+  font-family: "Athiti", sans-serif;
+  -webkit-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+          box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+  margin-top: 2em;
+  min-height: 300px;
+  padding: 0 0 0 0;
+}
+
+.store img {
+  width: 100%;
+  height: 100%;
+}
+
+.store .title {
+  position: relative;
+  font-size: 1.5em;
+  margin: 1em 1em 1em 0;
+  padding-right: 1em;
+  width: 100%;
+  overflow: hidden;
+}
+
+.store .title h1 {
+  padding-left: 1.5em;
+}
+
+.store .description {
+  font-size: 16px;
+  padding: 0 1em 1em 1em;
+  width: 100%;
+}
+
+.rating {
+  font-family: "Athiti", sans-serif;
+  color: #383838;
+  text-align: center;
+  -webkit-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+          box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+  margin-top: 2em;
+  min-height: 150px;
+  padding: 1em 1em 1em 1em;
 }
 
