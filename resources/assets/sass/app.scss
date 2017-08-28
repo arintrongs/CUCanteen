@@ -5,15 +5,28 @@ $color_crush: #fd424d;
 $color_seafloor: #1ca5b7;
 $color_cyprus: #002d40;
 $font_color: #383838;
-$font_Pacifico: 'Pacifico',
-cursive;
-$font_Athiti: 'Athiti',
-sans-serif;
+$font_Pacifico: 'Pacifico' ,cursive;
+$font_Athiti: 'Athiti',sans-serif;
 
 html body {
     font-size: 14px;
 }
-
+input{
+    border:0;
+}
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
+.responses{
+    margin-top: 1.5em;
+    margin-bottom: 1em;
+    font-style: $font_Athiti ;
+    font-size: 20px;
+    color: $font_color;
+}
 .navbar {
     min-height: 70px;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
@@ -58,6 +71,7 @@ html body {
 		font-size: 30px;
 	}
 }
+
 .inlineRight {
     right:0;
 }
@@ -131,6 +145,62 @@ $columns in $card_columns_set {
     }	
 
 }
+
+.comment{
+    font-family: $font_Athiti;
+    min-height: 75px;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.10);
+    border-color: #CECDCD;
+    border-style: solid;
+    border-width: 1px;
+    margin-bottom: 1em;
+    margin-top: 1.5em;
+    .row{
+        margin-top: 1em;
+    }
+    .submit{
+        padding: 0 1em 1em 40em;
+        text-align: right;
+    }
+}
+.comment-icon{
+    height: 50px;
+    padding : 0 0 0 0.5em;
+    font-size: 25px;
+
+}
+.comment-box{
+    margin: 0 auto;
+    font-size: 20px;
+}
+.likes{
+    height: 50px;
+    padding : 0.5em 0 0 1em;
+    font-size: 20px;
+}
+.others{
+    font-family: $font_Athiti;
+    min-height: 75px;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.10);
+    border-color: #CECDCD;
+    border-style: solid;
+    border-width: 1px;
+    margin-top:1em;
+    .container{
+        padding: 1em;
+        font-size: 16px;
+    }
+    .comment-icon{
+        height: 50px;
+        padding : 0.5em 0 0 0.5em;
+    }
+    .comment-user{
+        height: 50px;
+        padding: 1em 1em 1em 0;
+        color: $color_seafloor;
+        font-size: 18px;
+    }
+}
 .rating{
 	font-family: $font_Athiti;
 	color: $font_color;
@@ -139,4 +209,102 @@ $columns in $card_columns_set {
     margin-top: 2em;
     min-height: 150px;
     padding: 1em 1em 1em 1em;
+}
+
+//Modal
+@import url(http://fonts.googleapis.com/css?family=Roboto);
+
+/****** LOGIN MODAL ******/
+.loginmodal-container {
+  padding: 30px;
+  max-width: 350px;
+  width: 100% !important;
+  background-color: #F7F7F7;
+  margin: 0 auto;
+  border-radius: 2px;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  font-family: roboto;
+}
+
+.loginmodal-container h1 {
+  text-align: center;
+  font-size: 1.8em;
+  font-family: roboto;
+}
+
+.loginmodal-container input[type=submit] {
+  width: 100%;
+  display: block;
+  margin-bottom: 10px;
+  position: relative;
+}
+
+.loginmodal-container input[type=text], input[type=password] {
+  height: 44px;
+  font-size: 16px;
+  width: 100%;
+  margin-bottom: 10px;
+  -webkit-appearance: none;
+  background: #fff;
+  border: 1px solid #d9d9d9;
+  border-top: 1px solid #c0c0c0;
+  /* border-radius: 2px; */
+  padding: 0 8px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+
+.loginmodal-container input[type=text]:hover, input[type=password]:hover {
+  border: 1px solid #b9b9b9;
+  border-top: 1px solid #a0a0a0;
+  -moz-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+  -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+}
+
+.loginmodal {
+  text-align: center;
+  font-size: 14px;
+  font-family: 'Arial', sans-serif;
+  font-weight: 700;
+  height: 36px;
+  padding: 0 8px;
+/* border-radius: 3px; */
+/* -webkit-user-select: none;
+  user-select: none; */
+}
+
+.loginmodal-submit {
+  /* border: 1px solid #3079ed; */
+  border: 0px;
+  color: #fff;
+  text-shadow: 0 1px rgba(0,0,0,0.1); 
+  background-color: #4d90fe;
+  padding: 17px 0px;
+  font-family: roboto;
+  font-size: 14px;
+  /* background-image: -webkit-gradient(linear, 0 0, 0 100%,   from(#4d90fe), to(#4787ed)); */
+}
+
+.loginmodal-submit:hover {
+  /* border: 1px solid #2f5bb7; */
+  border: 0px;
+  text-shadow: 0 1px rgba(0,0,0,0.3);
+  background-color: #357ae8;
+  /* background-image: -webkit-gradient(linear, 0 0, 0 100%,   from(#4d90fe), to(#357ae8)); */
+}
+
+.loginmodal-container a {
+  text-decoration: none;
+  color: #666;
+  font-weight: 400;
+  text-align: center;
+  display: inline-block;
+  opacity: 0.6;
+  transition: opacity ease 0.5s;
+} 
+
+.login-help{
+  font-size: 12px;
 }

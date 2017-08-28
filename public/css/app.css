@@ -1,4 +1,4 @@
-/*!
+@import url(http://fonts.googleapis.com/css?family=Roboto);/*!
  * Bootstrap v4.0.0-beta (https://getbootstrap.com)
  * Copyright 2011-2017 The Bootstrap Authors
  * Copyright 2011-2017 Twitter, Inc.
@@ -9190,6 +9190,25 @@ html body {
   font-size: 14px;
 }
 
+input {
+  border: 0;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+  outline: none;
+}
+
+.responses {
+  margin-top: 1.5em;
+  margin-bottom: 1em;
+  font-style: "Athiti", sans-serif;
+  font-size: 20px;
+  color: #383838;
+}
+
 .navbar {
   min-height: 70px;
   -webkit-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
@@ -9365,6 +9384,72 @@ html body {
   width: 100%;
 }
 
+.comment {
+  font-family: "Athiti", sans-serif;
+  min-height: 75px;
+  -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+  border-color: #CECDCD;
+  border-style: solid;
+  border-width: 1px;
+  margin-bottom: 1em;
+  margin-top: 1.5em;
+}
+
+.comment .row {
+  margin-top: 1em;
+}
+
+.comment .submit {
+  padding: 0 1em 1em 40em;
+  text-align: right;
+}
+
+.comment-icon {
+  height: 50px;
+  padding: 0 0 0 0.5em;
+  font-size: 25px;
+}
+
+.comment-box {
+  margin: 0 auto;
+  font-size: 20px;
+}
+
+.likes {
+  height: 50px;
+  padding: 0.5em 0 0 1em;
+  font-size: 20px;
+}
+
+.others {
+  font-family: "Athiti", sans-serif;
+  min-height: 75px;
+  -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+  border-color: #CECDCD;
+  border-style: solid;
+  border-width: 1px;
+  margin-top: 1em;
+}
+
+.others .container {
+  padding: 1em;
+  font-size: 16px;
+}
+
+.others .comment-icon {
+  height: 50px;
+  padding: 0.5em 0 0 0.5em;
+}
+
+.others .comment-user {
+  height: 50px;
+  padding: 1em 1em 1em 0;
+  color: #1ca5b7;
+  font-size: 18px;
+}
+
 .rating {
   font-family: "Athiti", sans-serif;
   color: #383838;
@@ -9374,5 +9459,105 @@ html body {
   margin-top: 2em;
   min-height: 150px;
   padding: 1em 1em 1em 1em;
+}
+
+/****** LOGIN MODAL ******/
+
+.loginmodal-container {
+  padding: 30px;
+  max-width: 350px;
+  width: 100% !important;
+  background-color: #F7F7F7;
+  margin: 0 auto;
+  border-radius: 2px;
+  -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+          box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  font-family: roboto;
+}
+
+.loginmodal-container h1 {
+  text-align: center;
+  font-size: 1.8em;
+  font-family: roboto;
+}
+
+.loginmodal-container input[type=submit] {
+  width: 100%;
+  display: block;
+  margin-bottom: 10px;
+  position: relative;
+}
+
+.loginmodal-container input[type=text],
+input[type=password] {
+  height: 44px;
+  font-size: 16px;
+  width: 100%;
+  margin-bottom: 10px;
+  -webkit-appearance: none;
+  background: #fff;
+  border: 1px solid #d9d9d9;
+  border-top: 1px solid #c0c0c0;
+  /* border-radius: 2px; */
+  padding: 0 8px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+
+.loginmodal-container input[type=text]:hover,
+input[type=password]:hover {
+  border: 1px solid #b9b9b9;
+  border-top: 1px solid #a0a0a0;
+  -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.loginmodal {
+  text-align: center;
+  font-size: 14px;
+  font-family: 'Arial', sans-serif;
+  font-weight: 700;
+  height: 36px;
+  padding: 0 8px;
+  /* border-radius: 3px; */
+  /* -webkit-user-select: none;
+  user-select: none; */
+}
+
+.loginmodal-submit {
+  /* border: 1px solid #3079ed; */
+  border: 0px;
+  color: #fff;
+  text-shadow: 0 1px rgba(0, 0, 0, 0.1);
+  background-color: #4d90fe;
+  padding: 17px 0px;
+  font-family: roboto;
+  font-size: 14px;
+  /* background-image: -webkit-gradient(linear, 0 0, 0 100%,   from(#4d90fe), to(#4787ed)); */
+}
+
+.loginmodal-submit:hover {
+  /* border: 1px solid #2f5bb7; */
+  border: 0px;
+  text-shadow: 0 1px rgba(0, 0, 0, 0.3);
+  background-color: #357ae8;
+  /* background-image: -webkit-gradient(linear, 0 0, 0 100%,   from(#4d90fe), to(#357ae8)); */
+}
+
+.loginmodal-container a {
+  text-decoration: none;
+  color: #666;
+  font-weight: 400;
+  text-align: center;
+  display: inline-block;
+  opacity: 0.6;
+  -webkit-transition: opacity ease 0.5s;
+  transition: opacity ease 0.5s;
+}
+
+.login-help {
+  font-size: 12px;
 }
 

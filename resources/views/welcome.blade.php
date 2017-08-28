@@ -13,6 +13,18 @@
         @endslot
     @endcomponent
 @endsection
+@section('comment')
+    @component('layouts.comment')
+    @endcomponent
+@endsection
+@section('others')
+    @component('layouts.others')
+    @endcomponent
+    @component('layouts.others')
+    @endcomponent
+    @component('layouts.others')
+    @endcomponent
+@endsection
 @section($str1)
     @component('layouts.card')
         @slot('img')
@@ -56,8 +68,11 @@
 @endsection
 
 @section('footer')
+
 <br><br>
 <script>
-
+    $('#myModal').on('shown.bs.modal', function () {
+  $('#myInput').focus()
+})
 </script>
 @endsection
