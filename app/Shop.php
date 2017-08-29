@@ -51,10 +51,11 @@ class Shop extends Model
      * @return \Illuminate\Database\Eloquent\Builder
      */ 
     public static function scopeDist($query, $lat, $lng, $ths){
+    
         return $query -> whereRaw("($lat-shop_lat)*($lat-shop_lat) + ($lng-shop_lng)*($lng-shop_lng) <= $ths*$ths")
                     -> orderByRaw("($lat-shop_lat)*($lat-shop_lat) + ($lng-shop_lng)*($lng-shop_lng)", " DESC");
     }
-    
+
     /**
      * Get all shop picture (For making Background)
      * @var array

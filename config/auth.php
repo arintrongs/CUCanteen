@@ -2,8 +2,6 @@
 
 return [
 
-    'hasLogin' => false,
-
     /*
     |--------------------------------------------------------------------------
     | Authentication Defaults
@@ -74,7 +72,10 @@ return [
 
         'users' => [
             'driver' => 'database',
-            'table' => 'users',
+            'table' => 'tb_user',
+            'model' => App\User::class,
+            'username' => 'user_username',
+            'password' => 'user_hpassword',
         ],
     ],
 

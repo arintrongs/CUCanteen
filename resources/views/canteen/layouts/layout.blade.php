@@ -45,10 +45,10 @@
           <div class="modal-dialog">
                 <div class="loginmodal-container">
                     <h1>Login to Your Account</h1><br>
-                  <form>
+                  <form method="post" onsubmit="return false;">
                     <input type="text" name="user" placeholder="Username">
                     <input type="password" name="pass" placeholder="Password">
-                    <input type="submit" name="login" class="login loginmodal-submit" value="Login">
+                    <input type="submit" name="login" class="login loginmodal-submit" value="Login" onclick="return doLogin();">
                   </form>
                     
                   <div class="login-help">
@@ -111,8 +111,10 @@
         <script src="//code.jquery.com/jquery-1.12.4.js"></script>
         <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
         <script src="http://momentjs.com/downloads/moment.js"></script>
+        <script src="./js/canteen/canteen.js" crossorigin="anonymous"></script>
         <script src="./js/canteen/autocomplete.js" crossorigin="anonymous"></script>
         <script src="./js/canteen/shop.js" crossorigin="anonymous"></script>
+        <script src="./js/user.js" crossorigin="anonymous"></script>
         @yield('footer')
     </body>
 </html>

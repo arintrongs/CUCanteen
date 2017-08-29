@@ -19,6 +19,9 @@ class CanteenController extends Controller
     {
         $all_shops = Shop::get();
         // print_r($all_shops);
+        for ($i=0; $i < count($all_shops); $i++) { 
+            $all_shops[$i]['rating'] = Shop::getShopRating($all_shops[$i]['shop_id']);
+        }
         $data = array(
             'shops' => $all_shops,
             'location' => Shop::all()->pluck('shop_location'),
@@ -42,6 +45,22 @@ class CanteenController extends Controller
         $data = Shop::getShop($id);
         $data['rating'] = Shop::getShopRating($id);
         $data['comments'] = Comment::getCommentShop( );
+        return response()->json($data);
+    }
+
+    public function scopeDist(Request $request) 
+    {
+        if (! $request->ajax()) {
+            return response('Unauthorized.', 401);
+        }
+
+        $lat = $request->input('lat');
+        $lng = $request->input('lng');
+        $data = Shop::dist($lat, $lng, 100)->get();
+        for ($i=0; $i < count($data); $i++) { 
+            $data[$i]['rating'] = Shop::getShopRating($data[$i]['shop_id']);
+            $data[$i]['distance'] = $this->toDistance($lat, $lng, $data[$i]['shop_lat'], $data[$i]['shop_lng']);
+        }
         return response()->json($data);
     }
 
@@ -69,5 +88,17 @@ class CanteenController extends Controller
         }
 
         return ($comment->save()) ? 'true' : 'false';;
+    }
+
+    private function toDistance($lat1, $lng1, $lat2, $lng2) {
+        $rad1 = $lat1 * M_PI / 180;
+        $rad2 = $lat2 * M_PI / 180;
+        $diff_rad = ($lat2 - $lat1) * M_PI / 180;
+        $diff_lam = ($lng2 - $lng1) * M_PI / 180;
+
+        $a = sin($diff_rad/2) * sin($diff_rad/2) + cos($rad1) * cos($rad2) * sin($diff_lam/2) * sin($diff_lam/2);
+        $c = 2 * atan2(sqrt(a), sqrt(1-a));
+
+        return 6371000 * $c;
     }
 }

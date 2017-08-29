@@ -11,13 +11,16 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Route::namespace('Canteen')->group(function () {
-	Route::get('/canteen/recomment', 'CanteenController@recomment');
+	Route::get('/adduser', 'UserController@addAdmin');
+	Route::post('/user', 'UserController@authenticate');
+    Route::post('/canteen/scopeDist', 'CanteenController@scopeDist');
     Route::resource('/canteen', 'CanteenController');
+  
     Route::resource('/backdoor', 'BackdoorController');
 });
 

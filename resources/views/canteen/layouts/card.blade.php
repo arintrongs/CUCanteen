@@ -7,7 +7,7 @@
     <div class="card-footer">
     	<div class="row">
     		<div class="col-lg-10 card-info">
-    		Rating : 4.8 | 150 m. away
+    		Rating : {{ $rating }}<!--  | 150 m. away -->
     		</div>
     		<div class="col-lg-2">
     			<a class="float-right select" id="select" onclick="shop_show({{ $id }});">></a>

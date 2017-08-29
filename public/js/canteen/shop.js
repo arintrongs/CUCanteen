@@ -27,7 +27,7 @@ var comment_show = function(div, data) {
 var commentSubmit = function() {
 	var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
 	$.ajax({
-		url: '/path/to/file',
+		url: 'canteen',
 		type: 'POST',
 		dataType: 'json',
 		data: {
@@ -39,13 +39,34 @@ var commentSubmit = function() {
 	.done(function() {
 		console.log("success");
 	})
-	.fail(function() {
-		console.log("error");
+	.fail(function(html, statusCode) {
+		errorShow(html.responseText);
 	});
 	
 }
 
 var shop_card = function(data) {
+	var a = $('<a>').addClass('float-right select').attr('onclick', 'shop_show(' + data.id + ');').append('>');
+	var clg2 = $('<div>').addClass('col-lg-2').append(a);
+	var clg10_info = $('<div>').addClass('col-lg-10 card-info').append('<div class="col-lg-10 card-info">Rating : ' + data.rating + '</div>'); //  | ' + data.distance + ' m. away
+	var c_footer = $('<div>').append($('<div>').append(clg10_info));
+	var c_body = $('<div>').addClass('card-body p-4');
+	c_body.append('<h4 class="card-title">' + data.title + '</h4>');
+	c_body.append('<p class="card-text">' + data.description + '</p>');
+	var img = $('<img>').attr({
+		class: 'card-img-top',
+		alt: 'Card image cap',
+		src: data.img,
+	});
+
+	return $('<div>').attr({
+		class: 'card',
+		'data-name': data.title,
+		'data-location': data.location,
+	}).append(img).append(c_body).append(c_footer);
+}
+
+var shop_box = function(data) {
 	var img = $('<img>').attr({ class: 'fill', alt: 'Card image cap', src: 'img/food/test.jpg', }); //data.img_src
 	var dcl4 = $('<div>').addClass('col-lg-4').append($('<div>').addClass('limit').append(img));
 	var dtt = $('<div>').addClass('title');
@@ -76,7 +97,7 @@ var shop_show = function(id) {
 		},
 	})
 	.done(function(data) {
-		$('div.container-fluid.store').html(shop_card(data));
+		$('div.container-fluid.store').html(shop_box(data));
 		$('div.container-fluid.rating').html(shop_rating(data).html());
 		comment_show($('div.row.comment-content').children('div.col-lg-5')[0], data.comments);
 
@@ -85,11 +106,7 @@ var shop_show = function(id) {
 		$('div.row.comment-content').show();
 	})
 	.fail(function(html, statusCode) {
-		// console.log("Error, Please contact webmaster.");
-		console.log(html.responseText);
-		var newWindow = window.open();
-		newWindow.document.write(html.responseText);
-		
+		errorShow(html.responseText);
 	});
 }
 

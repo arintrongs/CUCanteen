@@ -21,8 +21,6 @@ var add = function() {
 		location.reload();
 	})
 	.fail(function(html, statusCode) {
-		console.log(html.responseText);
-		var newWindow = window.open();
-		newWindow.document.write(html.responseText);
+		errorShow(html.responseText);
 	});
 }

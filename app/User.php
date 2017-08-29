@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Foundation\Auth\Access\Authorizable;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
@@ -15,6 +16,9 @@ class User extends Model implements AuthenticatableContract,
                                     CanResetPasswordContract
 {
     use Authenticatable, Authorizable, CanResetPassword;
+
+    protected $timestamp = false;
+    public $timestamps = false;
 
     /**
      * The database table used by the model.
@@ -58,23 +62,36 @@ class User extends Model implements AuthenticatableContract,
      */
     public static function addUser($data = null){
         if($data != null){
-            if(self::where(['user_username' => $data['username']])->first() != null) return "Error: user exist";
-            else $user = new User;
-            $user['user_username'] = $data['username'];
-            $hash = Hash::make($data['password']);
-            
-            while(Hash::needsRehash($hash)){ 
-                $hash = Hash::make($data);
+            if(self::where(['user_username' => $data['username']])->first() != null) 
+                return "Error: user exist";
+            else 
+            {
+                $user = new User;
+
+                $user['user_username'] = $data['username'];
+                $user['user_dispname'] = $data['username'];
+                
+                $hash = Hash::make($data['password']);
+                while(Hash::needsRehash($hash)){ 
+                    $hash = Hash::make($data);
+                }
+                $user['user_hpassword'] = $hash;
+
+                if(array_key_exists('studentid', $data)) 
+                    $user['user_studentid'] = $data['studentid'];
+                
+                if(array_key_exists('fbid', $data)) 
+                    $user['user_fbid'] = $data['fbid'];
+                
+                if(array_key_exists('dispname', $data)) 
+                    $user['user_dispname'] = $data['dispname'];
+                
+                if(array_key_exists('disppict', $data))
+                    $user['user_disppict'] = $data['disppict'];
+                
+                $user->save();
+                return "Succeed";
             }
-            
-            $user['user_hpassword'] = $hash;
-            if(array_key_exists(studentid, $data)) $user['user_studentid'] = $data['studentid'];
-            if(array_key_exists(fbid, $data)) $user['user_fbid'] = $data['fbid'];
-            if(array_key_exists(dispname, $data)) $user['user_dispname'] = $data['dispname'];
-            else $user['user_dispname'] = $data['username'];
-            if(array_key_exists(disppict))$user['user_disppict'] = $data['disppict'];
-            $user->save();
-            return "Succeed";
         }
         return "Error: call method with null";
     }
