@@ -18,7 +18,7 @@ var comment_show = function(div, data) {
 	for (var i = 1; i < div.children.length; i++) {
 		div.children[i].remove();
 	}
-	console.log(data);
+	// console.log(data);
 	$.each(data, function(index, val) {
 		div.append(comment_others(val));
 	});
@@ -27,17 +27,22 @@ var comment_show = function(div, data) {
 var commentSubmit = function() {
 	var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
 	$.ajax({
-		url: 'canteen',
+		url: '/canteen',
 		type: 'POST',
-		dataType: 'json',
+		dataType: 'text',
 		data: {
 			_token: CSRF_TOKEN,
 			'shop_id': shop_id,
 			'comment': $('#comment').val(),
+			'rating' : 5.0,
 		},
 	})
-	.done(function() {
-		console.log("success");
+	.done(function(data) {
+		console.log(data);
+		if (data == 'logon')
+		{
+			$('#login-modal').modal('show');
+		}
 	})
 	.fail(function(html, statusCode) {
 		errorShow(html.responseText);

@@ -17,11 +17,11 @@ class CreateTbUsers extends Migration
         Schema::create('tb_user', function (Blueprint $table) {
             $table->bigIncrements('user_id');
             $table->string('user_username', 30);
+            $table->string('user_role',15);
             $table->string('user_studentid', 15)->comment('Student\'s ID (user after accquired CUNET API)')->nullable();
             $table->string('user_fbid', 30)->comment('Student\'s Facebook ID (if there is nothing else to do)')->nullable();
-            $table->string('dispname', 60);
-            $table->string('user_hpassword', 60);
             $table->string('user_dispname', 60)->nullable();
+            $table->string('user_hpassword');            
             $table->text('user_session')->comment('in case od usage (can be deleted)');
             $table->binary('user_disppict')->nullable();
         });

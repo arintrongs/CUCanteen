@@ -17,7 +17,8 @@ var doLogin = function() {
 		console.log(data);
 		if (data.success == 'ok')
 		{
-			//do someting
+			$('a[data-target="#login-modal"]').append(data.name);
+			$('#login-modal').modal('hide');
 		}
 		else
 		{

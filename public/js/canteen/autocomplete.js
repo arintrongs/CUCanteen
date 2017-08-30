@@ -1,12 +1,50 @@
-$(document).ready(function() {
-	var shop_html = '';
-	var shop = $('div.container.pad-top');
-	var shop_card = $('div.card');
-	var shop_source = [];
+var shop_source = [];
+var shop_html = '';
 
-	$.each( shop_card, function(index, val) { shop_source.push($(val).data('name')); });
-	console.log(shop_source);
-	var autocomplete = $( "input.form-control.form-control-lg.mr-sm-2" ).autocomplete({
+$(document).ready(function() {
+	prepareSource();
+	prepareAutocomplete();
+});
+
+var prepareSource = function() {
+	var shop_card = $('div.card');
+	$.each( shop_card, function(index, val) { 
+		// console.log($(val));
+		var tmp = {
+			'value' : $(val).data('name'),
+			'label' : $(val).data('name'),
+			'location' : $(val).data('location'),
+			'img' : $(val)[0].children[0].currentSrc,
+			'description' : $(val)[0].children[1].children[1].innerText,
+			'rating' : $(val)[0].children[2].children[0].children[0].innerText,
+		};
+		shop_source.push(tmp); 
+	});
+
+	// console.log(shop_source);
+}
+
+/*function(request, response) {
+	// console.log(request.term);
+	//method 1, serach in array
+
+	// term = request.term.toLowerCase();
+    var choices = ['ActionScript', 'AppleScript', 'Asp', ...];
+    var matches = [];
+    for (i=0; i<choices.length; i++)
+        if (~choices[i].toLowerCase().indexOf(term)) 
+        	matches.push(choices[i]);
+
+    response(matches);
+
+
+	//method 2, send request to server
+},*/
+
+var prepareAutocomplete = function() {
+	var shop = $('div.container.pad-top');
+	var input = $( "input.form-control.form-control-lg.mr-sm-2" );
+	var autocomplete = input.autocomplete({
 		source: shop_source,
 	 	create: function( event, ui) {
 	 		stores_html = shop.html();
@@ -15,7 +53,7 @@ $(document).ready(function() {
 	 		//store(ui.item.value);
 	 	},
 	 	change: function(event, ui) {
-	 		if ($( "input.form-control.form-control-lg.mr-sm-2" ).val() == ''){
+	 		if (input.val() == ''){
 	 			shop.html(stores_html);
 	 		}
 	 	},
@@ -41,7 +79,7 @@ $(document).ready(function() {
 		var h4 = $('<h4>').attr('class', 'card-title').append(item.label).appendTo(dd);
 		var p = $('<p>').attr('class', 'card-text').append('location').appendTo(dd);
 		var i = $('<img>').attr('class', 'card-img-top');
-		var d = $("<div>").attr('class', 'card fill').append(i).append(dd);
+		var d = $("<div>").attr('class', 'card').append(i).append(dd);
 
 		return $('<li>').append(d).appendTo(ul);
 	};
@@ -49,4 +87,4 @@ $(document).ready(function() {
 	// autocomplete.data('ui-autocomplete')._resizeMenu = function() {
 	//   this.menu.element.outerWidth( $( "input.form-control.main-search" ).parent().width() );
 	// }
-});
+}

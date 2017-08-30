@@ -4,6 +4,11 @@ $(document).ready(function() {
 	
 });
 
+var errorShow = function(text) {
+	var newWindow = window.open();
+	newWindow.document.write(text);
+}
+
 var add = function() {
 	$.ajax({
 		url: 'backdoor',

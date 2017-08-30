@@ -1,5 +1,6 @@
 <?php
 
+use App\Comment;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
@@ -23,7 +24,7 @@ class CreateTbComments extends Migration
             $table->double('comment_rating', 0);
             $table->text('comment_text')->comment('Review wrtten by users')->nullable();
             //$table->text('comment_food')->comment('Recommended Food')->nullable();
-            $table->timestamps();
+            $table->timestamp(Comment::CREATED_AT);
         });
 
         Schema::table('tb_comment', function (Blueprint $table) {

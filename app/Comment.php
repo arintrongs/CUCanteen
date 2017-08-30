@@ -88,7 +88,8 @@ class Comment extends Model{
      * @var string, Failure Cause, "Succeed" returned if successfully added the comment
      */
     public static function addComment($data = null){
-        if($data != null){
+        if($data != null)
+        {
             if(!array_key_exists('comment', $data))
                 $data['comment'] = null;
             if(!array_key_exists('food', $data))
@@ -102,7 +103,7 @@ class Comment extends Model{
             $comment['shop_id'] = $data['shop_id'];
             $comment['comment_rating'] = $data['rating'];
             $comment['comment_text'] = $data['comment'];
-            $comment['comment_food'] = $data['food'];
+            // $comment['comment_food'] = $data['food'];
             $comment->save();
         }
         return "Succeed";
@@ -113,15 +114,16 @@ class Comment extends Model{
      *
      * @var bool
      */
-    public function deleteComment(){
-        $comment = settype();
-        if($comment == null) return False;
-        return gettype($comment);
-        if(gettype($comment)=='App\Comment'){
-            $comment -> delete();
+    public function deleteCommentShop($comment_id = 0)
+    {
+        if($comment_id != 0)
+        {
+            $comment = $this->where('comment_id',$comment_id)->get();
+            if($comment == null) return False;
+            $comment -> forceDelete();
             return True;
         }
-        return False;
+        else return False;
     }
 
 

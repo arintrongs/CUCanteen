@@ -19,6 +19,7 @@ class CreateTbFood extends Migration
             $table->bigIncrements('food_id');
             $table->bigInteger('shop_id')->unsigned();
             $table->string('food_name');
+            $table->string('food_altername') -> nullable();
             $table->softDeletes();
         });
 

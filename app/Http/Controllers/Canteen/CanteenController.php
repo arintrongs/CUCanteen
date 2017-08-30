@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Canteen;
 
 use App\Comment;
 use App\Shop;
+use App\Http\Controllers\Canteen\UserController;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
@@ -40,11 +41,15 @@ class CanteenController extends Controller
             return response('Unauthorized.', 401);
         }
 
-        $request->session()->put('shop', $id);
-
-        $data = Shop::getShop($id);
-        $data['rating'] = Shop::getShopRating($id);
-        $data['comments'] = Comment::getCommentShop( );
+        $tmp = Shop::select(array('shop_name', 'shop_location', 'shop_time', 'shop_description', 'shop_isVeg', 'shop_isHalal', 'shop_picture'))->where('shop_id', $id)->first();
+        $data = array(
+            'id' => $id,
+            'name' => $tmp['shop_name'],
+            'description' => $tmp['shop_description'],
+            'img' => $tmp['shop_picture'],
+            'rating' => Shop::getShopRating($id),
+            'comments' => Comment::getCommentShop(),
+        );
         return response()->json($data);
     }
 
@@ -75,19 +80,19 @@ class CanteenController extends Controller
             return response('Unauthorized.', 401);
         }
 
-        $comment = new Comment;
-        $comment->comment_text = $request->input('comment');
-        $comment->shop_id = $request->session()->get('shop'); // $request->input('shop_id')
-        $comment->comment_rating = 1.0;
-        $comment->user_id = 0;
-
-        if (Auth::check())
+        if(! UserController::check($request))
         {
-            // Get the currently authenticated user's ID...
-            $comment->user_id = Auth::id();
+            return 'logon';
         }
 
-        return ($comment->save()) ? 'true' : 'false';;
+        $data = array(
+            'shop_id' => $request->input('shop_id'),
+            'user_id' => $request->session()->get('uid'),
+            'comment' => $request->input('comment'),
+            'rating' => $request->input('rating'),
+        );
+        
+        return Shop::addComment($data);
     }
 
     private function toDistance($lat1, $lng1, $lat2, $lng2) {
