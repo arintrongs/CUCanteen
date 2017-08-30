@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Comment;
+use App\Food;
 
 class Shop extends Model
 {
@@ -70,19 +71,12 @@ class Shop extends Model
     }
 
     /**
-     * get poppular food
+     * get related shop name
      *
-     * @param int $shop_id (0 for current class shop_id)
-     * @param 
      * @var double
      */
-    public function getShopRating($shop_id = 0){
-        $su = 0;
-            $comments = Comment::where('shop_id',($shop_id == 0)?$this->shop_id:$shop_id)->pluck('comment_rating');
-            if(count($comments)==0)return 0;
-            foreach ($comments as $comment)
-                $su += (double)$comment;           
-            return $su/count($comments);
+    public function getRelatedShop($name){
+        $shops = self::all()->pluck('');
     }
 
     /**

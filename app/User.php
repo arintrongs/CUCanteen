@@ -6,6 +6,7 @@ use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Foundation\Auth\Access\Authorizable;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
@@ -17,11 +18,25 @@ class User extends Model implements AuthenticatableContract,
     use Authenticatable, Authorizable, CanResetPassword;
 
     /**
-     * The database table used by the model.
+     * The table associated with the model.
      *
      * @var string
      */
     protected $table = 'tb_user';
+
+    /**
+     * The connection name for the model.
+     *
+     * @var string
+     */
+    protected $connection = 'mysql';
+
+    /**
+     * The database timestamp appearance.
+     *
+     * @var string
+     */
+    public $timestamps = false;
 
     /**
      * The attributes that are mass assignable.
@@ -58,7 +73,7 @@ class User extends Model implements AuthenticatableContract,
      */
     public static function addUser($data = null){
         if($data != null){
-            if(self::where(['user_username' => $data['username']])->first() != null) return "Error: user exist";
+            if(count(self::where('user_username', $data['username'])->get()) != 0) return "Error: user exist";
             else $user = new User;
             $user['user_username'] = $data['username'];
             $hash = Hash::make($data['password']);
@@ -68,11 +83,11 @@ class User extends Model implements AuthenticatableContract,
             }
             
             $user['user_hpassword'] = $hash;
-            if(array_key_exists(studentid, $data)) $user['user_studentid'] = $data['studentid'];
-            if(array_key_exists(fbid, $data)) $user['user_fbid'] = $data['fbid'];
-            if(array_key_exists(dispname, $data)) $user['user_dispname'] = $data['dispname'];
+            if(array_key_exists('studentid', $data)) $user['user_studentid'] = $data['studentid'];
+            if(array_key_exists('fbid', $data)) $user['user_fbid'] = $data['fbid'];
+            if(array_key_exists('dispname', $data)) $user['user_dispname'] = $data['dispname'];
             else $user['user_dispname'] = $data['username'];
-            if(array_key_exists(disppict))$user['user_disppict'] = $data['disppict'];
+            if(array_key_exists('disppict', $data))$user['user_disppict'] = $data['disppict'];
             $user->save();
             return "Succeed";
         }
@@ -85,27 +100,38 @@ class User extends Model implements AuthenticatableContract,
      * @param form input array $data  
      * @var string, Failure Cause, "Succeed" returned if successfully added an user
      */
-    // public static function updateUser($data = null){
-    //     if($data != null){
-    //         if(self::where(['user_id' => $data['id'], 'user_username' => $data['username'])->first() == null) return "Error: user does not exist";
-    //         else $user = self::where(['user_id' => $data['id'], 'user_username' => $data['username'])->first() == null;
-    //         if(!Hash::check($data['password'],$user['user_hpassword']))return "Error: password mismatch";
-    //         $hash = Hash::make($data['password']);
+    public static function updateUser($data = null){
+        if($data != null){
+            if(!array_key_exists('id', $data)) return "Error: id is not given";
+            if(count(self::where(['user_id' => $data['id'], 'user_username' => $data['username']])->get()) == 0) return "Error: user does not exist";
+            else $user = self::where(['user_id' => $data['id'], 'user_username' => $data['username']])->first();
+            $hash = Hash::make($data['password']);
             
-    //         while(Hash::needsRehash($hash)){ 
-    //             $hash = Hash::make($data);
-    //         }
+            while(Hash::needsRehash($hash)){ 
+                $hash = Hash::make($data['password']);
+            }
+
+            if(!Hash::check($data['password'],$user['user_hpassword']))return "Error: password mismatch";
             
-    //         $user['user_hpassword'] = $hash;
-    //         if(array_key_exists(studentid, $data)) $user['user_studentid'] = $data['studentid'];
-    //         if(array_key_exists(fbid, $data)) $user['user_fbid'] = $data['fbid'];
-    //         if(array_key_exists(dispname, $data)) $user['user_dispname'] = $data['dispname'];
-    //         else $user['user_dispname'] = $data['username'];
-    //         $user['comment_text'] = $data['comment'];
-    //         $user['comment_food'] = $data['food'];
-    //         $user->save();
-    //         return "Succeed";
-    //     }
-    //     return "Error: call method with null";
-    // }
+            $user['user_hpassword'] = $hash;
+            if(array_key_exists('studentid', $data)) $user['user_studentid'] = $data['studentid'];
+            if(array_key_exists('fbid', $data)) $user['user_fbid'] = $data['fbid'];
+            if(array_key_exists('dispname', $data)) $user['user_dispname'] = $data['dispname'];
+            else $user['user_dispname'] = $data['username'];
+            if(array_key_exists('new_password', $data)){
+                if(!array_key_exists('confirm_password', $data)) return "Error: please enter the same password in confirm password";
+                if($data['new_password'] != $data['confirm_password']) return "Error: new password and confirmation password is mismatch";
+                $hash = Hash::make($data['new_password']);
+            
+                while(Hash::needsRehash($hash)){ 
+                    $hash = Hash::make($data['new_password']);
+                }
+
+                $user['password'] = $hash;
+            }
+            $user->save();
+            return "Succeed";
+        }
+        return "Error: call method with null";
+    }
 }

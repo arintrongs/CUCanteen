@@ -22,6 +22,7 @@ class CreateTbShops extends Migration
             $table->double('shop_lat')->comment('Shop Latitude')->nullable();
             $table->double('shop_lng')->comment('Shop Longtitude')->nullable();
             $table->text('shop_description')->nullable();
+            $table->string('food_altername') -> nullable();
             $table->boolean('shop_isVeg', FALSE);
             $table->boolean('shop_isHalal', FALSE);
             $table->binary('shop_picture')->nullable();

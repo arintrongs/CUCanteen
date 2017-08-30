@@ -62,7 +62,7 @@ class Comment extends Model
      *
      * @var bool
      */
-    public function delete_comment_shop($comment_id = 0)
+    public function deleteComment($comment_id = 0)
     {
         if($comment_id != 0)
         {
