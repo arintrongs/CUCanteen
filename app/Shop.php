@@ -75,8 +75,10 @@ class Shop extends Model
      *
      * @var double
      */
-    public function getRelatedShop($name){
-        $shops = self::all()->pluck('');
+    public function getRelatedShop($name, $count = 5){
+        $shops = self::all()
+                        -> orderBy(levenshtein('shop_name', $name));
+                        -> take($count) -> get();
     }
 
     /**
