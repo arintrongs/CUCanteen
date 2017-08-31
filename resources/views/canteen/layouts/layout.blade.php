@@ -90,15 +90,7 @@
         <!-- Card's Content -->
         <div class="container card-content">
             <div class="row">
-                <div class="col-lg-4">
-                    @yield('content_1')
-                </div>
-                <div class="col-lg-4">
-                    @yield('content_2')
-                </div>
-                <div class="col-lg-4">
-                    @yield('content_3')
-                </div>
+                    @yield('content')
             </div>
         </div>
         <!-- Script -->

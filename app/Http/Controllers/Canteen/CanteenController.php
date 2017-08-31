@@ -92,7 +92,7 @@ class CanteenController extends Controller
             'rating' => $request->input('rating'),
         );
         
-        return Shop::addComment($data);
+        return Comment::addComment($data);
     }
 
     private function toDistance($lat1, $lng1, $lat2, $lng2) {
