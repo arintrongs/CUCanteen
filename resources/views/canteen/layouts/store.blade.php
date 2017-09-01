@@ -1,7 +1,7 @@
 <div class="row" >
 	<div class="col-lg-4" >
-		<div class="limit">
-		<img class="fill" src="{{ $img }}" alt="Card image cap">
+		<div class="container-fluid" style="border-style: solid;">
+			<img src="{{ $img }}" alt="Card image cap">
 		</div>
 	</div>
 	<div class="col-lg-8" >
@@ -16,7 +16,7 @@
 		Description
 		</div>
 		<div class="footer">
-			
+			asdfasdf
 		</div>
 	</div>
 </div>

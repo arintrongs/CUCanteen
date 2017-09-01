@@ -116,11 +116,12 @@ $columns in $card_columns_set {
 }
 
 .store {
+    width: 100%;
     font-family: $font_Athiti;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
     margin-top: 2em;
     min-height: 300px;
- 	padding: 0 0 0 0;
+ 	  padding: 0 0 0 0;
 
     img {
         width: 100%;
@@ -138,12 +139,23 @@ $columns in $card_columns_set {
         width: 100%;
         overflow: hidden;
     }
-    
+    .recommended{
+      h1{
+        font-size: 1em;
+        padding-left : 1.5em;
+        color: $color_crush;
+      }
+      
+    }
     .description{
     	font-size: 16px;
     	padding: 0 1em 1em 1em;
     	width: 100%;
     }	
+    .footer{
+
+    }
+
 
 }
 
@@ -156,11 +168,12 @@ $columns in $card_columns_set {
     border-width: 1px;
     margin-bottom: 1em;
     margin-top: 1.5em;
+
     .row{
         margin-top: 1em;
     }
     .submit{
-        padding: 0 1em 1em 40em;
+        padding: 0 1em 1em 37em;
         text-align: right;
     }
 }
@@ -211,7 +224,12 @@ $columns in $card_columns_set {
     min-height: 150px;
     padding: 1em 1em 1em 1em;
 }
-
+.rate{
+  padding-top: 0.25em;
+  input{
+    width: 100%;
+  }
+}
 
 /****** LOGIN MODAL ******/
 .loginmodal-container {
@@ -279,7 +297,7 @@ $columns in $card_columns_set {
   border: 0px;
   color: #fff;
   text-shadow: 0 1px rgba(0,0,0,0.1); 
-  background-color: #4d90fe;
+  background-color: $color_seafloor;
   padding: 17px 0px;
   font-family: $font_Athiti;
   font-size: 14px;
@@ -290,7 +308,7 @@ $columns in $card_columns_set {
   /* border: 1px solid #2f5bb7; */
   border: 0px;
   text-shadow: 0 1px rgba(0,0,0,0.3);
-  background-color: #357ae8;
+  background-color: $color_ripple;
   /* background-image: -webkit-gradient(linear, 0 0, 0 100%,   from(#4d90fe), to(#357ae8)); */
 }
 
