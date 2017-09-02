@@ -64,11 +64,11 @@ class Shop extends Model
      */
     public static function getShopRating($shop_id = 0){
         $su = 0;
-            $comments = Comment::where('shop_id',($shop_id == 0)?$this->shop_id:$shop_id)->pluck('comment_rating');
-            if(count($comments)==0)return 0;
-            foreach ($comments as $comment)
-                $su += (double)$comment;           
-            return $su/count($comments);
+        $comments = Comment::where('shop_id',($shop_id == 0)?  self::$shop_id : $shop_id)->pluck('comment_rating');
+        if(count($comments)==0)return 0;
+        foreach ($comments as $comment)
+            $su += (double)$comment;           
+        return $su/count($comments);
     }
 
     /**
