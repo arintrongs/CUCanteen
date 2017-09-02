@@ -35,7 +35,7 @@ class CanteenController extends Controller
      *
      * @return Response json
      */
-    public function show(Request $request, $id)
+    public function show(Request $request, $id = 0)
     {
         if (! $request->ajax()) {
             return response('Unauthorized.', 401);
