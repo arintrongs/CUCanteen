@@ -7,7 +7,7 @@
 		</div>
 		<div class="col-lg-11">
 			<div class="comment-box">
-				<input type="text" id="comment" placeholder="Comment Here." style="width: 100%;" />
+				<textarea class="comment_area" id="Textarea1" rows="3" placeholder="Comment Here."></textarea>
 			</div>
 
 		</div>
@@ -15,10 +15,10 @@
 	<div class="row ">
 		<div class="col-lg-7"></div>
 		<div class="col-lg-1 rate" >
-			<h3><i class="fa fa-star-o" aria-hidden="true">&nbsp;:</i></h3>
+			<i class="fa fa-star-o" aria-hidden="true">&nbsp;:</i>
 		</div>
-		<div class="col-lg-2 rate">
-			<h4><input type="text" name="rate" placeholder="0-5"></h4>
+		<div class="col-lg-2 rate_input">
+			<input type="text" name="rate" placeholder="0-5">
 		</div>
 		<div class="col-lg-2 " ><button type="button" class="btn btn-outline-success " onclick="commentSubmit();">Success</button></div>
 	</div>

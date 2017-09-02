@@ -8,12 +8,17 @@ $font_color: #383838;
 $font_Pacifico: 'Pacifico' ,cursive;
 $font_Athiti: 'Athiti',sans-serif;
 
-html body {
+html ,body {
     font-size: 14px;
+    cursor:default;
 }
-input{
-    border:0;
+input,textarea{
+    border: none;
+    background-color: transparent;
+    resize: none;
+    outline: none;
 }
+
 input:focus,
 select:focus,
 textarea:focus,
@@ -96,8 +101,12 @@ xl:3,
 
 .select {
     font-family: $font_Athiti;
-    font-size: 16px;
+    font-size: 20px;
     padding: 0;
+    
+}
+.select:hover{
+  text-shadow: 0 0 5px rgba(0,0,0,0.3);
 }
 
 @each $view,
@@ -113,6 +122,10 @@ $columns in $card_columns_set {
             }
         }
     }
+}
+.no-padding {
+  padding-left: 0;
+  padding-right: 0;
 }
 
 .store {
@@ -151,16 +164,24 @@ $columns in $card_columns_set {
       font-size: 16px;
       padding: 0 1em 1em 1em;
       width: 100%;
-    } 
-    .footer{
-
     }
-
-
+    .img{
+      min-height:300px;
+      margin :0;
+      width: 100%;
+    }
+    .row{
+      margin : 0;
+      min-height: 300px;
+    }
+    .back:hover{
+      text-shadow: 0 0 3px rgba(0,0,0,0.3);
+    }
 }
 
 .comment{
     font-family: $font_Athiti;
+    font-size: 1em;
     min-height: 75px;
     box-shadow: 0 0 3px rgba(0, 0, 0, 0.10);
     border-color: #CECDCD;
@@ -168,7 +189,7 @@ $columns in $card_columns_set {
     border-width: 1px;
     margin-bottom: 1em;
     margin-top: 1.5em;
-
+    padding-bottom: 0.5em;
     .row{
         margin-top: 1em;
     }
@@ -186,6 +207,9 @@ $columns in $card_columns_set {
 .comment-box{
     margin: 0 auto;
     font-size: 20px;
+    .comment_area{
+      width: 100%;
+    }
 }
 .likes{
     height: 50px;
@@ -216,16 +240,34 @@ $columns in $card_columns_set {
     }
 }
 .rating{
-  font-family: $font_Athiti;
-  color: $font_color;
-  text-align: center;
+    font-family: $font_Athiti;
+    color: $font_color;
+    text-align: center;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
     margin-top: 2em;
     min-height: 150px;
-    padding: 1em 1em 1em 1em;
+    .rating_header{
+      background-color: #F3F3F3;
+      width: 100%;
+      min-height: 50px;
+      padding-top:1em;
+    }
+    .rating_star{
+      padding-top: 0.5em;
+      font-size: 2em;
+      text-align: center;
+    }
+    h1{
+      font-size: 2em;
+    }
 }
 .rate{
-  padding-top: 0.25em;
+  padding-top: 0.5em;
+  font-size: 1.5em;
+}
+.rate_input{
+  padding-top : 0.75em;
+  font-size: 1.25em;
   input{
     width: 100%;
   }
@@ -309,6 +351,7 @@ $columns in $card_columns_set {
   border: 0px;
   text-shadow: 0 1px rgba(0,0,0,0.3);
   background-color: $color_ripple;
+  color: black;
   /* background-image: -webkit-gradient(linear, 0 0, 0 100%,   from(#4d90fe), to(#357ae8)); */
 }
 

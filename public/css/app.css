@@ -9186,12 +9186,18 @@ a.text-dark:hover {
   visibility: hidden !important;
 }
 
-html body {
+html,
+body {
   font-size: 14px;
+  cursor: default;
 }
 
-input {
-  border: 0;
+input,
+textarea {
+  border: none;
+  background-color: transparent;
+  resize: none;
+  outline: none;
 }
 
 input:focus,
@@ -9279,8 +9285,12 @@ button:focus {
 
 .select {
   font-family: "Athiti", sans-serif;
-  font-size: 16px;
+  font-size: 20px;
   padding: 0;
+}
+
+.select:hover {
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
 }
 
 .card-columns {
@@ -9351,6 +9361,11 @@ button:focus {
   }
 }
 
+.no-padding {
+  padding-left: 0;
+  padding-right: 0;
+}
+
 .store {
   width: 100%;
   font-family: "Athiti", sans-serif;
@@ -9391,8 +9406,24 @@ button:focus {
   width: 100%;
 }
 
+.store .img {
+  min-height: 300px;
+  margin: 0;
+  width: 100%;
+}
+
+.store .row {
+  margin: 0;
+  min-height: 300px;
+}
+
+.store .back:hover {
+  text-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+}
+
 .comment {
   font-family: "Athiti", sans-serif;
+  font-size: 1em;
   min-height: 75px;
   -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
           box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
@@ -9401,6 +9432,7 @@ button:focus {
   border-width: 1px;
   margin-bottom: 1em;
   margin-top: 1.5em;
+  padding-bottom: 0.5em;
 }
 
 .comment .row {
@@ -9421,6 +9453,10 @@ button:focus {
 .comment-box {
   margin: 0 auto;
   font-size: 20px;
+}
+
+.comment-box .comment_area {
+  width: 100%;
 }
 
 .likes {
@@ -9465,14 +9501,36 @@ button:focus {
           box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
   margin-top: 2em;
   min-height: 150px;
-  padding: 1em 1em 1em 1em;
+}
+
+.rating .rating_header {
+  background-color: #F3F3F3;
+  width: 100%;
+  min-height: 50px;
+  padding-top: 1em;
+}
+
+.rating .rating_star {
+  padding-top: 0.5em;
+  font-size: 2em;
+  text-align: center;
+}
+
+.rating h1 {
+  font-size: 2em;
 }
 
 .rate {
-  padding-top: 0.25em;
+  padding-top: 0.5em;
+  font-size: 1.5em;
 }
 
-.rate input {
+.rate_input {
+  padding-top: 0.75em;
+  font-size: 1.25em;
+}
+
+.rate_input input {
   width: 100%;
 }
 
@@ -9558,6 +9616,7 @@ input[type=password]:hover {
   border: 0px;
   text-shadow: 0 1px rgba(0, 0, 0, 0.3);
   background-color: #d8ebf1;
+  color: black;
   /* background-image: -webkit-gradient(linear, 0 0, 0 100%,   from(#4d90fe), to(#357ae8)); */
 }
 

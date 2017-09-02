@@ -8,7 +8,7 @@
 		<div class="title">
 			<div class="inlineLeft"><h1>ตามสั่งวิดวะจ้า</h1></div>
 			<div class="inlineRight goBack">
-				<a>Back&nbsp;<i class="fa fa-angle-right" aria-hidden="true"></i></a>
+				<a class="back">Back&nbsp;<i class="fa fa-angle-right" aria-hidden="true"></i></a>
 			</div>
 			<br><hr>
 		</div>

@@ -51,7 +51,7 @@ var commentSubmit = function() {
 }
 
 var shop_card = function(data) {
-	var a = $('<a>').addClass('float-right select').attr('onclick', 'shop_show(' + data.id + ');').append('>');
+	var a = $('<a>').addClass('float-right select ').attr('onclick', 'shop_show(' + data.id + ');').append('>');
 	var clg2 = $('<div>').addClass('col-lg-2').append(a);
 	var clg10_info = $('<div>').addClass('col-lg-10 card-info').append('<div class="col-lg-10 card-info">Rating : ' + data.rating + '</div>'); //  | ' + data.distance + ' m. away
 	var c_footer = $('<div>').append($('<div>').append(clg10_info));
@@ -73,10 +73,10 @@ var shop_card = function(data) {
 
 var shop_box = function(data) {
 	var img = $('<img>').attr({  alt: 'Card image cap', src: 'img/food/test.jpg', }); //data.img_src
-	var dcl4 = $('<div>').addClass('col-lg-4').append($('<div>').append(img));
+	var dcl4 = $('<div>').addClass('col-lg-4').addClass('no-padding').append($('<div>').addClass('img').append(img));
 	var dtt = $('<div>').addClass('title');
-	dtt.append('<div class="inlineLeft"><h1>' + data.name + '</h1></div><div class="inlineRight goBack"><a onclick="shop_hide();">Back&nbsp;<i class="fa fa-angle-right" aria-hidden="true"></i></a></div><br><hr>');
-	dtt.append($('<div>').addClass('recommended').append('<h1>Recommeded : '+'</h1><hr>'));
+	dtt.append('<div class="inlineLeft"><h1>' + data.name + '</h1></div><div class="inlineRight goBack"><a class="back" onclick="shop_hide();">Back&nbsp;<i class="fa fa-angle-right" aria-hidden="true"></i></a></div><br><hr>');
+	dtt.append($('<div>').addClass('recommended').append('<h1>Recommeded : ')).append('<hr>');
 	var ddes = $('<div>').addClass('description').append(data.description);
 	var df = $('<div>').addClass('footer').append(data.footer);
 	var dcl8 = $('<div>').addClass('col-lg-8').append(dtt).append(ddes).append(df);
@@ -85,9 +85,9 @@ var shop_box = function(data) {
 
 var shop_rating = function(data) {
 	var dcfr = $('<div>').addClass('container-fluid rating');
-	dcfr.append('<h2>Rating</h2>')
-	dcfr.append('<h2><i class="fa fa-star-o" aria-hidden="true"></i><i class="fa fa-star-o" aria-hidden="true"></i><i class="fa fa-star-o" aria-hidden="true"></i><i class="fa fa-star-o" aria-hidden="true"></i><i class="fa fa-star-o" aria-hidden="true"></i></h2>');
-	dcfr.append('<h3>' + data.rating + '</h3>');
+	dcfr.append('<div class="row"><div class="col-lg-12 rating_header no-padding"><h3>Rating</h3></div></div>')
+	dcfr.append('<div class="rating_star"><i class="fa fa-star-o" aria-hidden="true"></i><i class="fa fa-star-o" aria-hidden="true"></i><i class="fa fa-star-o" aria-hidden="true"></i><i class="fa fa-star-o" aria-hidden="true"></i><i class="fa fa-star-o" aria-hidden="true"></i>');
+	dcfr.append( '<h1>'+data.rating +'</h1></div>');
 	return dcfr;
 }
 
@@ -95,7 +95,7 @@ var shop_show = function(id) {
 	shop_id = id;
 	var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
 	$.ajax({
-		url: '/canteen/' + id,
+		url: 'canteen/' + id,
 		type: 'GET',
 		dataType: 'json',
 		data: {
