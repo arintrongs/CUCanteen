@@ -65,15 +65,18 @@ return [
     */
 
     'providers' => [
-        'users' => [
-            'driver' => 'eloquent',
-            'model' => App\User::class,
-        ],
-
         // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
+        //     'driver' => 'eloquent',
+        //     'model' => App\User::class,
         // ],
+
+        'users' => [
+            'driver' => 'database',
+            'table' => 'tb_user',
+            'model' => App\User::class,
+            'username' => 'user_username',
+            'password' => 'user_hpassword',
+        ],
     ],
 
     /*

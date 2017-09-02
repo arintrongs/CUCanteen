@@ -6,8 +6,10 @@
     "type": "project",
     "require": {
         "php": ">=5.6.4",
+        "intervention/image": "^2.4",
         "laravel/framework": "5.4.*",
-        "laravel/tinker": "~1.0"
+        "laravel/tinker": "~1.0",
+        "unisharp/laravel-filemanager": "^1.8"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
@@ -41,11 +43,7 @@
         "post-update-cmd": [
             "Illuminate\\Foundation\\ComposerScripts::postUpdate",
             "php artisan optimize"
-        ],
-    	"post-deploy-cmd": [
-    	    "chmod -R 755 bootstrap\/cache",
-    	    "php artisan cache:clear"
-    	]
+        ]
     },
     "config": {
         "preferred-install": "dist",
