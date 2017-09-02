@@ -83,11 +83,11 @@ class Shop extends Model
     /**
      * Update shop (new shop if id is not given) 
      *
-     * @param form input array $data  (required: name, location; optional: id, time, description, lat, lng, isVeg, isHalal, picture)
+     * @param form input array $data  (required: name, location, picture; optional: id, time, description, lat, lng, isVeg, isHalal)
      * @var string, Failure Cause, "Succeed" returned if successfully added an user
      */
     public static function updateShop($data){
-        if(array_key_exists('id', $data)) //Updating exist shop
+        if(array_key_exists('id', $data) && $data['id'] != 0)
         {
             $shop = Shop::where('shop_id', $data['id']);
             if(array_key_exists('name', $data))
@@ -109,21 +109,23 @@ class Shop extends Model
             $shop['shop_isHalal'] = (array_key_exists('isHalal', $data))?$data['isHalal']:0;
             $shop -> save();
         }
-        else  //Create new shops
+        else
         {
             $shop = new Shop;
             $error = "";
-            if(array_key_exists('name', $data))
-                $shop['shop_name'] = $data['name'];
-            else $error .= "name, ";
+            if(array_key_exists('name', $data)
+                )$shop['shop_name'] = $data['name'];
+            else $error += "name, ";
             if(array_key_exists('location', $data))
                 $shop['shop_location'] = $data['location'];
+            else $error += "location, ";
             if(array_key_exists('lat', $data))
                 $shop['shop_lat'] = $data['lat'];
             if(array_key_exists('lng', $data))
                 $shop['shop_lng'] = $data['lng'];
             if(array_key_exists('picture', $data))
                 $shop['shop_picture'] = $data['picture'];
+            else $error += "picture, ";
             if(array_key_exists('time', $data))
                 $shop['shop_time'] = $data['time'];
             if(array_key_exists('description', $data))
@@ -133,9 +135,8 @@ class Shop extends Model
             $shop['shop_isHalal'] = (array_key_exists('isHalal', $data))?$data['isHalal']:0;
             
             if($error != "") 
-                return "Error: ".$error."is/are missing";
+                return "Error: " + $error + "is/are missing";
             $shop -> save();
-            return "Succeed";
         }
     }
 }

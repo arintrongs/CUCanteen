@@ -77,8 +77,8 @@ button:focus {
     right:0;
 }
 .goBack{
-	padding-right: 1em;
-	font-size: 20px;
+  padding-right: 1em;
+  font-size: 20px;
 }
 $card_columns_set :( xs:1,
 sm:1,
@@ -121,7 +121,7 @@ $columns in $card_columns_set {
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
     margin-top: 2em;
     min-height: 300px;
- 	  padding: 0 0 0 0;
+    padding: 0 0 0 0;
 
     img {
         width: 100%;
@@ -148,10 +148,10 @@ $columns in $card_columns_set {
       
     }
     .description{
-    	font-size: 16px;
-    	padding: 0 1em 1em 1em;
-    	width: 100%;
-    }	
+      font-size: 16px;
+      padding: 0 1em 1em 1em;
+      width: 100%;
+    } 
     .footer{
 
     }
@@ -216,9 +216,9 @@ $columns in $card_columns_set {
     }
 }
 .rating{
-	font-family: $font_Athiti;
-	color: $font_color;
-	text-align: center;
+  font-family: $font_Athiti;
+  color: $font_color;
+  text-align: center;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
     margin-top: 2em;
     min-height: 150px;
