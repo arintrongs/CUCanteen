@@ -17,7 +17,7 @@ Route::group(['domain' => '{ratemycanteen}.ojudge.in.th'], function() {
 
 		// Route::get('/adduser', 'UserController@addAdmin');
 		Route::post('/user', 'UserController@authenticate');
-	    Route::post('/scopeDist', 'CanteenController@scopeDist');
+	    Route::post('/canteen/scopeDist', 'CanteenController@scopeDist');
 	    Route::resource('/canteen', 'CanteenController');
 	  
 	    Route::resource('/backdoor', 'BackdoorController');

@@ -9,15 +9,14 @@ use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller 
 {
-	public function addAdmin()
+	public static function addAdmin()
 	{
 		$data = array(
 			'username' => 'admin',
 			'password' => 'admin',
 			'role' => 'admin',
 		);
-		User::addUser($data);
-		return [];
+		return User::addUser($data);
 	}
 
 	public static function check(Request $request)

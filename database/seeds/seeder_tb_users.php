@@ -1,5 +1,5 @@
 <?php
-
+use App\Http\Controllers\Canteen\UserController;
 use Illuminate\Database\Seeder;
 
 class seeder_tb_users extends Seeder
@@ -11,13 +11,6 @@ class seeder_tb_users extends Seeder
      */
     public function run()
     {
-        DB::table('tb_user')->insert([
-        	'user_username' => 'admin',
-        	'user_studentid' => '5900000021',
-        	'user_fbid' => '',
-        	'dispname' => 'administrator',
-        	'user_hpassword' => 'admin',
-        	'user_session' => str_random(10),
-        ]);
+        UserController::addAdmin();
     }
 }
