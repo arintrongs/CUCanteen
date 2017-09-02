@@ -10,13 +10,15 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-// 'domain' => '{canteen}.ojudge.in.th', 
-Route::domain('{ratemycanteen}.ojudge.in.th')->group(function() {
-	Route::namespace('Canteen')->group(function () {
+
+Route::group(['domain' => '{ratemycanteen}.ojudge.in.th'], function() {
+	Route::group(['namespace'=>'Canteen'], function () {
+		Route::get('/', 'CanteenController@index');
+
 		// Route::get('/adduser', 'UserController@addAdmin');
 		Route::post('/user', 'UserController@authenticate');
 	    Route::post('/scopeDist', 'CanteenController@scopeDist');
-	    Route::resource('/', 'CanteenController');
+	    Route::resource('/canteen', 'CanteenController');
 	  
 	    Route::resource('/backdoor', 'BackdoorController');
 	});

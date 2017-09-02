@@ -11,7 +11,7 @@ var errorShow = function(text) {
 
 var add = function() {
 	$.ajax({
-		url: 'backdoor',
+		url: '/backdoor',
 		type: 'POST',
 		dataType: 'json',
 		data: {

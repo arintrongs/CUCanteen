@@ -27,7 +27,7 @@ var comment_show = function(div, data) {
 var commentSubmit = function() {
 	var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
 	$.ajax({
-		url: '/',
+		url: '/canteen',
 		type: 'POST',
 		dataType: 'text',
 		data: {
@@ -95,7 +95,7 @@ var shop_show = function(id) {
 	shop_id = id;
 	var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
 	$.ajax({
-		url: '/' + id,
+		url: '/canteen/' + id,
 		type: 'GET',
 		dataType: 'json',
 		data: {

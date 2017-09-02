@@ -14,7 +14,7 @@ var errorShow = function(text) {
 var getShop = function() {
 	var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
 	$.ajax({
-		url: 'scopeDist',
+		url: '/canteen/scopeDist',
 		type: 'POST',
 		dataType: 'json',
 		data: {
