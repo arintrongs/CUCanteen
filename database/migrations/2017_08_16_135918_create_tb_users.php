@@ -22,7 +22,7 @@ class CreateTbUsers extends Migration
             $table->string('user_fbid', 30)->comment('Student\'s Facebook ID (if there is nothing else to do)')->nullable();
             $table->string('user_dispname', 60)->nullable();
             $table->string('user_hpassword');            
-            $table->text('user_session')->comment('in case od usage (can be deleted)');
+            $table->text('user_session')->comment('in case od usage (can be deleted)')->nullable();
             $table->binary('user_disppict')->nullable();
         });
     }

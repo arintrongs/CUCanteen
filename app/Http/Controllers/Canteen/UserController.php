@@ -14,6 +14,7 @@ class UserController extends Controller
 		$data = array(
 			'username' => 'admin',
 			'password' => 'admin',
+			'role' => 'admin',
 		);
 		User::addUser($data);
 		return [];

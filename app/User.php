@@ -100,6 +100,11 @@ class User extends Model implements AuthenticatableContract,
                 
                 if(array_key_exists('disppict', $data))
                     $user['user_disppict'] = $data['disppict'];
+
+                if(array_key_exists('role', $data))
+                    $user['user_role'] = $data['role'];
+                else
+                    $user['user_role'] = 'guest';
                 
                 $user->save();
                 return "Succeed";

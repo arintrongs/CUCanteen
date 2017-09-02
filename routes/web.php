@@ -10,22 +10,14 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
-Route::namespace('Canteen')->group(function () {
-	Route::get('/adduser', 'UserController@addAdmin');
-	Route::post('/user', 'UserController@authenticate');
-    Route::post('/canteen/scopeDist', 'CanteenController@scopeDist');
-    Route::resource('/canteen', 'CanteenController');
-  
-    Route::resource('/backdoor', 'BackdoorController');
-});
-
-//Route::get('/canteen', 'CanteenController@index');
-
-Route::domain('{canteen}.ojudge.com')->group(function () {
-
+// 'domain' => '{canteen}.ojudge.in.th', 
+Route::domain('{ratemycanteen}.ojudge.in.th')->group(function() {
+	Route::namespace('Canteen')->group(function () {
+		// Route::get('/adduser', 'UserController@addAdmin');
+		Route::post('/user', 'UserController@authenticate');
+	    Route::post('/scopeDist', 'CanteenController@scopeDist');
+	    Route::resource('/', 'CanteenController');
+	  
+	    Route::resource('/backdoor', 'BackdoorController');
+	});
 });
