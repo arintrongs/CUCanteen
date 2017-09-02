@@ -113,19 +113,20 @@ class Shop extends Model
         {
             $shop = new Shop;
             $error = "";
-            if(array_key_exists('name', $data)
-                )$shop['shop_name'] = $data['name'];
-            else $error += "name, ";
+            if(array_key_exists('name', $data))
+                $shop['shop_name'] = $data['name'];
+            else 
+                $error .= "name, ";
             if(array_key_exists('location', $data))
                 $shop['shop_location'] = $data['location'];
-            else $error += "location, ";
+            else 
+                $error .= "location, ";
             if(array_key_exists('lat', $data))
                 $shop['shop_lat'] = $data['lat'];
             if(array_key_exists('lng', $data))
                 $shop['shop_lng'] = $data['lng'];
             if(array_key_exists('picture', $data))
                 $shop['shop_picture'] = $data['picture'];
-            else $error += "picture, ";
             if(array_key_exists('time', $data))
                 $shop['shop_time'] = $data['time'];
             if(array_key_exists('description', $data))
@@ -135,7 +136,7 @@ class Shop extends Model
             $shop['shop_isHalal'] = (array_key_exists('isHalal', $data))?$data['isHalal']:0;
             
             if($error != "") 
-                return "Error: " + $error + "is/are missing";
+                return "Error: " . $error . "is/are missing";
             $shop -> save();
         }
     }
