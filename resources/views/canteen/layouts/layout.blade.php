@@ -62,7 +62,7 @@
         <div class="container-fluid store-content" style="display: none;">
             <div class="row">
                 <div class="col-lg-2"></div>
-                <div class="col-lg-7">
+                <div class="col-lg-7" >
                     <div class="container-fluid store">
                         @yield('store')
                     </div>

@@ -15,12 +15,11 @@
 //     return view('welcome');
 // });
 
-Route::namespace('Canteen')->group(function () {
+Route::group(['namespace' => 'Canteen'], function () {
 	Route::get('/adduser', 'UserController@addAdmin');
 	Route::post('/user', 'UserController@authenticate');
     Route::post('/canteen/scopeDist', 'CanteenController@scopeDist');
     Route::resource('/canteen', 'CanteenController');
-  
     Route::resource('/backdoor', 'BackdoorController');
 });
 

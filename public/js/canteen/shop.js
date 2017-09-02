@@ -72,10 +72,11 @@ var shop_card = function(data) {
 }
 
 var shop_box = function(data) {
-	var img = $('<img>').attr({ class: 'fill', alt: 'Card image cap', src: 'img/food/test.jpg', }); //data.img_src
-	var dcl4 = $('<div>').addClass('col-lg-4').append($('<div>').addClass('limit').append(img));
+	var img = $('<img>').attr({  alt: 'Card image cap', src: 'img/food/test.jpg', }); //data.img_src
+	var dcl4 = $('<div>').addClass('col-lg-4').append($('<div>').append(img));
 	var dtt = $('<div>').addClass('title');
-	dtt.append('<div class="inlineLeft"><h1>' + data.name + '</h1></div><div class="inlineRight goBack"><a onclick="shop_hide();">Back&nbsp;<i class="fa fa-angle-right" aria-hidden="true"></i></a></div><br><hr>')
+	dtt.append('<div class="inlineLeft"><h1>' + data.name + '</h1></div><div class="inlineRight goBack"><a onclick="shop_hide();">Back&nbsp;<i class="fa fa-angle-right" aria-hidden="true"></i></a></div><br><hr>');
+	dtt.append($('<div>').addClass('recommended').append('<h1>Recommeded : '+'</h1><hr>'));
 	var ddes = $('<div>').addClass('description').append(data.description);
 	var df = $('<div>').addClass('footer').append(data.footer);
 	var dcl8 = $('<div>').addClass('col-lg-8').append(dtt).append(ddes).append(df);

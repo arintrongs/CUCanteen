@@ -9352,6 +9352,7 @@ button:focus {
 }
 
 .store {
+  width: 100%;
   font-family: "Athiti", sans-serif;
   -webkit-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
           box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
@@ -9378,6 +9379,12 @@ button:focus {
   padding-left: 1.5em;
 }
 
+.store .recommended h1 {
+  font-size: 1em;
+  padding-left: 1.5em;
+  color: #fd424d;
+}
+
 .store .description {
   font-size: 16px;
   padding: 0 1em 1em 1em;
@@ -9401,7 +9408,7 @@ button:focus {
 }
 
 .comment .submit {
-  padding: 0 1em 1em 40em;
+  padding: 0 1em 1em 37em;
   text-align: right;
 }
 
@@ -9459,6 +9466,14 @@ button:focus {
   margin-top: 2em;
   min-height: 150px;
   padding: 1em 1em 1em 1em;
+}
+
+.rate {
+  padding-top: 0.25em;
+}
+
+.rate input {
+  width: 100%;
 }
 
 /****** LOGIN MODAL ******/
@@ -9531,7 +9546,7 @@ input[type=password]:hover {
   border: 0px;
   color: #fff;
   text-shadow: 0 1px rgba(0, 0, 0, 0.1);
-  background-color: #4d90fe;
+  background-color: #1ca5b7;
   padding: 17px 0px;
   font-family: "Athiti", sans-serif;
   font-size: 14px;
@@ -9542,7 +9557,7 @@ input[type=password]:hover {
   /* border: 1px solid #2f5bb7; */
   border: 0px;
   text-shadow: 0 1px rgba(0, 0, 0, 0.3);
-  background-color: #357ae8;
+  background-color: #d8ebf1;
   /* background-image: -webkit-gradient(linear, 0 0, 0 100%,   from(#4d90fe), to(#357ae8)); */
 }
 

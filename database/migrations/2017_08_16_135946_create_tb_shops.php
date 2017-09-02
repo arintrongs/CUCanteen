@@ -17,7 +17,7 @@ class CreateTbShops extends Migration
         Schema::create('tb_shop', function (Blueprint $table) {
             $table->bigIncrements('shop_id')->unsigned();
             $table->string('shop_name');
-            $table->string('shop_location')->comment('Location name');
+            $table->string('shop_location')->comment('Location name')->nullable();
             $table->time('shop_time')->comment('Open/Close Time')->nullable();
             $table->double('shop_lat')->comment('Shop Latitude')->nullable();
             $table->double('shop_lng')->comment('Shop Longtitude')->nullable();
