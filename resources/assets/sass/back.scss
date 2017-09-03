@@ -1,0 +1,128 @@
+@import "~bootstrap/scss/bootstrap.scss";
+
+$color_ripple: #d8ebf1;
+$color_crush: #fd424d;
+$color_seafloor: #1ca5b7;
+$color_cyprus: #002d40;
+$font_color: #383838;
+$font_Pacifico: 'Pacifico' ,cursive;
+$font_Athiti: 'Athiti',sans-serif;
+
+html ,body {
+    font-size: 14px;
+    cursor:default;
+}
+@include media-breakpoint-up(sm) {
+  html,body {
+    font-size: 10px;
+  }
+}
+
+@include media-breakpoint-up(md) {
+  html,body {
+    font-size: 11px;
+  }
+}
+
+@include media-breakpoint-up(lg) {
+  html,body {
+    font-size: 12px;
+  }
+}
+@include media-breakpoint-up(xl) {
+  html,body {
+    font-size: 14px;
+	}	
+}
+.back_header{
+  font-size: 2em;
+  padding:1em 0 1em 0;
+}
+.no_padding{
+  padding-left: 0;
+  padding-right: 0;
+}
+.store {
+    width: 100%;
+    font-family: $font_Athiti;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+    margin-top: 2em;
+    padding: 0 0 0 0;
+
+    img {
+        width: 100%;
+        height: 100%;
+    }
+
+    .title {
+        h1 {
+            padding-left: 1.5em;
+        }
+        position:relative;
+        font-size: 1.5em;
+        margin: 1em 1em 1em 0;
+        padding-right: 1em;
+        width: 100%;
+        overflow: hidden;
+    }
+    .recommended{
+
+        font-size: 1em;
+        color: $color_crush;
+
+      
+    }
+    .description{
+      font-size: 16px;
+      padding: 0 1em 1em 1em;
+      width: 100%;
+    }
+    .img{
+      margin :0;
+      width: 100%;
+    }
+    .row{
+      margin : 0;
+    }
+    .back:hover{
+      text-shadow: 0 0 3px rgba(0,0,0,0.3);
+    }
+    .upload{
+      padding-left: 1em; 
+      margin-top: 1em;
+      margin-bottom: 1em;
+    }
+    .custom-file-control:hover{
+      text-shadow: 0 0 3px rgba(0,0,0,0.3);
+    }
+    .submit{
+      padding-left: 1em; 
+      margin-top: 1em;
+      margin-bottom: 1em;
+    }
+    .special{
+      margin-top: 1em;
+      p{
+        color: $color_crush;
+      }
+    }
+}
+#customFile .custom-file-control:lang(en)::after {
+  content: "Select file...";
+}
+
+#customFile .custom-file-control:lang(en)::before {
+  content: "Browse";
+}
+
+/*when a value is selected, this class removes the content */
+.custom-file-control.selected:lang(en)::after {
+  content: "" !important;
+}
+
+.custom-file {
+  overflow: hidden;
+}
+.custom-file-control {
+  white-space: nowrap;
+}

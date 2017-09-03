@@ -11,7 +11,7 @@
 |
 */
 
-Route::group(['domain' => '{ratemycanteen}.ojudge.in.th'], function() {
+// Route::group(['domain' => '{ratemycanteen}.ojudge.in.th'], function() {
 	Route::group(['namespace'=>'Canteen'], function () {
 		Route::get('/', 'CanteenController@index');
 
@@ -22,4 +22,4 @@ Route::group(['domain' => '{ratemycanteen}.ojudge.in.th'], function() {
 	  
 	    Route::resource('/backdoor', 'BackdoorController');
 	});
-});
+// });
