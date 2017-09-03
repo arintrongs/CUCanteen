@@ -19,7 +19,7 @@ class BackdoorController extends Controller
     	$data = array(
     		'shops' => $all_shops,
     	);
-        return view('canteen/back', $data);
+        return view('canteen/back-store', $data);
     }
 
     public function store(Request $request)
@@ -33,6 +33,23 @@ class BackdoorController extends Controller
         	'location' => $request->location,
         	'description' => $request->description,
         );
+
+        if (!property_exists($request, 'id'))
+            $data['id'] = $request->id;
+        if (!property_exists($request, 'location'))
+            $data['location'] = $request->location;
+        if (!property_exists($request, 'lat'))
+            $data['lat'] = $request->lat;
+        if (!property_exists($request, 'lng'))
+            $data['lng'] = $request->lng;
+        if (!property_exists($request, 'picture'))
+            $data['picture'] = $request->picture;
+        if (!property_exists($request, 'time'))
+            $data['time'] = $request->time;
+        if (!property_exists($request, 'isVeg'))
+            $data['isVeg'] = $request->isVeg;
+        if (!property_exists($request, 'isHalal'))
+            $data['isHalal'] = $request->isHalal;
         return json_encode(Shop::updateShop($data));
     }
 }
