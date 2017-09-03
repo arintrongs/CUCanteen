@@ -13,13 +13,15 @@
 		</div>
 	</div>
 	<div class="row ">
-		<div class="col-lg-7"></div>
-		<div class="col-lg-1 rate" >
-			<i class="fa fa-star-o" aria-hidden="true">&nbsp;:</i>
+		<div class="col-lg-6"></div>
+		<div class="col-lg-3 rate " >
+			<div class="input-group">
+				<div class="input-group-addon"><i class="fa fa-star-o" aria-hidden="true"></i></div>
+    			<input type="text" class="form-control" id="rate" placeholder="0-5">
+  			</div>
 		</div>
-		<div class="col-lg-2 rate_input">
-			<input type="text" name="rate" placeholder="0-5">
-		</div>
-		<div class="col-lg-2 " ><button type="button" class="btn btn-outline-success " onclick="commentSubmit();">Success</button></div>
+		<div class="col-lg-2"><button type="button" class="btn btn-outline-success " onclick="commentSubmit();">Success</button></div>
+		<div class="col-lg-1"></div>
+
 	</div>
 </div>
