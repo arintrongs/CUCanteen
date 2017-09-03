@@ -12,8 +12,8 @@
         <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Athiti" rel="stylesheet">
         <!-- CSS-->
-        {{-- <link rel="stylesheet" type="text/css" href="{{ URL :: asset('css/app.css')}}"> --}}
-        <link rel="stylesheet" type="text/css" href="{{ getCss('app.css')}}">
+        <link rel="stylesheet" type="text/css" href="{{ URL :: asset('css/app.css')}}">
+        {{-- <link rel="stylesheet" type="text/css" href="{{ getCss('app.css')}}"> --}}
         
         <link rel="stylesheet" type="text/css" href="{{ getCss('font-awesome.min.css')}}">
           
@@ -21,13 +21,13 @@
     <body>
         <!-- NAV -->
         <nav class="navbar navbar-light fixed-top" >
-            <div class="col-lg-2">
+            <div class="col-lg-3 col-xl-3">
                 <div class="brand float-right" href="#">Rate My Canteen.</div>
             </div>
-            <div class="col-lg-7">
+            <div class="col-lg-6 col-xl-6">
                 <input class="form-control form-control-lg mr-sm-2" type="text" placeholder="Search" aria-label="Search">
             </div>
-            <div class="col-lg-3">
+            <div class="col-lg-3 col-xl-3">
                 <div class="login">
                     <a href="#" data-toggle="modal" data-target="#login-modal">
                         <i class="fa fa-user icon" aria-hidden="true"></i>
@@ -101,10 +101,10 @@
         <script src="//code.jquery.com/jquery-1.12.4.js"></script>
         <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
         <script src="http://momentjs.com/downloads/moment.js"></script>
-        <script src="{{ getJs('canteen/canteen.js') }}"></script>
-        <script src="{{ getJs('canteen/autocomplete.js') }}"></script>
-        <script src="{{ getJs('canteen/shop.js') }}"></script>
-        <script src="{{ getJs('user.js') }}"></script>
+        <script src="{{ URL :: asset('js/canteen/canteen.js') }}"></script>
+        <script src="{{ URL :: asset('js/canteen/autocomplete.js') }}"></script>
+        <script src="{{ URL :: asset('js/canteen/shop.js') }}"></script>
+        <script src="{{ URL :: asset('js/user.js') }}"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script> 
         @yield('footer')

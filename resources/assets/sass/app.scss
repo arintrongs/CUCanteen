@@ -12,6 +12,40 @@ html ,body {
     font-size: 14px;
     cursor:default;
 }
+@include media-breakpoint-up(sm) {
+  html,body {
+    font-size: 10px;
+  }
+}
+
+@include media-breakpoint-up(md) {
+  html,body {
+    font-size: 11px;
+  }
+}
+
+@include media-breakpoint-up(lg) {
+  html,body {
+    font-size: 12px;
+  }
+  .brand{
+    font-size: 1.7em;
+  }
+  .login{
+    font-size: 1.7em;
+  }
+}
+@include media-breakpoint-up(xl) {
+  html,body {
+    font-size: 14px;
+  }
+  .brand{
+    font-size:2em;
+  }
+  .login{
+    font-size: 2em;
+  }
+}
 input,textarea{
     border: none;
     background-color: transparent;
@@ -39,16 +73,18 @@ button:focus {
     .login{
     text-align: right;
     font-family: $font_Athiti;
-    font-size: 20px;
-    .icon{
-        font-size: 30px;
+      .icon{
+        font-size: 28px;
+        color: rgba(0,0,0,0.3);
+      }
+      .icon:hover{
+        color: black;
+      }
     }
-}
 }
 
 .brand {
     font-family: $font_Pacifico;
-    font-size: 2em;
     color: $color_crush;
 }
 
@@ -133,7 +169,6 @@ $columns in $card_columns_set {
     font-family: $font_Athiti;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
     margin-top: 2em;
-    min-height: 300px;
     padding: 0 0 0 0;
 
     img {
@@ -166,13 +201,11 @@ $columns in $card_columns_set {
       width: 100%;
     }
     .img{
-      min-height:300px;
       margin :0;
       width: 100%;
     }
     .row{
       margin : 0;
-      min-height: 300px;
     }
     .back:hover{
       text-shadow: 0 0 3px rgba(0,0,0,0.3);
@@ -181,8 +214,7 @@ $columns in $card_columns_set {
 
 .comment{
     font-family: $font_Athiti;
-    font-size: 1em;
-    min-height: 75px;
+    font-size: 0.8em;
     box-shadow: 0 0 3px rgba(0, 0, 0, 0.10);
     border-color: #CECDCD;
     border-style: solid;
@@ -194,19 +226,27 @@ $columns in $card_columns_set {
         margin-top: 1em;
     }
     .submit{
-        padding: 0 1em 1em 37em;
-        text-align: right;
+        text-align: center;
     }
+    .rate{
+        font-size: 1.5em;
+    }
+    .input-group-addon{
+      background-color: #FFFFFF;
+    }
+
 }
+
 .comment-icon{
     height: 50px;
-    padding : 0 0 0 0.5em;
+    padding : 0.5em 0 0 0.5em;
     font-size: 25px;
 
 }
 .comment-box{
     margin: 0 auto;
-    font-size: 20px;
+    padding-top: 1em;
+    font-size: 16px;
     .comment_area{
       width: 100%;
     }
@@ -245,33 +285,23 @@ $columns in $card_columns_set {
     text-align: center;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
     margin-top: 2em;
-    min-height: 150px;
     .rating_header{
       background-color: #F3F3F3;
       width: 100%;
       min-height: 50px;
       padding-top:1em;
+      border-bottom: 1px rgba(0,0,0,0.1) solid;
     }
     .rating_star{
       padding-top: 0.5em;
-      font-size: 2em;
+      font-size: 1.7em;
       text-align: center;
     }
     h1{
       font-size: 2em;
     }
 }
-.rate{
-  padding-top: 0.5em;
-  font-size: 1.5em;
-}
-.rate_input{
-  padding-top : 0.75em;
-  font-size: 1.25em;
-  input{
-    width: 100%;
-  }
-}
+
 
 /****** LOGIN MODAL ******/
 .loginmodal-container {

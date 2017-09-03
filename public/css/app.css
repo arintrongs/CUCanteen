@@ -9192,6 +9192,50 @@ body {
   cursor: default;
 }
 
+@media (min-width: 576px) {
+  html,
+  body {
+    font-size: 10px;
+  }
+}
+
+@media (min-width: 768px) {
+  html,
+  body {
+    font-size: 11px;
+  }
+}
+
+@media (min-width: 992px) {
+  html,
+  body {
+    font-size: 12px;
+  }
+
+  .brand {
+    font-size: 1.7em;
+  }
+
+  .login {
+    font-size: 1.7em;
+  }
+}
+
+@media (min-width: 1200px) {
+  html,
+  body {
+    font-size: 14px;
+  }
+
+  .brand {
+    font-size: 2em;
+  }
+
+  .login {
+    font-size: 2em;
+  }
+}
+
 input,
 textarea {
   border: none;
@@ -9225,16 +9269,19 @@ button:focus {
 .navbar .login {
   text-align: right;
   font-family: "Athiti", sans-serif;
-  font-size: 20px;
 }
 
 .navbar .login .icon {
-  font-size: 30px;
+  font-size: 28px;
+  color: rgba(0, 0, 0, 0.3);
+}
+
+.navbar .login .icon:hover {
+  color: black;
 }
 
 .brand {
   font-family: "Pacifico", cursive;
-  font-size: 2em;
   color: #fd424d;
 }
 
@@ -9372,7 +9419,6 @@ button:focus {
   -webkit-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
           box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
   margin-top: 2em;
-  min-height: 300px;
   padding: 0 0 0 0;
 }
 
@@ -9407,14 +9453,12 @@ button:focus {
 }
 
 .store .img {
-  min-height: 300px;
   margin: 0;
   width: 100%;
 }
 
 .store .row {
   margin: 0;
-  min-height: 300px;
 }
 
 .store .back:hover {
@@ -9423,8 +9467,7 @@ button:focus {
 
 .comment {
   font-family: "Athiti", sans-serif;
-  font-size: 1em;
-  min-height: 75px;
+  font-size: 0.8em;
   -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
           box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
   border-color: #CECDCD;
@@ -9440,19 +9483,27 @@ button:focus {
 }
 
 .comment .submit {
-  padding: 0 1em 1em 37em;
-  text-align: right;
+  text-align: center;
+}
+
+.comment .rate {
+  font-size: 1.5em;
+}
+
+.comment .input-group-addon {
+  background-color: #FFFFFF;
 }
 
 .comment-icon {
   height: 50px;
-  padding: 0 0 0 0.5em;
+  padding: 0.5em 0 0 0.5em;
   font-size: 25px;
 }
 
 .comment-box {
   margin: 0 auto;
-  font-size: 20px;
+  padding-top: 1em;
+  font-size: 16px;
 }
 
 .comment-box .comment_area {
@@ -9500,7 +9551,6 @@ button:focus {
   -webkit-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
           box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
   margin-top: 2em;
-  min-height: 150px;
 }
 
 .rating .rating_header {
@@ -9508,30 +9558,17 @@ button:focus {
   width: 100%;
   min-height: 50px;
   padding-top: 1em;
+  border-bottom: 1px rgba(0, 0, 0, 0.1) solid;
 }
 
 .rating .rating_star {
   padding-top: 0.5em;
-  font-size: 2em;
+  font-size: 1.7em;
   text-align: center;
 }
 
 .rating h1 {
   font-size: 2em;
-}
-
-.rate {
-  padding-top: 0.5em;
-  font-size: 1.5em;
-}
-
-.rate_input {
-  padding-top: 0.75em;
-  font-size: 1.25em;
-}
-
-.rate_input input {
-  width: 100%;
 }
 
 /****** LOGIN MODAL ******/
