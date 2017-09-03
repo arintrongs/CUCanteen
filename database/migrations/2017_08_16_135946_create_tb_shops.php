@@ -25,7 +25,6 @@ class CreateTbShops extends Migration
             $table->string('food_altername') -> nullable();
             $table->boolean('shop_isVeg', FALSE);
             $table->boolean('shop_isHalal', FALSE);
-            $table->binary('shop_picture')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
