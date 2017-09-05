@@ -44,6 +44,29 @@ class Food extends Model
     }
 
     /**
+     * Update a food (new if it doesn't exist)
+     *
+     * @param form input array $data  (required: name, shop_id)
+     * @var string, Failure Cause, "Succeed" returned if successfully added an user
+     */
+
+    public static function deleteFood($data = null){
+        if(array_key_exists('id', $data)){
+            $food = self::where('food_id', $data['id']) -> first();
+            if(array_key_exists('name', $data)) $food['food_name'] = $data['name'];
+            if(array_key_exists('shop_id', $data)) $food['shop_id'] = $data['shop_id'];
+            $food -> save();
+        }else{
+            $food = new Food;
+            $food['food_name'] = $data['name'];
+            $food['shop_id'] = $data['shop_id'];
+            $food -> save();
+        }
+
+        return "Succeed";
+    }
+
+    /**
      * get poppular food from specified shop
      *
      * @param int $shop_id 

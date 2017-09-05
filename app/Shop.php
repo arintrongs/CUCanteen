@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use App\Comment;
 use App\Food;
+use App\PicturePath;
 
 class Shop extends Model
 {
@@ -88,13 +89,17 @@ class Shop extends Model
      * @var string, Failure Cause, "Succeed" returned if successfully added an user
      */
     public static function updateShop($data){
+        if(array_key_exists(picture, $data)){
+            //Call API to upload picture and obtain new $_FILE
+            $shop['shop_picture'] = $data['picture'];
+        }
         if($data['id'] != 0){
             $shop = Shop::where('shop_id',$data['id']);
             if(array_key_exists(name, $data))$shop['shop_name'] = $data['name'];
             if(array_key_exists(location, $data))$shop['shop_location'] = $data['location'];
             if(array_key_exists(lat, $data))$shop['shop_lat'] = $data['lat'];
             if(array_key_exists(lng, $data))$shop['shop_lng'] = $data['lng'];
-            if(array_key_exists(picture, $data))$shop['shop_picture'] = $data['picture'];
+            if(array_key_exists(picture, $data))App\PicturePath::where('shop_id', $data['id'])->addPic($data);
             if(array_key_exists(time, $data))$shop['shop_time'] = $data['time'];
             if(array_key_exists(description, $data))$shop['shop_description'] = $data['description'];
             $shop['shop_isVeg'] = (array_key_exists(isVeg, $data))?$data['isVeg']:0;
@@ -111,8 +116,7 @@ class Shop extends Model
             else $error += "location, ";
             if(array_key_exists(lat, $data))$shop['shop_lat'] = $data['lat'];
             if(array_key_exists(lng, $data))$shop['shop_lng'] = $data['lng'];
-            if(array_key_exists(picture, $data))$shop['shop_picture'] = $data['picture'];
-            else $error += "picture, ";
+            if(array_key_exists(picture, $data))App\PicturePath::addPic($data);
             if(array_key_exists(time, $data))$shop['shop_time'] = $data['time'];
             if(array_key_exists(description, $data))$shop['shop_description'] = $data['description'];
             $shop['shop_isVeg'] = (array_key_exists(isVeg, $data))?$data['isVeg']:0;
