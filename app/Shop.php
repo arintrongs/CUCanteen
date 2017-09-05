@@ -22,6 +22,8 @@ class Shop extends Model
      */
     protected $connection = 'mysql';
 
+    protected $primaryKey = 'shop_id';
+
     /**
      * Scope by isVeg (Does this shop has vegetarian food. Recommend to be used with App\Shop::all() ) 
      * 
@@ -91,25 +93,25 @@ class Shop extends Model
     public static function updateShop($data){
         if(array_key_exists('id', $data) && $data['id'] != 0)
         {
-            $shop = Shop::where('shop_id', $data['id']);
+            $shop = self::where('shop_id', $data['id'])->first();
             if(array_key_exists('name', $data))
-                $shop['shop_name'] = $data['name'];
+                $shop->shop_name = $data['name'];
             if(array_key_exists('location', $data))
-                $shop['shop_location'] = $data['location'];
+                $shop->shop_location = $data['location'];
             if(array_key_exists('lat', $data))
-                $shop['shop_lat'] = $data['lat'];
+                $shop->shop_lat = $data['lat'];
             if(array_key_exists('lng', $data))
-                $shop['shop_lng'] = $data['lng'];
+                $shop->shop_lng = $data['lng'];
             if(array_key_exists('picture', $data))
-                $shop['shop_picture'] = $data['picture'];
+                $shop->shop_picture = $data['picture'];
             if(array_key_exists('time', $data))
-                $shop['shop_time'] = $data['time'];
+                $shop->shop_time = $data['time'];
             if(array_key_exists('description', $data))
-                $shop['shop_description'] = $data['description'];
+                $shop->shop_description = $data['description'];
 
-            $shop['shop_isVeg'] = (array_key_exists('isVeg', $data))?$data['isVeg']:0;
-            $shop['shop_isHalal'] = (array_key_exists('isHalal', $data))?$data['isHalal']:0;
-            $shop -> save();
+            $shop->shop_isVeg = (array_key_exists('isVeg', $data)) ? ($data['isVeg'] == "true") : 0;
+            $shop->shop_isHalal = (array_key_exists('isHalal', $data)) ? ($data['isHalal'] == "true") : 0;
+            return $shop -> save();
         }
         else
         {
@@ -134,12 +136,12 @@ class Shop extends Model
             if(array_key_exists('description', $data))
                 $shop['shop_description'] = $data['description'];
 
-            $shop['shop_isVeg'] = (array_key_exists('isVeg', $data))?$data['isVeg']:0;
-            $shop['shop_isHalal'] = (array_key_exists('isHalal', $data))?$data['isHalal']:0;
+            $shop->shop_isVeg = (array_key_exists('isVeg', $data)) ? ($data['isVeg'] == "true") : 0;
+            $shop->shop_isHalal = (array_key_exists('isHalal', $data)) ? ($data['isHalal'] == "true") : 0;
             
             if($error != "") 
                 return "Error: " . $error . "is/are missing";
-            $shop -> save();
+            return $shop -> save();
         }
     }
 }

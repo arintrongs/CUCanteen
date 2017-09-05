@@ -1,177 +1,180 @@
-@extends('canteen/layouts/layout2')
-
-@section('body')
-
-<!-- Logged In -->
-    <br>
-    <div class="container">
-    <br>
-    <div class="row">
-        <div class="col-lg-1"></div>
-        <div class="col-lg-8">
-            <div class="container-fluid store">
-                <div class="row">
-                    <div class="col-lg-4 no-padding">
-                        <div class="img">
-                            <img alt="Card image cap" src="img/food/test.jpg">
-                        </div>
-                        <!-- The fileinput-button span is used to style the file input field as button -->
-                        <span class="btn btn-success fileinput-button">
-                            <i class="glyphicon glyphicon-plus"></i>
-                            <span>Add files...</span>
-                            <!-- The file input field used as target for the file upload widget -->
-                            <input id="fileupload" type="file" name="files[]" multiple>
-                        </span>
-                        <br>
-                        <br>
-                        <!-- The global progress bar -->
-                        <div id="progress" class="progress">
-                            <div class="progress-bar progress-bar-success"></div>
-                        </div>
-                        <!-- The container for the uploaded files -->
-                        <div id="files" class="files"></div>
-                        <br>
+@extends('canteen/layouts/layout2') @section('body')
+<div class="container-fluid">
+    <div class="row no_padding">
+        <div class="col-xl-4">
+            <div class="container-fluid table">
+                <div class="row back_header">
+                    <div class="col-xl-7">Shop Management</div>
+                    <div class="col-xl-2"></div>
+                    <div class="col-xl-3">
+                        <button type="button" class="btn btn-success" name="new">New Shop+</button>
                     </div>
-                    <div class="col-lg-8">
-                        <div class="title" style="font-size: 1em; height: 100px;">
-                            <div class="inlineLeft">
-                                <div class="form-group row">
-                                    <label class="col-sm-4 col-form-label">Store name:</label>
-                                    <div class="col-sm-8">
-                                        <input type="text" name="name" placeholder="Store name" value="น้ำ" class="form-control">
+                </div>
+                <div class="container-fluid no_padding">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Name</th>
+                                <th>Canteen</th>
+                                <th>Edit/Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @php
+                                $count = count($shops);
+                            @endphp
+                            @for ($i = 0; $i < $count; ++$i)
+                            <tr>
+                                <th scope="row">{{ $shops[$i]['shop_id'] }}</th>
+                                <td>{{ $shops[$i]['shop_name'] }}</td>
+                                <td>{{ $shops[$i]['shop_location'] }}</td>
+                                <td class="btn-group">
+                                    <button type="button" class="btn btn-warning" name="edit" data-id={{ $shops[$i]['shop_id'] }}><i class="fa fa-wrench" aria-hidden="true"></i></button>
+                                    <button type="button" class="btn btn-danger" name="delete" data-id={{ $shops[$i]['shop_id'] }}><i class="fa fa-trash" aria-hidden="true"></i></button>
+                                </td>
+                            </tr>
+                            @endfor
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-8">
+            <div class="container-fluid" style="display: none;">
+                <div class="row">
+                    <div class="col-lg-1"></div>
+                    <div class="col-lg-10">
+                        <div class="container-fluid store ">
+                            <div class="row">
+                                <div class="col-lg-4 no_padding">
+                                    <div class="row">
+                                        <div class="img">
+                                            <img alt="Card image cap" src="img/food/test.jpg">
+                                        </div>
+                                    </div>
+                                    <div class="row upload ">
+                                        <div class="container-fluid no_padding">
+                                            <label class="custom-file" id="customFile">
+                                                <input type="file" class="custom-file-input" id="exampleInputFile" aria-describedby="fileHelp">
+                                                <span class="custom-file-control form-control-file"></span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="row submit">
+                                        <div class="container-fluid">
+                                            <div class="btn-group" role="group" aria-label="Basic example">
+                                                <button type="button" name="submit" class="btn btn-success btn-lg">Submit</button>
+                                                <button type="button" name="clear" class="btn btn-secondary btn-lg">Clear</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-8 ">
+                                    <div class="container-fluid title">
+                                        <div class="container-fluid no_padding">
+                                            <div class="row">
+                                                <div class="col-xl-3">Name </div>
+                                                <div class="col-xl-9">
+                                                    <input class="form-control" type="hidden" name="id" disabled="" />
+                                                    <input class="form-control" type="text" name="name" placeholder="Enter name here." />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <div class="container-fluid no_padding">
+                                            <div class="row">
+                                                <div class="col-xl-3">Canteen </div>
+                                                <div class="col-xl-9">
+                                                    <input class="form-control" type="text" name="canteen" placeholder="Enter name here." />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <div class="container-fluid no_padding">
+                                            <div class="row">
+                                                <div class="col-xl-3">Location </div>
+                                                <div class="col-xl-9">
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon">Lat</span>
+                                                        <input type="text" class="form-control" aria-describedby="Lat"  name="lat">
+                                                        <span class="input-group-addon">Lng</span>
+                                                        <input type="text" class="form-control" aria-describedby="Lng"  name="lng">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <div class="container-fluid recommended no_padding">
+                                            <div class="row">
+                                                <div class="col-xl-3">Recommend </div>
+                                                <div class="col-xl-9">
+                                                    <input class="form-control" type="text" name="recommend" placeholder="Null" readonly/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <div class="container-fluid description">
+                                            <div class="row">
+                                                <label for="description">
+                                                    <h4>Description</h4></label>
+                                                <textarea class="form-control" name="description" placeholder="Description Here." rows="3"></textarea>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <div class="container-fluid items">
+                                            <div class="form-group">
+                                                <label for="food">Foods</label>
+                                                <select multiple class="form-control" name="food">
+                                                    <option>1</option>
+                                                    <option>2</option>
+                                                    <option>3</option>
+                                                    <option>4</option>
+                                                    <option>5</option>
+                                                </select>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-xl-6">
+                                                    <input type="text" class="form-control" name="foodname" placeholder="Foodname">
+                                                </div>
+                                                <div class="col-xl-2">
+                                                    <button type="submit" class="btn btn-success" name="add">Add</button>
+                                                </div>
+                                                <div class="col-xl-3">
+                                                    <button type="submit" class="btn btn-danger" name="button_food_delete">Delete Selected</button>
+                                                </div>
+                                                <div class="col-xl-1"></div>
+                                            </div>
+                                            <hr>
+                                            <div class="row special">
+                                                <div class="col-xl-2 no_padding">
+                                                    <p>Special</p>
+                                                </div>
+                                                <div class="col-xl-4">
+                                                    <div class="form-check">
+                                                        <label class="form-check-label">
+                                                            <input class="form-check-input" name="vege" type="checkbox" value=""> Vegetarian
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xl-4">
+                                                    <div class="form-check">
+                                                        <label class="form-check-label">
+                                                            <input class="form-check-input" name="halal" type="checkbox" value=""> Halal
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xl-1"></div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="inlineRight goBack">
-                                <a class="back" onclick="">Submit</i></a>
-                            </div>
-                            <br>
-                            <hr>
-                            <div class="recommended">
-                                <div class="form-group row">
-                                    <label class="col-sm-4 col-form-label">Recommeded : </label>
-                                    <div class="col-sm-8">
-                                        <input type="text" name="recomended" placeholder="Store name" value="Null" class="form-control" disabled="">
-                                    </div>
-                                </div>
-                            </div>
-                            <hr>
                         </div>
-                        <div class="description">
-                            <textarea name="description" class="form-control">test</textarea>
-                        </div>
-                        <div class="food">
-                            <div class="form-group row" style="min-height:initial;">
-                                <label class="col-sm-2">food:</label>
-                                <div class="col-sm-10">
-                                    <div class="input-group">
-                                    <input type="text" class="form-control" name="food[]" value="ข้าวผัดกะเพรา">
-                                    <span class="input-group-btn">
-                                        <button class="btn btn-secondary" type="button">Add</button>
-                                    </span>
-                                </div>
-                                </div>
-                            </div>
-                            <div class="row" style="min-height:initial;">
-                                <div class="col-sm-6">
-                                    <div class="input-group">
-                                        <input type="text" class="form-control" name="food[]" value="ข้าวผัดกะเพรา" disabled="">
-                                        <span class="input-group-btn">
-                                            <button class="btn btn-secondary" type="button">Del</button>
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="input-group">
-                                        <input type="text" class="form-control" name="food[]" value="ข้าวผัดกะเพรา" disabled="">
-                                        <span class="input-group-btn">
-                                            <button class="btn btn-secondary" type="button">Del</button>
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="input-group">
-                                        <input type="text" class="form-control" name="food[]" value="ข้าวผัดกะเพรา" disabled="">
-                                        <span class="input-group-btn">
-                                            <button class="btn btn-secondary" type="button">Del</button>
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="input-group">
-                                        <input type="text" class="form-control" name="food[]" value="ข้าวผัดกะเพรา" disabled="">
-                                        <span class="input-group-btn">
-                                            <button class="btn btn-secondary" type="button">Del</button>
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="footer"></div>
+                        <div class="col-lg-1"></div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-lg-1"></div>
     </div>
-</div>
-<div class="row">
-        <div class="col-lg-2"></div>
-        <div class="col-lg-8">
-            <div class="row content-box">
-                <p class="display-4">Shop Management</p>
-                <table class="table table-hover" id="myTable">
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Name</th>
-                            <th>Canteen</th>
-                            <th>Description</th>
-                            <th>Card IMG</th>
-                            <th>Header IMG</th>
-                            <th>Edit/Delete</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="table-dark">
-                            <th scope="row"></th>
-                            <td><input class="form-control" type="text" id="name" placeholder="ชื่อร้าน"></td>
-                            <td><input class="form-control" type="text" id="location" placeholder="โรงอาหาร"></td>
-                            <td><input class="form-control" type="text" id="description" placeholder="Description"></td>
-                            <td>
-                                <button type="button" class="btn btn-secondary">None</button>
-                            </td>
-                            <td>
-                                <button type="button" class="btn btn-secondary">None</button>
-                            </td>
-                            <td class="btn-group">
-                                <button type="button" class="btn btn-success" onclick="add();">Add</button>
-                            </td>
-                        </tr>
-                        @for ($i = 0; $i < count($shops); $i++)
-                        <tr class="clickable">
-                            <th scope="row">{{ $shops[$i]['shop_id'] }}</th>
-                            <td>{{ $shops[$i]['shop_name'] }}</td>
-                            <td>{{ $shops[$i]['shop_location'] }}</td>
-                            <td>{{ $shops[$i]['shop_description'] }}</td>
-                            <td>
-                                <button type="button" class="btn btn-success">OK!</button>
-                            </td>
-                            <td>
-                                <button type="button" class="btn btn-success">OK!</button>
-                            </td>
-                            <td class="btn-group">
-                                <button type="button" class="btn btn-warning"><i class="fa fa-wrench" aria-hidden="true"></i></button>
-                                <button type="button" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></button>
-                            </td>
-                        </tr>
-                        @endfor
-                    </tbody>
-                </table>
-            </div>
-        </div>
-        <div class="col-lg-2"></div>
-    </div>
-
-
-@endsection
+    @endsection
