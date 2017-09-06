@@ -42,14 +42,16 @@ class RegisterController extends Controller
     /**
      * Get a validator for an incoming registration request.
      *
-     * @param  array  $data
+     * @param form input array $data  (required: username, password; optional: studentid, fbid, dispname, disppict)
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
+            'username' => 'required|string|max:30',
+            'studentid' => 'string|min:10|max:10',
+            'dispname' => 'string|min:1|max:50',
+            'email' => 'required|string|email|max:60|unique:users',
             'password' => 'required|string|min:6|confirmed',
         ]);
     }
@@ -63,9 +65,9 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
+            'user_username' => $data['username'],
+            'user_email' => $data['email'],
+            'user_hpassword' => Hash::make($data['password']);,
         ]);
     }
 }
