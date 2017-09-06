@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Canteen;
 
 use App\Shop;
+use App\Food;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -50,6 +51,8 @@ class BackdoorController extends Controller
             $data['isVeg'] = $request->isVeg;
         if (!property_exists($request, 'isHalal'))
             $data['isHalal'] = $request->isHalal;
+        if (!property_exists($request, 'food'))
+            $data['food'] = $request->food;
         return json_encode(Shop::updateShop($data));
     }
 
@@ -60,6 +63,7 @@ class BackdoorController extends Controller
         }
 
         $data = Shop::where('shop_id', $id)->get()->first();
+        $data['shop_food'] = Food::where('shop_id', $id)->get();
         return response()->json($data);
     }
 

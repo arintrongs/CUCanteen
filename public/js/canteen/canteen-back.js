@@ -107,10 +107,11 @@ var set = function(data) {
 	if (data.shop_isVeg) 		input_vege.prop("checked", true);
 	if (data.shop_isHalal) 	input_halal.prop("checked", true);
 	if (data.shop_picture)		set_image(data.shop_picture);
-	while (data.shop_food){
-		var option = $('<option>').append(data.shop_food[0]);
+	// console.log(data.shop_food);
+	for (var i=0; i < data.shop_food.length; i++) {
+		var option = $('<option>').append(data.shop_food[i].food_name).data('id', data.shop_food[i].food_id);
 		input_food_list.append(option);
-		delete data.shop_food[0];
+		delete data.shop_food[i];
 	}
 }
 
@@ -159,7 +160,7 @@ var add = function() {
 	data = checkData();
 	data['_token'] = CSRF_TOKEN;
 
-	console.log(data);
+	// console.log(data['food']);
 	// return;
 	$.ajax({
 		url: '/backdoor',
@@ -211,16 +212,20 @@ var getVal = function(sec) {
 		if (sec.attr('type') == 'checkbox')
 			return sec.is(":checked");
 
-		return sec.val();
-	}
-
-	if (sec[0].tagName == 'SELECTOR')
-	{
-		var data = [];
-		for (var i = 0; i < sec[0].children.length; i++) {
-			data.push(sec[0].children[i].val());
+		// console.log(sec[0].tagName );
+		if (sec[0].tagName == 'SELECT')
+		{
+			var data = [];
+			for (var i = 0; i < sec[0].children.length; i++) {
+				var tmp = { 'val' : sec[0].children[i].innerText };
+				if ($(sec[0].children[i]).data('id'))
+					tmp['id'] = $(sec[0].children[i]).data('id');
+				data.push(tmp);
+			}
+			return data;
 		}
-		return data;
+
+		return sec.val();
 	}
 
 	var data = [];

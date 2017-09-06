@@ -141,7 +141,7 @@
                                                     <button type="submit" class="btn btn-success" name="add">Add</button>
                                                 </div>
                                                 <div class="col-xl-3">
-                                                    <button type="submit" class="btn btn-danger" name="button_food_delete">Delete Selected</button>
+                                                    <button type="submit" class="btn btn-danger" name="food_delete">Delete Selected</button>
                                                 </div>
                                                 <div class="col-xl-1"></div>
                                             </div>

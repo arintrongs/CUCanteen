@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use App\Comment;
 use App\Food;
+use App\PicturePath;
 
 class Shop extends Model
 {
@@ -22,6 +23,11 @@ class Shop extends Model
      */
     protected $connection = 'mysql';
 
+    /**
+     * The primary key for the model.
+     *
+     * @var string
+     */
     protected $primaryKey = 'shop_id';
 
     /**
@@ -91,6 +97,11 @@ class Shop extends Model
      * @var string, Failure Cause, "Succeed" returned if successfully added an user
      */
     public static function updateShop($data){
+        // if(array_key_exists('picture', $data)){
+        //     //Call API to upload picture and obtain new $_FILE
+        //     $shop['shop_picture'] = $data['picture'];
+        // }
+
         if(array_key_exists('id', $data) && $data['id'] != 0)
         {
             $shop = self::where('shop_id', $data['id'])->first();
@@ -102,12 +113,18 @@ class Shop extends Model
                 $shop->shop_lat = $data['lat'];
             if(array_key_exists('lng', $data))
                 $shop->shop_lng = $data['lng'];
-            if(array_key_exists('picture', $data))
-                $shop->shop_picture = $data['picture'];
+            // if(array_key_exists('picture', $data))
+            //     $shop->shop_picture = $data['picture'];
             if(array_key_exists('time', $data))
                 $shop->shop_time = $data['time'];
             if(array_key_exists('description', $data))
                 $shop->shop_description = $data['description'];
+
+            // if(array_key_exists('picture', $data))
+            //     PicturePath::where('shop_id', $data['id'])->addPic($data);
+
+            if(array_key_exists('food', $data))
+                self::saveFood($data['id'], $data['food']);
 
             $shop->shop_isVeg = (array_key_exists('isVeg', $data)) ? ($data['isVeg'] == "true") : 0;
             $shop->shop_isHalal = (array_key_exists('isHalal', $data)) ? ($data['isHalal'] == "true") : 0;
@@ -129,12 +146,18 @@ class Shop extends Model
                 $shop['shop_lat'] = $data['lat'];
             if(array_key_exists('lng', $data))
                 $shop['shop_lng'] = $data['lng'];
-            if(array_key_exists('picture', $data))
-                $shop['shop_picture'] = $data['picture'];
+            // if(array_key_exists('picture', $data))
+            //     $shop['shop_picture'] = $data['picture'];
             if(array_key_exists('time', $data))
                 $shop['shop_time'] = $data['time'];
             if(array_key_exists('description', $data))
                 $shop['shop_description'] = $data['description'];
+
+            // if(array_key_exists('picture', $data))
+            //     PicturePath::addPic($data);
+
+            if(array_key_exists('food', $data))
+                self::saveFood($data['id'], $data['food']);
 
             $shop->shop_isVeg = (array_key_exists('isVeg', $data)) ? ($data['isVeg'] == "true") : 0;
             $shop->shop_isHalal = (array_key_exists('isHalal', $data)) ? ($data['isHalal'] == "true") : 0;
@@ -142,6 +165,26 @@ class Shop extends Model
             if($error != "") 
                 return "Error: " . $error . "is/are missing";
             return $shop -> save();
+        }
+    }
+
+    public static function saveFood($shop_id, $foods) {
+        $food_key = [];
+        foreach ($foods as $food)
+        {
+            array_push($food_key, $food['val']);
+            Food::updateFood($shop_id, $food);
+        }
+
+        $old_foods = Food::where('shop_id', $shop_id)->get();
+        foreach ($old_foods as $food) {
+            if (!in_array($food['food_name'], $food_key))
+                $food->delete();
+            else
+            {
+                $key = array_search($food['food_name'], $food_key);
+                unset($food_key[$key]);
+            }
         }
     }
 }

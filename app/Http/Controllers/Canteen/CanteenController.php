@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Canteen;
 
 use App\Comment;
 use App\Shop;
+use App\Food;
 use App\Http\Controllers\Canteen\UserController;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -47,6 +48,7 @@ class CanteenController extends Controller
             'name' => $tmp['shop_name'],
             'description' => $tmp['shop_description'],
             'img' => $tmp['shop_picture'],
+            'foods' => Food::where('shop_id', $id)->get(),
             'rating' => Shop::getShopRating($id),
             'comments' => Comment::getCommentShop(),
         );
@@ -102,7 +104,7 @@ class CanteenController extends Controller
         $diff_lam = ($lng2 - $lng1) * M_PI / 180;
 
         $a = sin($diff_rad/2) * sin($diff_rad/2) + cos($rad1) * cos($rad2) * sin($diff_lam/2) * sin($diff_lam/2);
-        $c = 2 * atan2(sqrt(a), sqrt(1-a));
+        $c = 2 * atan2(sqrt($a), sqrt(1-$a));
 
         return 6371000 * $c;
     }
