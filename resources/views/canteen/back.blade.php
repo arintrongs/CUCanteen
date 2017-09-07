@@ -105,12 +105,34 @@
                                             </div>
                                         </div>
                                         <hr>
-                                        <div class="container-fluid recommended no_padding">
+                                        <div class="container-fluid no_padding">
                                             <div class="row">
-                                                <div class="col-xl-3">Recommend </div>
+                                                <div class="col-xl-3">Open time </div>
                                                 <div class="col-xl-9">
-                                                    <input class="form-control" type="text" name="recommend" placeholder="Null" readonly/>
+                                                    <input class="form-control" type="text" name="time" placeholder="00:00 - 00:00" />
                                                 </div>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <div class="container-fluid no_padding">
+                                            <div class="row">
+                                                    <div class="col-xl-3">
+                                                        <p>Special</p>
+                                                    </div>
+                                                    <div class="col-xl-4">
+                                                        <div class="form-check">
+                                                            <label class="form-check-label">
+                                                                <input class="form-check-input" name="vege" type="checkbox" value=""> Vegetarian
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xl-4">
+                                                        <div class="form-check">
+                                                            <label class="form-check-label">
+                                                                <input class="form-check-input" name="halal" type="checkbox" value=""> Halal
+                                                            </label>
+                                                        </div>
+                                                    </div>
                                             </div>
                                         </div>
                                         <hr>
@@ -142,27 +164,6 @@
                                                 </div>
                                                 <div class="col-xl-3">
                                                     <button type="submit" class="btn btn-danger" name="food_delete">Delete Selected</button>
-                                                </div>
-                                                <div class="col-xl-1"></div>
-                                            </div>
-                                            <hr>
-                                            <div class="row special">
-                                                <div class="col-xl-2 no_padding">
-                                                    <p>Special</p>
-                                                </div>
-                                                <div class="col-xl-4">
-                                                    <div class="form-check">
-                                                        <label class="form-check-label">
-                                                            <input class="form-check-input" name="vege" type="checkbox" value=""> Vegetarian
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                                <div class="col-xl-4">
-                                                    <div class="form-check">
-                                                        <label class="form-check-label">
-                                                            <input class="form-check-input" name="halal" type="checkbox" value=""> Halal
-                                                        </label>
-                                                    </div>
                                                 </div>
                                                 <div class="col-xl-1"></div>
                                             </div>
