@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class seeder_tb_comments extends Seeder
+class CommentsSeeder extends Seeder
 {
     /**
      * Run the database seeds.

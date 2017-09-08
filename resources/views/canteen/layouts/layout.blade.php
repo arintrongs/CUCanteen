@@ -13,7 +13,7 @@
         <link href="https://fonts.googleapis.com/css?family=Athiti" rel="stylesheet">
         <!-- CSS-->
         <link rel="stylesheet" type="text/css" href="{{ URL :: asset('css/app.css') }}">
-        <link rel="stylesheet" type="text/css" href="{{ URL :: asset('fonts/font-awesome.min.css')}}">
+        <link rel="stylesheet" type="text/css" href="{{ URL :: asset('css/font-awesome.min.css')}}">
           
     </head>
     <body>

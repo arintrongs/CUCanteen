@@ -2,7 +2,7 @@
 use App\Http\Controllers\Canteen\UserController;
 use Illuminate\Database\Seeder;
 
-class seeder_tb_users extends Seeder
+class UsersSeeder extends Seeder
 {
     /**
      * Run the database seeds.
