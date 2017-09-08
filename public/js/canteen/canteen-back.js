@@ -7,6 +7,7 @@ var input_name = $('input[name="name"]');
 var input_canteen = $('input[name="canteen"]');
 var input_lat = $('input[name="lat"]');
 var input_lng = $('input[name="lng"]');
+var input_time = $('input[name="time"]');
 var input_description = $('textarea[name="description"]');
 var input_food_list = $('select[name="food"]');
 var input_food_name = $('input[name="foodname"]');
@@ -67,6 +68,7 @@ var food_input_add = function() {
 }
 
 var food_select_del = function(val) {
+	if (!val.length) return;
 	for (var j = 0; j < val.length; j++) {
 		for (var i = 0; i < input_food_list[0].children.length; i++) {
 			if (input_food_list[0].children[i].outerText == val[j])
@@ -100,13 +102,14 @@ var set_image = function(url) {
 var set = function(data) {
 	if (data.shop_id) 		input_id.val(data.shop_id);
 	if (data.shop_name)		input_name.val(data.shop_name);
-	if (data.shop_location)  input_canteen.val(data.shop_location);
+	if (data.shop_location) input_canteen.val(data.shop_location);
 	if (data.shop_lat) 		input_lat.val(data.shop_lat);
 	if (data.shop_lng) 		input_lng.val(data.shop_lng);
+	if (data.shop_time) 	input_time.val(data.shop_time);
 	if (data.shop_description) input_description.val(data.shop_description);
-	if (data.shop_isVeg) 		input_vege.prop("checked", true);
+	if (data.shop_isVeg) 	input_vege.prop("checked", true);
 	if (data.shop_isHalal) 	input_halal.prop("checked", true);
-	if (data.shop_picture)		set_image(data.shop_picture);
+	if (data.shop_picture)	set_image(data.shop_picture);
 	// console.log(data.shop_food);
 	for (var i=0; i < data.shop_food.length; i++) {
 		var option = $('<option>').append(data.shop_food[i].food_name).data('id', data.shop_food[i].food_id);
@@ -187,15 +190,9 @@ var checkData = function() {
 	data['lat'] = getVal(input_lat);
 	data['lng'] = getVal(input_lng);
 	// data['picture'] = getVal('input[name="picture"]');
-	// data['time'] = getVal('input[name="time"]');
+	data['time'] = getTime(input_time);
 	data['isVeg'] = getVal(input_vege);
 	data['isHalal'] = getVal(input_halal);
-
-	// $.each(data, function(index, val) {
-	// 	console.log(data[index]);
-	// 	if (!data[index] )
-	// 		delete data[index];
-	// });
 	return data;
 }
 
@@ -234,4 +231,13 @@ var getVal = function(sec) {
 	}
 
 	return data;
+}
+
+var getTime = function(sec)
+{
+	if (!sec.val()) return;
+	var time = sec.val().split("-");
+	var open = time[0].replace(/^\s+|\s+$/g, '');
+	var close = time[1].replace(/^\s+|\s+$/g, '');
+	return open + ' - ' + close;
 }

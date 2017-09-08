@@ -25,6 +25,8 @@ class CreateTbComments extends Migration
             $table->text('comment_text')->comment('Review wrtten by users')->nullable();
             //$table->text('comment_food')->comment('Recommended Food')->nullable();
             $table->timestamp(Comment::CREATED_AT);
+            $table->softDeletes();
+
         });
 
         Schema::table('tb_comment', function (Blueprint $table) {

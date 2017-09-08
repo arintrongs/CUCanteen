@@ -56,7 +56,7 @@
                                     <div class="row upload ">
                                         <div class="container-fluid no_padding">
                                             <label class="custom-file" id="customFile">
-                                                <input type="file" class="custom-file-input" id="exampleInputFile" aria-describedby="fileHelp">
+                                                <input type="file" class="custom-file-input" name="file" aria-describedby="fileHelp">
                                                 <span class="custom-file-control form-control-file"></span>
                                             </label>
                                         </div>

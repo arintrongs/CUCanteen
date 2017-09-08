@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Canteen;
 
 use App\Shop;
 use App\Food;
+use App\Http\Controllers\Canteen\UserController;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -14,8 +15,11 @@ class BackdoorController extends Controller
      *
      * @return Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        if (!UserController::isAdmin($request))
+            return response('Unauthorized.', 404);
+
     	$all_shops = Shop::get();
     	$data = array(
     		'shops' => $all_shops,
@@ -28,6 +32,9 @@ class BackdoorController extends Controller
     	if (! $request->ajax()) {
             return response('Unauthorized.', 401);
         }
+
+        if (!UserController::isAdmin($request))
+            return response('Unauthorized.', 404);
 
         $data = array(
         	'name' => $request->name,
@@ -62,6 +69,9 @@ class BackdoorController extends Controller
             return response('Unauthorized.', 401);
         }
 
+        if (!UserController::isAdmin($request))
+            return response('Unauthorized.', 404);
+
         $data = Shop::where('shop_id', $id)->get()->first();
         $data['shop_food'] = Food::where('shop_id', $id)->get();
         return response()->json($data);
@@ -72,6 +82,9 @@ class BackdoorController extends Controller
         if (! $request->ajax()) {
             return response('Unauthorized.', 401);
         }
+
+        if (!UserController::isAdmin($request))
+            return response('Unauthorized.', 404);
 
         $data = Shop::where('shop_id', $id)->delete();
         return response()->json($data);

@@ -27,6 +27,15 @@ class UserController extends Controller
 		return false;
 	}
 
+	public static function isAdmin(Request $request)
+	{
+		if (self::check($request))
+			if ($request->session()->get('r') == 'admin')
+				return true;
+
+		return false;
+	}
+
 	/**
      * Handle an authentication attempt.
      *
@@ -47,6 +56,7 @@ class UserController extends Controller
 	        // Authentication passed...
 	        $request->session()->put('logon', 'true');
 	        $request->session()->put('uid', $tmp['user_id']);
+	        $request->session()->put('r', $tmp['user_role']);
 
 	        $data = array(
 	        	'success' => 'ok',

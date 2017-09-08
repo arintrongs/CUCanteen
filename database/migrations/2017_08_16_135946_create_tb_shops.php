@@ -18,7 +18,7 @@ class CreateTbShops extends Migration
             $table->bigIncrements('shop_id')->unsigned();
             $table->string('shop_name');
             $table->string('shop_location')->comment('Location name');
-            $table->time('shop_time')->comment('Open/Close Time')->nullable();
+            $table->string('shop_time')->comment('Open/Close Time')->nullable();
             $table->double('shop_lat')->comment('Shop Latitude')->nullable();
             $table->double('shop_lng')->comment('Shop Longtitude')->nullable();
             $table->text('shop_description')->nullable();

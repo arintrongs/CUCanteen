@@ -12,3 +12,4 @@ yarn-error.log
 .env
 app.yaml
 sftp-config.json
+sftp-config.json-1

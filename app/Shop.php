@@ -161,6 +161,7 @@ class Shop extends Model
     }
 
     public static function saveFood($shop_id, $foods) {
+        if (count($foods) <= 0) return;
         $food_key = [];
         foreach ($foods as $food)
         {

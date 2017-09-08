@@ -20,11 +20,7 @@
         ],
         "psr-4": {
             "App\\": "app/"
-        },
-        // "files" : [
-        //     "app/GoogleApi.php",
-        //     "vendor/google/appengine/runtime/autoloader.php"
-        // ]
+        }
     },
     "autoload-dev": {
         "psr-4": {
