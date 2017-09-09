@@ -120,8 +120,6 @@ class Shop extends Model
 
             if(array_key_exists('picture', $data))
                 $shop->shop_picture = $data['picture'];
-            else
-                $shop->shop_picture = '';
 
             if(array_key_exists('food', $data))
                 self::saveFood($data['id'], $data['food']);
@@ -150,6 +148,11 @@ class Shop extends Model
                 $shop['shop_time'] = $data['time'];
             if(array_key_exists('description', $data))
                 $shop['shop_description'] = $data['description'];
+
+            if(array_key_exists('picture', $data))
+                $shop->shop_picture = $data['picture'];
+            else
+                $shop->shop_picture = '';
 
             $shop->shop_isVeg = (array_key_exists('isVeg', $data)) ? ($data['isVeg'] == "true") : 0;
             $shop->shop_isHalal = (array_key_exists('isHalal', $data)) ? ($data['isHalal'] == "true") : 0;
