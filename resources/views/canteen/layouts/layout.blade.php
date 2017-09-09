@@ -46,18 +46,33 @@
                 <div class="loginmodal-container">
                     <h1>Login to Your Account</h1><br>
                   <form method="post" onsubmit="return false;">
-                    <input type="text" name="user" placeholder="Username">
+                    <input type="text" name="user" placeholder="Username" maxlength="30">
                     <input type="password" name="pass" placeholder="Password">
                     <input type="submit" name="login" class="login loginmodal-submit" value="Login" onclick="return doLogin();">
                   </form>
                     
                   <div class="login-help">
-                    <a href="#">Register</a> - <a href="#">Forgot Password</a>
+                    <a href="#" data-toggle="modal" data-target="#register-modal" data-dismiss="modal">Register</a>
                   </div>
                 </div>
             </div>
           </div>
 
+          <!-- Register's Modal -->
+          <div class="modal fade" id="register-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+          <div class="modal-dialog">
+                <div class="loginmodal-container">
+                    <h1>Register</h1><br>
+                  <form method="post" onsubmit="return false;">
+                    <input type="text" name="user" placeholder="Username" maxlength="30">
+                    <input type="password" name="pass" placeholder="Password">
+                    <input type="password" name="re-pass" placeholder="Re-type Password">
+                    <input type="text" name="email" placeholder="E-mail" maxlength="60">
+                    <input type="submit" name="register" class="login regismodal-submit" value="Register" onclick="">
+                  </form>
+                </div>
+            </div>
+          </div>
         <!-- Store's Content -->
         <div class="container-fluid store-content" style="display: none;">
             <div class="row">
