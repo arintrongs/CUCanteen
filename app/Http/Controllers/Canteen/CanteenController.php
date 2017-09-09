@@ -8,6 +8,7 @@ use App\Food;
 use App\Http\Controllers\Canteen\UserController;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Http\Request;
 
 class CanteenController extends Controller
@@ -23,6 +24,7 @@ class CanteenController extends Controller
         // print_r($all_shops);
         for ($i=0; $i < count($all_shops); $i++) { 
             $all_shops[$i]['rating'] = Shop::getShopRating($all_shops[$i]['shop_id']);
+            $all_shops[$i]['shop_picture'] = ($all_shops[$i]['shop_picture'] != '') ? Config::get('image.full_size', 'uploads/') . $all_shops[$i]['shop_picture'] : asset('img/food/test.jpg');
         }
         $data = array(
             'shops' => $all_shops,
@@ -47,7 +49,7 @@ class CanteenController extends Controller
             'id' => $id,
             'name' => $tmp['shop_name'],
             'description' => $tmp['shop_description'],
-            'img' => $tmp['shop_picture'],
+            'img' => ($tmp['shop_picture'] != '') ? Config::get('image.full_size', 'uploads/') . $tmp['shop_picture'] : asset('img/food/test.jpg'),
             'foods' => Food::where('shop_id', $id)->get(),
             'rating' => Shop::getShopRating($id),
             'comments' => Comment::getCommentShop(),

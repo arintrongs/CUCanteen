@@ -113,15 +113,15 @@ class Shop extends Model
                 $shop->shop_lat = $data['lat'];
             if(array_key_exists('lng', $data))
                 $shop->shop_lng = $data['lng'];
-            // if(array_key_exists('picture', $data))
-            //     $shop->shop_picture = $data['picture'];
             if(array_key_exists('time', $data))
                 $shop->shop_time = $data['time'];
             if(array_key_exists('description', $data))
                 $shop->shop_description = $data['description'];
 
-            // if(array_key_exists('picture', $data))
-            //     PicturePath::where('shop_id', $data['id'])->addPic($data);
+            if(array_key_exists('picture', $data))
+                $shop->shop_picture = $data['picture'];
+            else
+                $shop->shop_picture = '';
 
             if(array_key_exists('food', $data))
                 self::saveFood($data['id'], $data['food']);

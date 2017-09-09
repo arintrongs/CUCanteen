@@ -16,7 +16,7 @@
 @section('content')
     @for ($i = 0; $i < $count; ++$i)
         @include('canteen/layouts/card', [
-            'img' => URL :: asset('img/food/test.jpg'),
+            'img' => $shops[$i]['shop_picture'],
             'id' => $shops[$i]['shop_id'],
             'rating' => $shops[$i]['rating'],
             'title' => $shops[$i]['shop_name'],

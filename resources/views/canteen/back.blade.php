@@ -45,7 +45,7 @@
                 <div class="row">
                     <div class="col-lg-1"></div>
                     <div class="col-lg-10">
-                        <div class="container-fluid store ">
+                        <div class="container-fluid store">
                             <div class="row">
                                 <div class="col-lg-4 no_padding">
                                     <div class="row">
@@ -55,10 +55,12 @@
                                     </div>
                                     <div class="row upload ">
                                         <div class="container-fluid no_padding">
+                                        <form action="{{  route('upload-post') }}" class="dropzone" id="real-dropzone">
                                             <label class="custom-file" id="customFile">
                                                 <input type="file" class="custom-file-input" name="file" aria-describedby="fileHelp">
                                                 <span class="custom-file-control form-control-file"></span>
                                             </label>
+                                        </form>
                                         </div>
                                     </div>
                                     <div class="row submit">

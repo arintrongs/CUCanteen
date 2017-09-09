@@ -11,15 +11,16 @@
 |
 */
 
- Route::group(['domain' => 'ratemycanteen.ojudge.in.th'], function() {
+Route::group(['domain' => 'ratemycanteen.ojudge.in.th'], function() {
 	Route::group(['namespace'=>'Canteen'], function () {
 		Route::get('/', 'CanteenController@index');
 
-		// Route::get('/adduser', 'UserController@addAdmin');
 		Route::post('/user', 'UserController@authenticate');
 	    Route::post('/canteen/scopeDist', 'CanteenController@scopeDist');
 	    Route::resource('/canteen', 'CanteenController');
-	  
 	    Route::resource('/backdoor', 'BackdoorController');
+
+		Route::post('upload', ['as' => 'upload-post', 'uses' =>'ImageController@postUpload']);
+		Route::post('upload/delete', ['as' => 'upload-remove', 'uses' =>'ImageController@deleteUpload']);
 	});
- });
+});

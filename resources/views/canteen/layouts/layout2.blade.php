@@ -27,17 +27,11 @@
         <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
         <script src="http://momentjs.com/downloads/moment.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script> 
-        <script src="js/jquery.ui.widget.js"></script>
-        <script src="//blueimp.github.io/JavaScript-Load-Image/js/load-image.all.min.js"></script>
-        <script src="//blueimp.github.io/JavaScript-Canvas-to-Blob/js/canvas-to-blob.min.js"></script>
-        <script src="js/jquery.iframe-transport.js"></script>
-        <script src="js/jquery.fileupload.js"></script>
-        <script src="js/jquery.fileupload-process.js"></script>
-        <script src="js/jquery.fileupload-image.js"></script>
-        <script src="js/jquery.fileupload-validate.js"></script>
-        <script src="js/canteen/canteen-back.js"></script>
-        <script src="js/canteen/upload.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+        <script src="js/jquery.cookie.js"></script>
+        <script src="js/dropzone.js"></script>
+        <script type="text/javascript" src="js/canteen/upload.js"></script>
+        <script type="text/javascript" src="js/canteen/canteen-back.js"></script>
         <script>
            $('.custom-file-input').on('change',function(){
   $(this).next('.form-control-file').addClass("selected").html($(this).val());

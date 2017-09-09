@@ -84,6 +84,7 @@ var clear = function() {
 	input_canteen.val(text);
 	input_lat.val(text);
 	input_lng.val(text);
+	input_time.val(text);
 	input_description.val(text);
 	input_food_name.val(text);
 	while (input_food_list[0].children.length)
@@ -93,13 +94,15 @@ var clear = function() {
 }
 
 var set_image = function(url) {
+	picture = url;
 	var host = img.parent();
 	while (host[0].children.length)
 		host[0].children[0].remove();
-	host.append($('<img>').attr('src', url));
+	host.append($('<img>').attr('src', './uploads/' + url));
 }
 
 var set = function(data) {
+	if (changed) 			changePic(picture);
 	if (data.shop_id) 		input_id.val(data.shop_id);
 	if (data.shop_name)		input_name.val(data.shop_name);
 	if (data.shop_location) input_canteen.val(data.shop_location);
@@ -163,8 +166,9 @@ var add = function() {
 	data = checkData();
 	data['_token'] = CSRF_TOKEN;
 
-	// console.log(data['food']);
+	// console.log(data);
 	// return;
+
 	$.ajax({
 		url: '/backdoor',
 		type: 'POST',
@@ -172,7 +176,8 @@ var add = function() {
 		data: data,
 	})
 	.done(function(data) {
-		// console.log(data);
+		changed = false;
+		picture = null;
 		location.reload();
 	})
 	.fail(function(html, statusCode) {
@@ -189,7 +194,7 @@ var checkData = function() {
 	data['food'] = getVal(input_food_list);
 	data['lat'] = getVal(input_lat);
 	data['lng'] = getVal(input_lng);
-	// data['picture'] = getVal('input[name="picture"]');
+	if (picture) data['picture'] = picture;
 	data['time'] = getTime(input_time);
 	data['isVeg'] = getVal(input_vege);
 	data['isHalal'] = getVal(input_halal);

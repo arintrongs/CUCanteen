@@ -72,7 +72,7 @@ var shop_card = function(data) {
 }
 
 var shop_box = function(data) {
-	var img = $('<img>').attr({  alt: 'Card image cap', src: 'img/food/test.jpg', }); //data.img_src
+	var img = $('<img>').attr({  alt: 'Card image cap', src: data.img, }); //
 	var dcl4 = $('<div>').addClass('col-lg-4').addClass('no-padding').append($('<div>').addClass('img').append(img));
 	var dtt = $('<div>').addClass('title');
 	dtt.append('<div class="inlineLeft"><h1>' + data.name + '</h1></div><div class="inlineRight goBack"><a class="back" onclick="shop_hide();">Back&nbsp;<i class="fa fa-angle-right" aria-hidden="true"></i></a></div><br><hr>');
