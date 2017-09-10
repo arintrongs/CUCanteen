@@ -92,7 +92,9 @@ class CanteenController extends Controller
         $food = Food::where(['food_name' => $request->input('food'), 'shop_id' => $request->input('shop_id')])->first();
         echo $food['food_id'];
         if($food != null) $food_id = $food['food_id'];
-        else $food_id = 0;
+        else {
+            $food_id = Food::updateFood($request->input('shop_id'), ['val' => $request->input('food')])['food_id'];
+        }
 
         $data = array(
             'user_id' => $request->session()->get('uid'),
@@ -101,8 +103,8 @@ class CanteenController extends Controller
             'comment' => $request->input('comment'),
             'food_id' => $food_id,
         );
-        
-        return Comment::addComment($data);
+        Comment::addComment($data);
+        return self::show($request,$request->input('shop_id'));
     }
 
     private function toDistance($lat1, $lng1, $lat2, $lng2) {

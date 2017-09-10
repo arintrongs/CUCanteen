@@ -106,9 +106,9 @@ class Comment extends Model{
             $comment['comment_text'] = $data['comment'];
             // $comment['comment_food'] = $data['food'];
             $comment->save();
-            return true;
+            return "Succeed";
         }
-        return false;
+        return "Failure";
     }
 
     /**

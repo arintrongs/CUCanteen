@@ -14,7 +14,7 @@
 	</div>
 	<div class="row ">
 		<div class="col-lg-6">
-			<input type="text" class="form-control" id="food" data-provide="typeahead"  autocomplete="off" placeholder="อาหารที่แนะนำ">
+			<input type="text" class="form-control" id="food" data-provide="typeahead" data-source="" autocomplete="off" placeholder="อาหารที่แนะนำ">
 		</div>
 		<div class="col-lg-3 rate " >
 			<div class="input-group">

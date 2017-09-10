@@ -38,7 +38,7 @@ class Food extends Model
      * Update a food (new if it doesn't exist)
      *
      * @param form input array $data  (required: name, shop_id)
-     * @var string, Failure Cause, "Succeed" returned if successfully added an user
+     * @var string, Failed, Food returned if successfully added a Food
      */
 
     public static function updateFood($shop_id, $data = null){
@@ -50,6 +50,7 @@ class Food extends Model
             
             $food['shop_id'] = $shop_id;
             $food -> save();
+            return $food;
         }
         else
         {
@@ -57,9 +58,10 @@ class Food extends Model
             $food['food_name'] = $data['val'];
             $food['shop_id'] = $shop_id;
             $food -> save();
+            return $food;
         }
 
-        return "Succeed";
+        return "Failed";
     }
 
     /**
