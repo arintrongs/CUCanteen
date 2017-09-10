@@ -65,6 +65,7 @@ var food_input_add = function() {
 	var val = input_food_name.val();
 	var option = $('<option>').append(val);
 	input_food_list.append(option);
+	input_food_name.val("");
 }
 
 var food_select_del = function(val) {

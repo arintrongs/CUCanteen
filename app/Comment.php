@@ -45,11 +45,11 @@ class Comment extends Model{
      *
      * @var array of comment if succeed, false returned if there is an error
      */
-    public static function getCommentShop($shop_id = 0,$count = 10){
-    	if($shop_id!=0){
+    public static function getCommentShop($shop_id = 0, $count = 10){
+    	if($shop_id != 0) {
             $comments = self::where('shop_id', $shop_id)
-                ->leftJoin('user', 'tb_comment.user_id', '=', 'tb_user_profile.user_id')
-                ->select('tb_comment.*', 'tb_user_profile.dispname', 'tb_user_profile.name')
+                ->leftJoin('tb_user', 'tb_comment.user_id', '=', 'tb_user.user_id')
+                ->select('tb_comment.*', 'tb_user.user_dispname', 'tb_user.user_username')
                 ->orderBy('tb_comment.comment_rating', 'desc')
                 ->take($count)
                 ->get();
@@ -58,7 +58,7 @@ class Comment extends Model{
                 foreach ($comments as $comment) {
                     $data[] = array(
                         'id' => $comment['comment_id'],
-                        'name' => User::where('user_id',$comment['user_id'])->first()->user_dispname,
+                        'name' => $comment['user_username'],
                         'comment' => $comment['comment_text'],
                         'rating' => $comment['comment_rating'],
                         'recommendedfood' => $comment['comment_food'],
@@ -90,23 +90,22 @@ class Comment extends Model{
     public static function addComment($data = null){
         if($data != null)
         {
-            if(!array_key_exists('comment', $data))
-                $data['comment'] = null;
-            if(!array_key_exists('food', $data))
-                $data['food'] = null;
-            if(self::where(['user_id' => $data['user_id'], 'shop_id' => $data['shop_id']])->first() != null)
-                $comment = self::where(['user_id' => $data['user_id'], 'shop_id' => $data['shop_id']])->first();
-            else 
-                $comment = new Comment;
+            if (!$data['user_id']) return 'false';
+            if (!$data['shop_id']) return 'false';
+            if (!$data['rating'])  return 'false';
+            if (!$data['food_id']) return 'false';
+            if (!$data['comment']) return 'false';
+            $comment = new Comment;
             
             $comment['user_id'] = $data['user_id'];
             $comment['shop_id'] = $data['shop_id'];
             $comment['comment_rating'] = $data['rating'];
+            $comment['food_id'] = $data['food_id'];
             $comment['comment_text'] = $data['comment'];
-            // $comment['comment_food'] = $data['food'];
             $comment->save();
+            return 'true';
         }
-        return "Succeed";
+        return 'false';
     }
 
     /**
@@ -119,11 +118,14 @@ class Comment extends Model{
         if($comment_id != 0)
         {
             $comment = $this->where('comment_id',$comment_id)->get();
-            if($comment == null) return False;
+            if($comment == null) 
+                return False;
             $comment -> forceDelete();
             return True;
         }
-        else return False;
+        
+
+        return False;
     }
 
 

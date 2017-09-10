@@ -1,11 +1,10 @@
 var shop_id = 0;
 
 var comment_others = function(data) {
-	if (data.updatedat == '0000-00-00 00:00:00')
+	if (data.updatedat.date == '0000-00-00 00:00:00')
 		return $('<div>')[0];
 
-	moment().format('YYYY-MM-DD HH:mm:ss');
-	var time = (data.updatedat != '0000-00-00 00:00:00') ? moment(data.updatedat).fromNow() : '';
+	var time = (data.updatedat.date != '0000-00-00 00:00:00') ? moment.utc(data.updatedat.date).fromNow() : '';
 	var drcc = $('<div>').addClass('row').append($('<div>').addClass('container').append(data.comment));
 	var dru = $('<div>').addClass('row user');
 	dru.append('<div class="col-lg-1"><div class="comment-icon"><i class="fa fa-user" aria-hidden="true"></i></div></div>');
@@ -15,62 +14,11 @@ var comment_others = function(data) {
 }
 
 var comment_show = function(div, data) {
-	for (var i = 1; i < div.children.length; i++) {
-		div.children[i].remove();
-	}
-	// console.log(data);
-	$.each(data, function(index, val) {
-		div.append(comment_others(val));
-	});
+	while(div.children.length > 1) div.children[1].remove();
+	$.each(data, function(index, val) { div.append(comment_others(val)); });
 	$('#comment').val('');
 	$('#rate').val('');
 	$('#food').val('');
-}
-
-var commentSubmit = function() {
-	var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
-	var comment = $('#comment').val();
-	var rate = $('#rate').val();
-	var food = $('#food').val();
-
-	if(comment == '') {
-		alert('Please, insert comment.');
-		return;
-	}
-
-	if(food == '') {
-		alert('Please, insert favorite food with this shop.');
-		return;
-	}
-
-	if(rate == '') {
-		alert('Please, rate this shop.');
-		return;
-	}
-
-	$.ajax({
-		url: '/canteen',
-		type: 'POST',
-		dataType: 'text',
-		data: {
-			_token: CSRF_TOKEN,
-			'shop_id': shop_id,
-			'comment': comment,
-			'rating' : rate,
-			'food'	 : food,
-		},
-	})
-	.done(function(data) {
-		console.log(data);
-		if (data == 'logon')
-		{
-			$('#login-modal').modal('show');
-		}
-	})
-	.fail(function(html, statusCode) {
-		errorShow(html.responseText);
-	});
-	
 }
 
 var shop_card = function(data) {
@@ -113,6 +61,60 @@ var shop_rating = function(data) {
 	return dcfr;
 }
 
+var commentSubmit = function() {
+	if (shop_id <= 0)
+	{
+		alert('Please, select shop before comment.\n The system have something wrong.');
+		return;
+	}
+
+	var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+	var comment = $('#comment').val();
+	var rate = $('#rate').val();
+	var food = $('input#food').typeahead("getActive").id;
+
+	if(comment == '') {
+		alert('Please, insert comment.');
+		return;
+	}
+
+	if(!food) {
+		alert('Please, insert favorite food with this shop.');
+		return;
+	}
+
+	if(rate == '') {
+		alert('Please, rate this shop.');
+		return;
+	}
+
+	$.ajax({
+		url: '/canteen',
+		type: 'POST',
+		dataType: 'text',
+		data: {
+			_token: CSRF_TOKEN,
+			'shop_id': shop_id,
+			'comment': comment,
+			'rating' : rate,
+			'food'	 : food,
+		},
+	})
+	.done(function(data) {
+		console.log(data);
+		if (data == 'logon')
+			$('#login-modal').modal('show');
+		else if (data == 'true')
+			location.reload();
+		else
+			alert('The system have something wrong.');
+	})
+	.fail(function(html, statusCode) {
+		// errorShow(html.responseText);
+	});
+	
+}
+
 var shop_show = function(id) {
 	shop_id = id;
 	var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
@@ -128,17 +130,18 @@ var shop_show = function(id) {
 		$('div.container-fluid.store').html(shop_box(data));
 		$('div.container-fluid.rating').html(shop_rating(data).html());
 		comment_show($('div.row.comment-content').children('div.col-lg-5')[0], data.comments);
-
+		$("input#food").typeahead({ source: data.foods, autoSelect: true });
 		$('div.container.card-content').hide();
 		$('div.container-fluid.store-content').show();
 		$('div.row.comment-content').show();
 	})
 	.fail(function(html, statusCode) {
-		errorShow(html.responseText);
+		// errorShow(html.responseText);
 	});
 }
 
 var shop_hide = function() {
+	shop_id = 0;
 	$('div.container.card-content').show();
 	$('div.container-fluid.store-content').hide();
 	$('div.row.comment-content').hide();

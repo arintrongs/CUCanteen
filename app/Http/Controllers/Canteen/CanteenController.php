@@ -52,9 +52,9 @@ class CanteenController extends Controller
             'name' => $tmp['shop_name'],
             'description' => $tmp['shop_description'],
             'img' => ($tmp['shop_picture'] != '') ? Config::get('image.full_size', 'uploads/') . $tmp['shop_picture'] : asset('img/food/test.jpg'),
-            'foods' => Food::where('shop_id', $id)->get(),
+            'foods' => Food::getFood($id),
             'rating' => Shop::getShopRating($id),
-            'comments' => Comment::getCommentShop(),
+            'comments' => Comment::getCommentShop($id),
         );
         return response()->json($data);
     }
@@ -78,7 +78,7 @@ class CanteenController extends Controller
     /**
      * Store the comment.
      *
-     * @return Array
+     * @return Boolean (True on add comment succeed)
      */
     public function store(Request $request)
     {
@@ -92,10 +92,11 @@ class CanteenController extends Controller
         }
 
         $data = array(
-            'shop_id' => $request->input('shop_id'),
             'user_id' => $request->session()->get('uid'),
-            'comment' => $request->input('comment'),
+            'shop_id' => $request->input('shop_id'),
             'rating' => $request->input('rating'),
+            'comment' => $request->input('comment'),
+            'food_id' => $request->input('food'),
         );
         
         return Comment::addComment($data);

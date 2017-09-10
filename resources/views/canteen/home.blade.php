@@ -20,6 +20,7 @@
             'id' => $shops[$i]['shop_id'],
             'rating' => $shops[$i]['rating'],
             'title' => $shops[$i]['shop_name'],
+            'foods' => $shops[$i]['foods'],
             'location' => $shops[$i]['shop_location'],
             'description' => $shops[$i]['shop_description'],
         ])
