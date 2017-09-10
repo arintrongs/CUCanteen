@@ -22,10 +22,32 @@ var comment_show = function(div, data) {
 	$.each(data, function(index, val) {
 		div.append(comment_others(val));
 	});
+	$('#comment').val('');
+	$('#rate').val('');
+	$('#food').val('');
 }
 
 var commentSubmit = function() {
 	var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+	var comment = $('#comment').val();
+	var rate = $('#rate').val();
+	var food = $('#food').val();
+
+	if(comment == '') {
+		alert('Please, insert comment.');
+		return;
+	}
+
+	if(food == '') {
+		alert('Please, insert favorite food with this shop.');
+		return;
+	}
+
+	if(rate == '') {
+		alert('Please, rate this shop.');
+		return;
+	}
+
 	$.ajax({
 		url: '/canteen',
 		type: 'POST',
@@ -33,8 +55,9 @@ var commentSubmit = function() {
 		data: {
 			_token: CSRF_TOKEN,
 			'shop_id': shop_id,
-			'comment': $('#comment').val(),
-			'rating' : 5.0,
+			'comment': comment,
+			'rating' : rate,
+			'food'	 : food,
 		},
 	})
 	.done(function(data) {

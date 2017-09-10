@@ -18,10 +18,9 @@ class CanteenController extends Controller
      *
      * @return Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $all_shops = Shop::get();
-        // print_r($all_shops);
         for ($i=0; $i < count($all_shops); $i++) { 
             $all_shops[$i]['rating'] = Shop::getShopRating($all_shops[$i]['shop_id']);
             $all_shops[$i]['shop_picture'] = ($all_shops[$i]['shop_picture'] != '') ? Config::get('image.full_size', 'uploads/') . $all_shops[$i]['shop_picture'] : asset('img/food/test.jpg');
@@ -30,6 +29,9 @@ class CanteenController extends Controller
             'shops' => $all_shops,
             'location' => Shop::all()->pluck('shop_location'),
         );
+        
+        if (UserController::check($request))
+            $data['user'] = $request->session()->get('un');
         return view('canteen/home', $data);
     }
 
@@ -98,7 +100,7 @@ class CanteenController extends Controller
         
         return Comment::addComment($data);
     }
-
+    
     private function toDistance($lat1, $lng1, $lat2, $lng2) {
         $rad1 = $lat1 * M_PI / 180;
         $rad2 = $lat2 * M_PI / 180;
@@ -110,4 +112,5 @@ class CanteenController extends Controller
 
         return 6371000 * $c;
     }
+
 }
