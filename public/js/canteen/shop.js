@@ -34,7 +34,8 @@ var commentSubmit = function() {
 			_token: CSRF_TOKEN,
 			'shop_id': shop_id,
 			'comment': $('#comment').val(),
-			'rating' : 5.0,
+			'rating' : $('#rate').val(),
+			'food' : $('#food').val(),
 		},
 	})
 	.done(function(data) {

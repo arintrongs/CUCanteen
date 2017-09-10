@@ -102,11 +102,13 @@ class Comment extends Model{
             $comment['user_id'] = $data['user_id'];
             $comment['shop_id'] = $data['shop_id'];
             $comment['comment_rating'] = $data['rating'];
+            $comment['food_id'] = $data['food_id'];
             $comment['comment_text'] = $data['comment'];
             // $comment['comment_food'] = $data['food'];
             $comment->save();
+            return true;
         }
-        return "Succeed";
+        return false;
     }
 
     /**

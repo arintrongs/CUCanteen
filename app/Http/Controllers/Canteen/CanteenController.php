@@ -76,7 +76,7 @@ class CanteenController extends Controller
     /**
      * Store the comment.
      *
-     * @return Array
+     * @return Boolean (True on add comment succeed)
      */
     public function store(Request $request)
     {
@@ -89,11 +89,17 @@ class CanteenController extends Controller
             return 'logon';
         }
 
+        $food = Food::where(['food_name' => $request->input('food'), 'shop_id' => $request->input('shop_id')])->first();
+        echo $food['food_id'];
+        if($food != null) $food_id = $food['food_id'];
+        else $food_id = 0;
+
         $data = array(
-            'shop_id' => $request->input('shop_id'),
             'user_id' => $request->session()->get('uid'),
-            'comment' => $request->input('comment'),
+            'shop_id' => $request->input('shop_id'),
             'rating' => $request->input('rating'),
+            'comment' => $request->input('comment'),
+            'food_id' => $food_id,
         );
         
         return Comment::addComment($data);
