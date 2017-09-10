@@ -71,7 +71,7 @@ var commentSubmit = function() {
 	var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
 	var comment = $('#comment').val();
 	var rate = $('#rate').val();
-	var food = $('input#food').typeahead("getActive").id;
+	var food = $('input#food').typeahead("getActive");
 
 	if(comment == '') {
 		alert('Please, insert comment.');
@@ -97,7 +97,7 @@ var commentSubmit = function() {
 			'shop_id': shop_id,
 			'comment': comment,
 			'rating' : rate,
-			'food'	 : food,
+			'food'	 : food.id,
 		},
 	})
 	.done(function(data) {
