@@ -58,7 +58,6 @@ class CanteenController extends Controller
             'comments' => Comment::getCommentShop($id),
         );
 
-        // $data['recommend'] = ($data['recommend'] )
         return response()->json($data);
     }
 

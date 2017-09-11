@@ -83,13 +83,24 @@ class Food extends Model
      * get poppular food from specified shop
      *
      * @param int $shop_id 
-     * @param int $count number of shop to be obtained
-     * @var int[] food_id (-1 if there is no food in that shop, )
+     * @var String Food_name
      */
-    public static function getPopular($shop_id = 0, $count = 1){
-        return $query -> where("shop_id", $shop_id)
-                        -> orderBy(count(Comment::where('food_id', $this->food_id) -> get()))
-                        -> take($count) -> get();
+    public static function getPopular($shop_id = 0){
+        $foods = self::where("shop_id",$shop_id)->pluck('food_id');
+        $max = -1;
+        $max_id = -1;
+        foreach($foods as $food){
+            $count = Comment::where(['shop_id' => $shop_id, 'food_id' => $food])->count();
+            if($count > $max){
+                $max = $count;
+                $max_id = $food;
+            }
+        }
+
+        if($max_id <= 0)
+            return 'Not available.';
+
+        return self::where('food_id',$max_id)->pluck('food_name')[0];
     }
 
 }
