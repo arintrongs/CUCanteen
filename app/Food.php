@@ -95,6 +95,7 @@ class Food extends Model
                 $max_id = $food;
             }
         }
+        if($max = -1) return "No Food";
         return self::where('food_id',$max_id)->pluck('food_name')[0];
     }
 
