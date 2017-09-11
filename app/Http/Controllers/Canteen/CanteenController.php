@@ -18,10 +18,9 @@ class CanteenController extends Controller
      *
      * @return Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $all_shops = Shop::get();
-        // print_r($all_shops);
         for ($i=0; $i < count($all_shops); $i++) { 
             $all_shops[$i]['rating'] = Shop::getShopRating($all_shops[$i]['shop_id']);
             $all_shops[$i]['shop_picture'] = ($all_shops[$i]['shop_picture'] != '') ? Config::get('image.full_size', 'uploads/') . $all_shops[$i]['shop_picture'] : asset('img/food/test.jpg');
@@ -30,6 +29,9 @@ class CanteenController extends Controller
             'shops' => $all_shops,
             'location' => Shop::all()->pluck('shop_location'),
         );
+        
+        if (UserController::check($request))
+            $data['user'] = $request->session()->get('un');
         return view('canteen/home', $data);
     }
 
@@ -50,9 +52,9 @@ class CanteenController extends Controller
             'name' => $tmp['shop_name'],
             'description' => $tmp['shop_description'],
             'img' => ($tmp['shop_picture'] != '') ? Config::get('image.full_size', 'uploads/') . $tmp['shop_picture'] : asset('img/food/test.jpg'),
-            'foods' => Food::where('shop_id', $id)->get(),
+            'foods' => Food::getFood($id),
             'rating' => Shop::getShopRating($id),
-            'comments' => Comment::getCommentShop(),
+            'comments' => Comment::getCommentShop($id),
         );
         return response()->json($data);
     }
@@ -89,24 +91,17 @@ class CanteenController extends Controller
             return 'logon';
         }
 
-        $food = Food::where(['food_name' => $request->input('food'), 'shop_id' => $request->input('shop_id')])->first();
-        echo $food['food_id'];
-        if($food != null) $food_id = $food['food_id'];
-        else {
-            $food_id = Food::updateFood($request->input('shop_id'), ['val' => $request->input('food')])['food_id'];
-        }
-
         $data = array(
             'user_id' => $request->session()->get('uid'),
             'shop_id' => $request->input('shop_id'),
             'rating' => $request->input('rating'),
             'comment' => $request->input('comment'),
-            'food_id' => $food_id,
+            'food_id' => $request->input('food'),
         );
-        Comment::addComment($data);
-        return self::show($request,$request->input('shop_id'));
+        
+        return Comment::addComment($data);
     }
-
+    
     private function toDistance($lat1, $lng1, $lat2, $lng2) {
         $rad1 = $lat1 * M_PI / 180;
         $rad2 = $lat2 * M_PI / 180;
@@ -118,4 +113,5 @@ class CanteenController extends Controller
 
         return 6371000 * $c;
     }
+
 }

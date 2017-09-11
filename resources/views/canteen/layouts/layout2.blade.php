@@ -30,7 +30,6 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
         <script src="js/jquery.cookie.js"></script>
         <script src="js/dropzone.js"></script>
-        <script src="js/bootstrap3-typeahead.js"></script>
         <script type="text/javascript" src="js/canteen/upload.js"></script>
         <script type="text/javascript" src="js/canteen/canteen-back.js"></script>
         <script>

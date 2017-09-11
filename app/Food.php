@@ -34,6 +34,20 @@ class Food extends Model
      */
     public $timestamps = false;
 
+    public static function getFood($shop_id) {
+        $result = self::where('shop_id', $shop_id)->get();
+
+        $foods = array();
+        foreach ($result as $food) {
+            $tmp = array(
+                'id' => $food['food_id'],
+                'name' => $food['food_name'],
+            );
+            array_push($foods, $tmp);
+        }
+        return $foods;
+    }
+
     /**
      * Update a food (new if it doesn't exist)
      *

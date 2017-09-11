@@ -28,9 +28,8 @@
             <div class="col-lg-3 col-xl-3">
                 <div class="login">
                     <a href="#" data-toggle="modal" data-target="#login-modal">
-                        <i class="fa fa-user icon" aria-hidden="true"></i>
-                    </a>
-               
+                        <i class="fa fa-user icon" aria-hidden="true"></i> @isset($user) {{ $user }} @endisset
+                    </a>               
                 </div>
             </div>
         </nav>
@@ -39,10 +38,10 @@
         <div class="container-fluid header pad-bot">
 
         </div>
-
+        @if (!isset($user))
         <!-- Login Modal -->
         <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-          <div class="modal-dialog">
+            <div class="modal-dialog">
                 <div class="loginmodal-container">
                     <h1>Login to Your Account</h1><br>
                   <form method="post" onsubmit="return false;">
@@ -56,23 +55,25 @@
                   </div>
                 </div>
             </div>
-          </div>
+        </div>
 
-          <!-- Register's Modal -->
-          <div class="modal fade" id="register-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-          <div class="modal-dialog">
-                <div class="loginmodal-container">
-                    <h1>Register</h1><br>
-                  <form method="post" onsubmit="return false;">
-                    <input type="text" name="user" placeholder="Username" maxlength="30">
-                    <input type="password" name="pass" placeholder="Password">
-                    <input type="password" name="re-pass" placeholder="Re-type Password">
-                    <input type="text" name="email" placeholder="E-mail" maxlength="60">
-                    <input type="submit" name="register" class="login regismodal-submit" value="Register" onclick="">
-                  </form>
-                </div>
+        <!-- Register's Modal -->
+        <div class="modal fade" id="register-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog">
+            <div class="loginmodal-container">
+                <h1>Register</h1><br>
+              <form method="post" onsubmit="return false;">
+                <input type="text" name="user" placeholder="Username" maxlength="30">
+                <input type="password" name="pass" placeholder="Password">
+                <input type="password" name="re-pass" placeholder="Re-type Password">
+                <input type="text" name="email" placeholder="E-mail" maxlength="60">
+                <input type="submit" name="register" class="login regismodal-submit" value="Register" onclick="">
+              </form>
             </div>
-          </div>
+        </div>
+        </div>
+        @endif
+
         <!-- Store's Content -->
         <div class="container-fluid store-content" style="display: none;">
             <div class="row">
@@ -91,7 +92,6 @@
                 </div>
             </div>
         </div>
-
         <!-- Comment -->
         <div class="row comment-content" style="display: none;">
             <div class="col-lg-3"></div>
@@ -117,10 +117,10 @@
         <script src="{{ URL :: asset('js/canteen/canteen.js') }}"></script>
         <script src="{{ URL :: asset('js/canteen/autocomplete.js') }}"></script>
         <script src="{{ URL :: asset('js/canteen/shop.js') }}"></script>
-        <script src="{{ URL :: asset('js/user.js') }}"></script>
-        <script src="{{ URL :: asset('js/bootstrap3-typeahead.js') }}"></script>
+        <script src="{{ URL :: asset('js/canteen/u.js') }}"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script> 
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+        <script src="js/bootstrap3-typeahead.js"></script>
         @yield('footer')
     </body>
 </html>

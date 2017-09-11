@@ -36,12 +36,23 @@ class UserController extends Controller
 		return false;
 	}
 
+	public function index(Request $request) {
+		if ($request->input('action') == 'signin')
+			return $this->signIn($request);
+		else if ($request->input('action') == 'signup')
+			return $this->signUp($request);
+		else if ($request->input('action') == 'signout')
+			return $this->signOut($request);
+		else
+			return response('Unauthorized.', 404);
+	}
+
 	/**
      * Handle an authentication attempt.
      *
      * @return Response
      */
-	public function authenticate(Request $request)
+	public function signIn($request)
 	{
 		if (! $request->ajax()) {
             return response('Unauthorized.', 401);
@@ -56,6 +67,7 @@ class UserController extends Controller
 	        // Authentication passed...
 	        $request->session()->put('logon', 'true');
 	        $request->session()->put('uid', $tmp['user_id']);
+	        $request->session()->put('un', $tmp['user_dispname']);
 	        $request->session()->put('r', $tmp['user_role']);
 
 	        $data = array(
@@ -67,5 +79,28 @@ class UserController extends Controller
 
 	    return response()->json(array('success' => 'fail'));
 	}
+
+	public function signUp($request) {
+		if (! $request->ajax()) {
+            return response('Unauthorized.', 401);
+        }
+
+        $data = array(
+        	'username' => $request->input('a'),
+        	'password'=> $request->input('b'),
+        	'email' => $request->input('c'),
+        );
+
+        return response()->json(array('result' => User::addUser($data)));
+	}
+
+	public function signOut($request) {
+        $request->session()->forget('logon');
+		$request->session()->forget('uid');
+		$request->session()->forget('un');
+		$request->session()->forget('r');
+		$request->session()->flush();
+		return response()->json(array('success' => 'ok'));
+    }
 
 }
