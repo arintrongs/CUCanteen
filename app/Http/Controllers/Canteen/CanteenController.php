@@ -53,9 +53,12 @@ class CanteenController extends Controller
             'description' => $tmp['shop_description'],
             'img' => ($tmp['shop_picture'] != '') ? Config::get('image.full_size', 'uploads/') . $tmp['shop_picture'] : asset('img/food/test.jpg'),
             'foods' => Food::getFood($id),
+            'recommend' => Food::getPopular($id),
             'rating' => Shop::getShopRating($id),
             'comments' => Comment::getCommentShop($id),
         );
+
+        // $data['recommend'] = ($data['recommend'] )
         return response()->json($data);
     }
 
@@ -67,7 +70,7 @@ class CanteenController extends Controller
 
         $lat = $request->input('lat');
         $lng = $request->input('lng');
-        $data = Shop::dist($lat, $lng, 100)->get();
+        $data = Shop::dist($lat, $lng, Config::get('app.shop_distance'))->get(); // <-- config distance
         for ($i=0; $i < count($data); $i++) { 
             $data[$i]['rating'] = Shop::getShopRating($data[$i]['shop_id']);
             $data[$i]['distance'] = $this->toDistance($lat, $lng, $data[$i]['shop_lat'], $data[$i]['shop_lng']);

@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Comment;
 use Illuminate\Database\Eloquent\Model;
 
 class Food extends Model
@@ -86,8 +87,8 @@ class Food extends Model
      * @var int[] food_id (-1 if there is no food in that shop, )
      */
     public static function getPopular($shop_id = 0, $count = 1){
-        return $query -> where("shop_id",($shop_id == 0)?$this->shop_id:$shop_id)
-                        -> orderBy(count(App\Comment::where('food_id',$this->food_id) -> get()))
+        return $query -> where("shop_id", $shop_id)
+                        -> orderBy(count(Comment::where('food_id', $this->food_id) -> get()))
                         -> take($count) -> get();
     }
 
