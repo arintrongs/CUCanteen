@@ -1,5 +1,5 @@
 <?php
-
+//SQLSTATE[42S02]: Base table or view not found: 1146 Table 'canteen.user' doesn't exist (SQL: select tb_comment.*, tb_user_profile.`dispname`, tb_user_profile.`name` from tb_comment left join user on tb_comment.`user_id` = tb_user_profile.`user_id` where shop_id = 1 order by tb_comment.`comment_rating` desc limit 10)
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
@@ -48,8 +48,8 @@ class Comment extends Model{
     public static function getCommentShop($shop_id = 0,$count = 10){
     	if($shop_id!=0){
             $comments = self::where('shop_id', $shop_id)
-                ->leftJoin('user', 'tb_comment.user_id', '=', 'tb_user_profile.user_id')
-                ->select('tb_comment.*', 'tb_user_profile.dispname', 'tb_user_profile.name')
+                ->leftJoin('user', 'tb_comment.user_id', '=', 'tb_user.user_id')
+                ->select('tb_comment.*', 'tb_user.dispname', 'tb_user.name')
                 ->orderBy('tb_comment.comment_rating', 'desc')
                 ->take($count)
                 ->get();
