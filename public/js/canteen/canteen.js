@@ -30,7 +30,7 @@ var getShop = function() {
 		{
 			var contain = $('div.container.card-content')[0].children[0].children;
 			$.each(contain, function(index, val) {
-				 val.empty();
+				val.empty();
 			});
 
 			var i = 0;

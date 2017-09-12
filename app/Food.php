@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Comment;
 use Illuminate\Database\Eloquent\Model;
 
 class Food extends Model
@@ -95,7 +96,10 @@ class Food extends Model
                 $max_id = $food;
             }
         }
-        if($max = -1) return "No Food";
+
+        if($max_id <= 0)
+            return 'Not available.';
+
         return self::where('food_id',$max_id)->pluck('food_name')[0];
     }
 

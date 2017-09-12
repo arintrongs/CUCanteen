@@ -2,6 +2,8 @@
 
 return [
 
+    'shop_distance' => env('SHOP_DISTANCE', 0.1),
+
     /*
     |--------------------------------------------------------------------------
     | Application Name

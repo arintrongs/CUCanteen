@@ -47,7 +47,7 @@ var shop_box = function(data) {
 	var dcl4 = $('<div>').addClass('col-lg-4').addClass('no-padding').append($('<div>').addClass('img').append(img));
 	var dtt = $('<div>').addClass('title');
 	dtt.append('<div class="inlineLeft"><h1>' + data.name + '</h1></div><div class="inlineRight goBack"><a class="back" onclick="shop_hide();">Back&nbsp;<i class="fa fa-angle-right" aria-hidden="true"></i></a></div><br><hr>');
-	dtt.append($('<div>').addClass('recommended').append('<h1>Recommeded : ')).append('<hr>');
+	dtt.append($('<div>').addClass('recommended').append('<h1>Recommeded : ' + data.recommend)).append('<hr>');
 	var ddes = $('<div>').addClass('description').append(data.description);
 	var df = $('<div>').addClass('footer').append(data.footer);
 	var dcl8 = $('<div>').addClass('col-lg-8').append(dtt).append(ddes).append(df);
