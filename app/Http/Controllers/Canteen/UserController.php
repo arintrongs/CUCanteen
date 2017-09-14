@@ -2,9 +2,11 @@
 namespace App\Http\Controllers\Canteen;
 
 use App\User;
+use App\Mail\EmailVerification;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 // use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller 
@@ -91,7 +93,11 @@ class UserController extends Controller
         	'email' => $request->input('c'),
         );
 
-        return response()->json(array('result' => User::addUser($data)));
+        $result = User::addUser($data);
+        if($result == 'Succeed') 
+        	$this->sendEmail($data);
+        
+        return response()->json(array('result' => $result));
 	}
 
 	public function signOut($request) {
@@ -101,6 +107,10 @@ class UserController extends Controller
 		$request->session()->forget('r');
 		$request->session()->flush();
 		return response()->json(array('success' => 'ok'));
+    }
+
+    private function sendEmail($data) {
+    	Mail::to($data['email'])->send(new EmailVerification($data));
     }
 
 }
