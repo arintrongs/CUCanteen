@@ -51,7 +51,7 @@ var prepareAutocomplete = function() {
 		var that = this;
 		$.each(elememt_shop_card, function(index, val) {
 			// console.log(val);
-			$(val).attr('hidden', '');
+			$(val).hide();
 		});
 		$.each(items, function(index, val) {
 			that._renderItem(ul, val.value);
@@ -61,7 +61,7 @@ var prepareAutocomplete = function() {
 	autocomplete.data('ui-autocomplete')._renderItem = function( ul, id ) {
 		var card = $(elememt_shop_card[id]);
 		// console.log(card);
-		card.removeAttr('hidden');
+		card.fadeIn("slow")
 	};
 
 	// autocomplete.data('ui-autocomplete')._resizeMenu = function() {
@@ -72,7 +72,7 @@ var prepareAutocomplete = function() {
 var clearHidden = function() {
 	if (elememt_input.val() == '') {
 		$.each(elememt_shop_card, function(index, val) {
-			$(val).removeAttr('hidden');
+			$(val).fadeIn("slow");
 		});
 	}
 }
