@@ -132,8 +132,8 @@ var shop_show = function(id) {
 		comment_show($('div.row.comment-content').children('div.col-lg-5')[0], data.comments);
 		$("input#food").typeahead({ source: data.foods, autoSelect: true });
 		$('div.container.card-content').hide();
-		$('div.container-fluid.store-content').show();
-		$('div.row.comment-content').show();
+		$('div.container-fluid.store-content').fadeIn("slow");
+		$('div.row.comment-content').fadeIn("slow");
 	})
 	.fail(function(html, statusCode) {
 		// errorShow(html.responseText);
@@ -142,7 +142,7 @@ var shop_show = function(id) {
 
 var shop_hide = function() {
 	shop_id = 0;
-	$('div.container.card-content').show();
+	$('div.container.card-content').fadeIn("slow");
 	$('div.container-fluid.store-content').hide();
 	$('div.row.comment-content').hide();
 }
