@@ -2,6 +2,7 @@
 namespace App\Http\Controllers\Canteen;
 
 use App\User;
+use App\EmailToken;
 use App\Mail\EmailVerification;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -49,12 +50,19 @@ class UserController extends Controller
 			return response('Unauthorized.', 404);
 	}
 
+	public function verify(Request $request, $user_id, $token) {
+		$data = array(
+			'result' => EmailToken::checkToken($user_id, $token),
+		); 
+		return view('canteen/verify', $data);
+	}
+
 	/**
      * Handle an authentication attempt.
      *
      * @return Response
      */
-	public function signIn($request)
+	private function signIn($request)
 	{
 		if (! $request->ajax()) {
             return response('Unauthorized.', 401);
@@ -82,7 +90,7 @@ class UserController extends Controller
 	    return response()->json(array('success' => 'fail'));
 	}
 
-	public function signUp($request) {
+	private function signUp($request) {
 		if (! $request->ajax()) {
             return response('Unauthorized.', 401);
         }
@@ -94,23 +102,21 @@ class UserController extends Controller
         );
 
         $result = User::addUser($data);
-        if($result == 'Succeed') 
-        	$this->sendEmail($data);
+        if($result['status']) 
+        	Mail::to($data['email'])
+        		->subject('อีเมล์ยืนยันการสมัครเว็บไซต์ ratemycanteen.com')
+        		->send(new EmailVerification($result['id'], $data));
         
         return response()->json(array('result' => $result));
 	}
 
-	public function signOut($request) {
+	private function signOut($request) {
         $request->session()->forget('logon');
 		$request->session()->forget('uid');
 		$request->session()->forget('un');
 		$request->session()->forget('r');
 		$request->session()->flush();
 		return response()->json(array('success' => 'ok'));
-    }
-
-    private function sendEmail($data) {
-    	Mail::to($data['email'])->send(new EmailVerification($data));
     }
 
 }

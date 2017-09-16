@@ -24,8 +24,10 @@ class EmailToken extends Model
      */
     public function addToken($user_id){
     	$query = self::where(['user_id' => $user_id]);
-        if($query->count()) $token = $query[0];
-        else $token = new EmailToken;
+        if($query->count()) 
+            $token = $query[0];
+        else 
+            $token = new EmailToken;
         $token['user_id'] = $user_id;
         
         $str = str_random(32);

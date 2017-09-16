@@ -73,9 +73,18 @@ class User extends Model implements AuthenticatableContract,
      * @var string, Failure Cause, "Succeed" returned if successfully added an user
      */
     public static function addUser($data = null){
-        if($data != null){
+        $result = [
+            'status' => false,
+            'error' => 'Error: call method with null',
+            'id' => 0,
+        ];
+        if($data != null)
+        {
             if(count(self::where('user_username', $data['username'])->get()) != 0)
-                return "Error: user exist";
+            {
+                $result['error'] = "Error: user exist";
+                return $result;
+            }
             else 
             {
                 $user = new User;
@@ -107,10 +116,14 @@ class User extends Model implements AuthenticatableContract,
                     $user['user_role'] = 'guest';
                 
                 $user->save();
-                return "Succeed";
+
+                $result['status'] = true;
+                $result['id'] = $user->user_id;
+                return $result;
             }
         }
-        return "Error: call method with null";
+
+        return $result;
     }
 
     /**

@@ -2,6 +2,7 @@
 
 namespace App\Mail;
 
+use App\EmailToken;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
@@ -13,6 +14,7 @@ class EmailVerification extends Mailable
 {
     use Queueable, SerializesModels;
 
+    private $user_id;
     private $username;
     private $email;
     private $url;
@@ -22,11 +24,13 @@ class EmailVerification extends Mailable
      *
      * @return void
      */
-    public function __construct($data)
+    public function __construct($user_id, $data)
     {
+        $this->user_id = $user_id;
         $this->username = $data['username'];
         $this->email = $data['email'];
-        $this->url = hash('sha512', Config::get('app.APP_KEY').$data['username'].$data['password'].$data['email']);
+        $token = EmailToken::addToken($data['username']);
+        $this->url = Config::get('App.APP_URL') . '/verify/' . $user_id . '/' . $token;
     }
 
     /**

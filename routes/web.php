@@ -14,9 +14,11 @@
 Route::group(['domain' => 'ratemycanteen.ojudge.in.th'], function() {
 	Route::group(['namespace'=>'Canteen'], function () {
 		Route::get('/', 'CanteenController@index');
+		Route::get('verify/{id}/{token}', 'UserController@verify');
 
 		Route::post('/user', 'UserController@authenticate');
 	    Route::post('/canteen/scopeDist', 'CanteenController@scopeDist');
+
 	    Route::resource('/canteen', 'CanteenController');
 	    Route::resource('/backdoor', 'BackdoorController');
 
