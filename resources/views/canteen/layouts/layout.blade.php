@@ -77,7 +77,8 @@
         <!-- Store's Content -->
         <div class="container-fluid store-content" style="display: none;">
             <div class="row">
-                <div class="col-lg-2"></div>
+                <div class="col-lg-2">
+                </div>
                 <div class="col-lg-7" >
                     <div class="container-fluid store">
                         @yield('store')
@@ -109,6 +110,8 @@
             </div>
         </div>
         <!-- Script -->
+
+        
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
         <script src="//code.jquery.com/jquery-1.12.4.js"></script>
