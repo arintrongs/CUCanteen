@@ -62,7 +62,7 @@ class EmailToken extends Model
 
         $token -> save();
 
-        return $str . "  " . $token['token'];
+        return $str;
     }
 
     /**
