@@ -1,5 +1,6 @@
 <?php
 
+use App\EmailToken;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
@@ -16,9 +17,9 @@ class TbEmailtoken extends Migration
         Schema::create('EmailToken', function(Blueprint $table){
             $table->bigIncrements('email_id');
             $table->bigInteger('user_id');
-            $table->string('token',40)->nullable();
+            $table->string('token',60)->nullable();
+            $table->timestamp(EmailToken::CREATED_AT);
             $table->softDeletes();
-            $table->timestamps();
         });
     }
     /**

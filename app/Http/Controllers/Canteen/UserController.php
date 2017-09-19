@@ -19,7 +19,9 @@ class UserController extends Controller
 			'password' => 'admin',
 			'role' => 'admin',
 		);
-		return User::addUser($data);
+		User::addUser($data);
+		App\User::where('user_username', 'admin')->restore();
+		return "Succeed";
 	}
 
 	public static function check(Request $request)
