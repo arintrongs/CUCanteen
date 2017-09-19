@@ -30,7 +30,7 @@ class EmailVerification extends Mailable
         $this->username = $data['username'];
         $this->email = $data['email'];
         $token = EmailToken::addToken($data['username']);
-        $this->url = Config::get('App.APP_URL') . '/verify/' . $user_id . '/' . $token;
+        $this->url = 'verify/' . $user_id . '/' . $token;
     }
 
     /**
@@ -40,7 +40,7 @@ class EmailVerification extends Mailable
      */
     public function build()
     {
-        return $this->view('emails.orders.shipped')
+        return $this->view('canteen.mails.verifican')
                 ->with([
                     'user_username' => $this->username,
                     'user_email' => $this->email,
