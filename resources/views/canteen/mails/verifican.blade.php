@@ -1,3 +1,5 @@
+@component('mail::message')
+
 เรียนคุณ $user_username
 
 คุณได้ทำการสมัครสมาชิกเว็บไซต์ www.ratemycanteen.com เป็นที่เรียบร้อยแล้ว เราเพียงต้องการยืนยันว่าคุณมีตัวตนอยู่จริง โดยการยืนยันทางอีเมล์ ซึ่งสามารถทำได้โดยคลิกลิงค์ด้านล่าง
@@ -9,3 +11,5 @@ $url
 ขอบคุณที่ใช้บริการเว็บไซต์ www.ratemycanteen.com
 
 Rate My Canteen
+
+@endcomponent
