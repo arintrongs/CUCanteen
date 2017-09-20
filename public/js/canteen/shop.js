@@ -57,7 +57,7 @@ var shop_box = function(data) {
 var shop_rating = function(data) {
 	var dcfr = $('<div>').addClass('container-fluid rating');
 	dcfr.append('<div class="row"><div class="col-lg-12 rating_header no-padding"><h3>Rating</h3></div></div>')
-	dcfr.append('<div class="row"><div class="col-xl-2"></div><div class="col-xl-8"><div class="star-ratings-css"><div class="star-ratings-css-top" style="width: '+data.rating/5*125+'%"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><div class="star-ratings-css-bottom"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div></div><br>'+'<h4>'+data.rating+'</h4><br></div><div class="col--2"></div></div>' );
+	dcfr.append('<div class="row"><div class="col-xl-2 col-lg-2 col-md-2 col-sm-2"></div><div class="col-xl-8 col-lg-8 col-md-8 col-sm-8"><div class="star-ratings-css"><div class="star-ratings-css-top" style="width: '+data.rating/5*125+'%"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><div class="star-ratings-css-bottom"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div></div><br>'+'<h4>'+data.rating+'</h4><br></div><div class="col-xl-2 col-lg-2 col-md-2 col-sm-2"></div></div>' );
 	return dcfr;
 }
 

@@ -52,7 +52,7 @@ var sign_up = function(sec) {
 
 	if (pass1 !== pass2)
 	{
-		alert('Please, insert password again.');
+		alert('Password mismatch, check your password again.');
 		return;
 	}
 
@@ -65,7 +65,7 @@ var sign_up = function(sec) {
 			action: 'signup',
 			a: that.children('input[name="user"]').val(),
 			b: pass1,
-			d: that.children('input[name="email"]').val(),
+			c: that.children('input[name="email"]').val(),
 		},
 	})
 	.done(function(data) {

@@ -40,7 +40,7 @@ class EmailVerification extends Mailable
      */
     public function build()
     {
-        return $this->view('canteen.mails.verifican')
+        return $this->view('canteen.mails.verification')
                 ->with([
                     'user_username' => $this->username,
                     'user_email' => $this->email,
