@@ -14,7 +14,7 @@ class TbEmailtoken extends Migration
      */
     public function up()
     {
-        Schema::create('EmailToken', function(Blueprint $table){
+        Schema::create('emailtoken', function(Blueprint $table){
             $table->bigIncrements('email_id');
             $table->bigInteger('user_id');
             $table->string('token',60)->nullable();

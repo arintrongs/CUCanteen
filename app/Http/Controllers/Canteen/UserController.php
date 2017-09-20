@@ -20,7 +20,7 @@ class UserController extends Controller
 			'role' => 'admin',
 		);
 		User::addUser($data);
-		App\User::where('user_username', 'admin')->restore();
+		User::where('user_username', 'admin')->restore();
 		return "Succeed";
 	}
 
