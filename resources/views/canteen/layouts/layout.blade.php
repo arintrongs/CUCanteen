@@ -19,13 +19,13 @@
     <body>
         <!-- NAV -->
         <nav class="navbar navbar-light fixed-top" >
-            <div class="col-lg-3 col-xl-3">
+            <div class="col-lg-3 col-xl-3 col-md-3 col-sm-3 col-xs-3">
                 <div class="brand float-right" href="#">Rate My Canteen.</div>
             </div>
-            <div class="col-lg-6 col-xl-6">
+            <div class="col-lg-6 col-xl-6 col-md-6 col-sm-6 col-xs-6">
                 <input class="form-control form-control-lg mr-sm-2" type="text" placeholder="Search" aria-label="Search">
             </div>
-            <div class="col-lg-3 col-xl-3">
+            <div class="col-lg-3 col-xl-3 col-md-3 col-sm-3 col-xs-3">
                 <div class="login">
                     <a href="#" data-toggle="modal" data-target="#login-modal">
                         <i class="fa fa-user icon" aria-hidden="true"></i> @isset($user) {{ $user }} @endisset
@@ -77,14 +77,14 @@
         <!-- Store's Content -->
         <div class="container-fluid store-content" style="display: none;">
             <div class="row">
-                <div class="col-lg-2">
+                <div class="col-xl-2 col-lg-2 col-md-2 ">
                 </div>
-                <div class="col-lg-7" >
+                <div class=" col-lg-7 col-md-7 col-sm-7 " >
                     <div class="container-fluid store">
                         @yield('store')
                     </div>
                 </div>
-                <div class="col-lg-2">
+                <div class="col-xl-2 col-lg-2 col-md-2">
                     <div class="container-fluid rating"><!-- 
                         <h2>Rating</h2>
                         <h2><i class="fa fa-star-o" aria-hidden="true"></i><i class="fa fa-star-o" aria-hidden="true"></i><i class="fa fa-star-o" aria-hidden="true"></i><i class="fa fa-star-o" aria-hidden="true"></i><i class="fa fa-star-o" aria-hidden="true"></i></h2>
@@ -94,14 +94,16 @@
             </div>
         </div>
         <!-- Comment -->
+        <div class="container-fluid">
         <div class="row comment-content" style="display: none;">
-            <div class="col-lg-3"></div>
-            <div class="col-lg-5">                
+            <div class="col-lg-3 col-md-3"></div>
+            <div class="col-lg-5 col-md-5">                
                 @yield('comment')
                 @yield('others')
             </div>
             <!-- <div class="col-lg-4"></div> -->
         </div>
+    </div>
 
         <!-- Card's Content -->
         <div class="container card-content">

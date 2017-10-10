@@ -439,3 +439,19 @@ $columns in $card_columns_set {
     text-align: center;
   }
 }
+
+.verified-box{
+  padding: 20px;
+  margin-top: 250px;
+  background-color: #F3F3F3;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+  .verified-content{
+    font-family: $font_Athiti;
+    font-size: 18px;
+    padding: 20px;
+  }
+  .logo{
+    font-size: 30px;
+    padding-left: 40px;
+  }
+}

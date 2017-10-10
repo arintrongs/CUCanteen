@@ -9718,3 +9718,22 @@ input[type=password]:hover {
   text-align: center;
 }
 
+.verified-box {
+  padding: 20px;
+  margin-top: 250px;
+  background-color: #F3F3F3;
+  -webkit-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+          box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+}
+
+.verified-box .verified-content {
+  font-family: "Athiti", sans-serif;
+  font-size: 18px;
+  padding: 20px;
+}
+
+.verified-box .logo {
+  font-size: 30px;
+  padding-left: 40px;
+}
+
