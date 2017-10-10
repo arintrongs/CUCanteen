@@ -12,16 +12,44 @@ html ,body {
     font-size: 14px;
     cursor:default;
 }
+
 @include media-breakpoint-up(sm) {
   html,body {
-    font-size: 10px;
+    font-size: 12px;
+  }
+.brand{
+    font-size: 1.7em;
   }
 }
+@include media-breakpoint-down(sm){
+  .header{
+    display: none;
+  }
+  .navbar{
+    position: relative;
+  }
+.brand{
+    font-size: 1.4em;
+  }
+}
+@include media-breakpoint-down(md){
+  
 
+  html,body {
+    font-size: 12px;
+  }
+  .brand{
+    font-size: 1.7em;
+  }
+}
 @include media-breakpoint-up(md) {
   html,body {
-    font-size: 11px;
+    font-size: 12px;
   }
+  .brand{
+    font-size: 1.7em;
+  }
+   
 }
 
 @include media-breakpoint-up(lg) {

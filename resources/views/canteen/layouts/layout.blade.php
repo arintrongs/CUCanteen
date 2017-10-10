@@ -19,13 +19,13 @@
     <body>
         <!-- NAV -->
         <nav class="navbar navbar-light fixed-top" >
-            <div class="col-lg-3 col-xl-3 col-md-3 col-sm-3 col-xs-3">
+            <div class="col-lg-3 col-xl-3 col-md-3 col-sm-4 col-4">
                 <div class="brand float-right" href="#">Rate My Canteen.</div>
             </div>
-            <div class="col-lg-6 col-xl-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="col-lg-6 col-xl-6 col-md-6 col-sm-6 col-6">
                 <input class="form-control form-control-lg mr-sm-2" type="text" placeholder="Search" aria-label="Search">
             </div>
-            <div class="col-lg-3 col-xl-3 col-md-3 col-sm-3 col-xs-3">
+            <div class="col-lg-3 col-xl-3 col-md-3 col-sm-2 col-2">
                 <div class="login">
                     <a href="#" data-toggle="modal" data-target="#login-modal">
                         <i class="fa fa-user icon" aria-hidden="true"></i> @isset($user) {{ $user }} @endisset
