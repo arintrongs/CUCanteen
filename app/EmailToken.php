@@ -5,16 +5,39 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Hash;
+use App\User;
 
 class EmailToken extends Model
 {
     use SoftDeletes;
+    
     /**
-     * The attributes that should be mutated to dates.
+     * The database table used by the model.
      *
-     * @var array
+     * @var string
      */
-    protected $dates = ['deleted_at'];
+    protected $table = 'emailtoken';
+
+    /**
+     * Overides original id
+     *
+     * @var int
+     */
+    protected $primaryKey = 'email_id';
+
+    /**
+     * The connection name for the model.
+     *
+     * @var string
+     */
+    protected $connection = 'mysql';
+
+    /**
+     * define custom timestamp column
+     *
+     */
+    const CREATED_AT = 'email_timestamp';
+    const UPDATED_AT = 'email_timestamp';
 
 	/**
      * add new token to confirm
@@ -22,10 +45,10 @@ class EmailToken extends Model
      * @param int user_id
      * @var string token to be sended by email
      */
-    public function addToken($user_id){
+    public static function addToken($user_id){
     	$query = self::where(['user_id' => $user_id]);
         if($query->count()) 
-            $token = $query[0];
+            $token = $query->first();
         else 
             $token = new EmailToken;
         $token['user_id'] = $user_id;
@@ -35,8 +58,8 @@ class EmailToken extends Model
         while(Hash::needsRehash($hashed)){ 
             $hashed = Hash::make($data);
         }
+        $token['token'] = $hashed;
 
-        $token['token'] = Hash::make($hashed);
         $token -> save();
 
         return $str;
@@ -48,22 +71,19 @@ class EmailToken extends Model
      * @param int user_id
      * @var boolean false on token mismatch, else return true;
      */
-    public function checkToken($user_id, $token){
+    public static function checkToken($user_id, $token){
         $query = self::where(['user_id' => $user_id]) -> first();
-        if($query -> count() !=0 ){
-            $str = $token;
-            $hashed = Hash::make($str);
-            while(Hash::needsRehash($hashed)){ 
-                $hashed = Hash::make($data);
-            }
+        if($query != NULL){
 
-            if(Hash::check($hashed, $query['token'])){
+            if(Hash::check($token, $query['token'])){
                 $query->delete();
+                User::onlyTrashed()
+                    ->where('user_id', $user_id)
+                    ->restore();
                 return true;
             }
             else{
-                $query->delete();
-                return false;
+                return $token;
             }
         }
 

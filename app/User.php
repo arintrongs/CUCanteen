@@ -2,11 +2,13 @@
 
 namespace App;
 
+use App\EmailToken;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Foundation\Auth\Access\Authorizable;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
@@ -17,12 +19,20 @@ class User extends Model implements AuthenticatableContract,
 {
     use Authenticatable, Authorizable, CanResetPassword;
 
+    use SoftDeletes;
     /**
      * The database table used by the model.
      *
      * @var string
      */
     protected $table = 'tb_user';
+
+    /**
+     * Overides original id
+     *
+     * @var int
+     */
+    protected $primaryKey = 'user_id';
 
     /**
      * The connection name for the model.
@@ -32,12 +42,12 @@ class User extends Model implements AuthenticatableContract,
     protected $connection = 'mysql';
 
     /**
-     * The database timestamp appearance.
+     * define custom timestamp column
      *
-     * @var string
      */
-    protected $timestamp = false;
-    public $timestamps = false;
+    const CREATED_AT = 'user_timestamp';
+    const UPDATED_AT = 'user_timestamp';
+
 
     /**
      * The attributes that are mass assignable.
@@ -80,7 +90,7 @@ class User extends Model implements AuthenticatableContract,
         ];
         if($data != null)
         {
-            if(count(self::where('user_username', $data['username'])->get()) != 0)
+            if(count(self::where('user_username', $data['username'])->get()) != 0 || count(self::onlyTrashed()->where('user_username', $data['username'])->get()) != 0)
             {
                 $result['error'] = "Error: user exist";
                 return $result;
@@ -116,9 +126,12 @@ class User extends Model implements AuthenticatableContract,
                     $user['user_role'] = 'guest';
                 
                 $user->save();
+                $user->delete();
 
-                $result['status'] = true;
-                $result['id'] = $user->user_id;
+                $result = ['status' => true,
+                            'id' => $user['user_id'],
+                            'token' => EmailToken::addToken($user['user_id'])
+        ];
                 return $result;
             }
         }

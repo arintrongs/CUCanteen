@@ -1,5 +1,6 @@
 <?php
 
+use App\User;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
@@ -25,6 +26,8 @@ class CreateTbUsers extends Migration
             $table->string('user_hpassword');            
             $table->text('user_session')->comment('in case od usage (can be deleted)')->nullable();
             $table->binary('user_disppict')->nullable();
+            $table->timestamp(User::CREATED_AT);
+            $table->softDeletes();
         });
     }
 
