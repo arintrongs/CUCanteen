@@ -11,7 +11,7 @@
 |
 */
 
-Route::group(['domain' => 'ratemycanteen.ojudge.in.th'], function() {
+// Route::group(['domain' => 'ratemycanteen.ojudge.in.th'], function() {
 
 	Route::group(['namespace'=>'Canteen'], function () {
 
@@ -28,4 +28,4 @@ Route::group(['domain' => 'ratemycanteen.ojudge.in.th'], function() {
 		Route::post('upload', ['as' => 'upload-post', 'uses' =>'ImageController@postUpload']);
 		Route::post('upload/delete', ['as' => 'upload-remove', 'uses' =>'ImageController@deleteUpload']);
 	});
-});
+// });

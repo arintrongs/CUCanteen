@@ -41,6 +41,7 @@ html ,body {
   .brand{
     font-size: 1.7em;
   }
+
 }
 @include media-breakpoint-up(md) {
   html,body {
@@ -49,9 +50,12 @@ html ,body {
   .brand{
     font-size: 1.7em;
   }
+  
    
 }
+@include media-breakpoint-down(lg){
 
+}
 @include media-breakpoint-up(lg) {
   html,body {
     font-size: 12px;
@@ -443,12 +447,12 @@ $columns in $card_columns_set {
   color: #c5c5c5;
   font-size: 25px;
   height: 25px;
-  width: 100px;
+  width: 100%;
   margin-top: 0.5em;
   position: relative;
   text-shadow: 0px 1px 0 #a2a2a2;
   text-align: center;
-  
+
   &-top {
     color: #e7711b;
     padding: 0;
@@ -465,6 +469,7 @@ $columns in $card_columns_set {
     display: block;
     z-index: 0;
     text-align: center;
+
   }
 }
 

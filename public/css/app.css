@@ -9208,6 +9208,10 @@ body {
     display: none;
   }
 
+  .navbar {
+    position: relative;
+  }
+
   .brand {
     font-size: 1.4em;
   }
@@ -9721,7 +9725,7 @@ input[type=password]:hover {
   color: #c5c5c5;
   font-size: 25px;
   height: 25px;
-  width: 100px;
+  width: 100%;
   margin-top: 0.5em;
   position: relative;
   text-shadow: 0px 1px 0 #a2a2a2;

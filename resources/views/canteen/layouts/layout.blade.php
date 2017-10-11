@@ -77,14 +77,14 @@
         <!-- Store's Content -->
         <div class="container-fluid store-content" style="display: none;">
             <div class="row">
-                <div class="col-xl-2 col-lg-2 col-md-2 ">
+                <div class="col-xl-2 col-lg-2 ">
                 </div>
-                <div class=" col-lg-7 col-md-7 col-sm-7 " >
+                <div class="col-xl-7 col-lg-6 col-md-12 " >
                     <div class="container-fluid store">
                         @yield('store')
                     </div>
                 </div>
-                <div class="col-xl-2 col-lg-2 col-md-2">
+                <div class="col-xl-2 col-lg-3">
                     <div class="container-fluid rating"><!-- 
                         <h2>Rating</h2>
                         <h2><i class="fa fa-star-o" aria-hidden="true"></i><i class="fa fa-star-o" aria-hidden="true"></i><i class="fa fa-star-o" aria-hidden="true"></i><i class="fa fa-star-o" aria-hidden="true"></i><i class="fa fa-star-o" aria-hidden="true"></i></h2>
@@ -96,8 +96,8 @@
         <!-- Comment -->
         <div class="container-fluid">
         <div class="row comment-content" style="display: none;">
-            <div class="col-lg-3 col-md-3"></div>
-            <div class="col-lg-5 col-md-5">                
+            <div class="col-lg-3 "></div>
+            <div class="col-lg-5 col-md-12">                
                 @yield('comment')
                 @yield('others')
             </div>

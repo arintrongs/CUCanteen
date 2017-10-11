@@ -44,20 +44,20 @@ var shop_card = function(data) {
 
 var shop_box = function(data) {
 	var img = $('<img>').attr({  alt: 'Card image cap', src: data.img, }); //
-	var dcl4 = $('<div>').addClass('col-lg-4 col-md-4 col-sm-4 col-4').addClass('no-padding').append($('<div>').addClass('img').append(img));
+	var dcl4 = $('<div>').addClass('col-lg-4 col-md-4 col-sm-4 col-12').addClass('no-padding').append($('<div>').addClass('img').append(img));
 	var dtt = $('<div>').addClass('title');
 	dtt.append('<div class="inlineLeft"><h1>' + data.name + '</h1></div><div class="inlineRight goBack"><a class="back" onclick="shop_hide();">Back&nbsp;<i class="fa fa-angle-right" aria-hidden="true"></i></a></div><br><hr>');
 	dtt.append($('<div>').addClass('recommended').append('<h1>Recommeded : ' + data.recommend)).append('<hr>');
 	var ddes = $('<div>').addClass('description').append(data.description);
 	var df = $('<div>').addClass('footer').append(data.footer);
-	var dcl8 = $('<div>').addClass('col-lg-8 col-md-8 col-sm-8 col-8' ).append(dtt).append(ddes).append(df);
+	var dcl8 = $('<div>').addClass('col-lg-8 col-md-8 col-sm-8 col-xs-8' ).append(dtt).append(ddes).append(df);
 	return $('<div>').addClass('row').append(dcl4).append(dcl8);
 }
 
 var shop_rating = function(data) {
 	var dcfr = $('<div>').addClass('container-fluid rating');
 	dcfr.append('<div class="row"><div class="col-lg-12 col-xl-12 col-md-12 col-sm-12 col-12 rating_header no-padding"><h3>Rating</h3></div></div>')
-	dcfr.append('<div class="row"><div class="col-xl-2 col-lg-2 col-md-2 col-sm-2"></div><div class="col-xl-8 col-lg-8 col-md-8 col-sm-8"><div class="star-ratings-css"><div class="star-ratings-css-top" style="width: '+data.rating/5*125+'%"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><div class="star-ratings-css-bottom"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div></div><br>'+'<h4>'+data.rating+'</h4><br></div><div class="col-xl-2 col-lg-2 col-md-2 col-sm-2"></div></div>' );
+	dcfr.append('<div class="row"><div class="col-xl-12 col-lg-12 col-md-12 col-sm-12"><div class="container-fluid star-ratings-css"><div class="star-ratings-css-top" style="width: '+data.rating/5*125+'%">★★★★★</div><div class="star-ratings-css-bottom">★★★★★</div></div><br>'+'<h4>'+data.rating+'</h4><br></div></div>' );
 	return dcfr;
 }
 
