@@ -2,7 +2,6 @@
 
 namespace App;
 
-use App\EmailToken;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Hash;
@@ -126,12 +125,11 @@ class User extends Model implements AuthenticatableContract,
                     $user['user_role'] = 'guest';
                 
                 $user->save();
-                $user->delete();
-
                 $result = ['status' => true,
-                            'id' => $user['user_id'],
-                            'token' => EmailToken::addToken($user['user_id'])
-        ];
+                            'user' => $user,
+                        ];
+
+                $user->delete();
                 return $result;
             }
         }

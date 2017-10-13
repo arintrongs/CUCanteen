@@ -47,7 +47,7 @@
                   <form method="post" onsubmit="return false;">
                     <input type="text" name="user" placeholder="Username" maxlength="30">
                     <input type="password" name="pass" placeholder="Password">
-                    <input type="submit" name="login" class="login loginmodal-submit" value="Login" onclick="return doLogin();">
+                    <input type="submit" name="login" class="login loginmodal-submit" value="Login">
                   </form>
                     
                   <div class="login-help">

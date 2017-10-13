@@ -29,7 +29,7 @@ class EmailVerification extends Mailable
         $this->user_id = $user_id;
         $this->username = $data['username'];
         $this->email = $data['email'];
-        $token = EmailToken::addToken($data['username']);
+        $token = EmailToken::addToken($user_id);
         $this->url = 'verify/' . $user_id . '/' . $token;
     }
 
@@ -40,7 +40,8 @@ class EmailVerification extends Mailable
      */
     public function build()
     {
-        return $this->view('canteen.mails.verification')
+        return $this->subject('อีเมล์ยืนยันการสมัครเว็บไซต์ ratemycanteen.com')
+                ->markdown('canteen.mails.verifican')
                 ->with([
                     'user_username' => $this->username,
                     'user_email' => $this->email,

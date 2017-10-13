@@ -106,8 +106,7 @@ class UserController extends Controller
         $result = User::addUser($data);
         if($result['status']) 
         	Mail::to($data['email'])
-        		->subject('อีเมล์ยืนยันการสมัครเว็บไซต์ ratemycanteen.com')
-        		->send(new EmailVerification($result['id'], $data));
+        		->send(new EmailVerification($result['user']['user_id'], $data));
         
         return response()->json(array('result' => $result));
 	}
