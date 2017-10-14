@@ -53,10 +53,13 @@ class UserController extends Controller
 	}
 
 	public function verify(Request $request, $user_id, $token) {
-		$data = array(
-			'result' => EmailToken::checkToken($user_id, $token),
-		); 
-		return view('canteen/verify', $data);
+		if (EmailToken::checkToken($user_id, $token) == true)
+		{
+			$data = User::where('user_id', $user_id)->get()->first();
+			return view('canteen/mails/verified', $data);	
+		}
+		
+		return response('Unauthorized.', 401);
 	}
 
 	/**
