@@ -29,7 +29,7 @@
                     <div class="verified-content">
                         <p>เรียนคุณ {{$user_username}}</p>
                         <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;คุณได้ทำการสมัครสมาชิกเว็บไซต์ www.ratemycanteen.com เป็นที่เรียบร้อยแล้ว ขอบคุณที่ใช้บริการเว็บไซต์ของเรา</p>
-                        <b><p>Rediecting To Website in ....</p></b>
+                        <b><p>Rediecting To Website</p></b>
                    
                    
                     </div>
