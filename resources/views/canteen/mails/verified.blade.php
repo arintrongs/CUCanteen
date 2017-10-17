@@ -29,8 +29,7 @@
                     <div class="verified-content">
                         <p>เรียนคุณ {{$user_username}}</p>
                         <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;คุณได้ทำการสมัครสมาชิกเว็บไซต์ www.ratemycanteen.com เป็นที่เรียบร้อยแล้ว กรุณา Login ที่หน้าหลักของเว็บไซต์</p>
-                        <b><p>กำลังย้ายไปที่หน้าหลักใน <span id="countdown"></span></p></b>
-                   
+                        <b><p>กำลังย้ายไปที่หน้าหลักใน <span id="countdown"></span></p></b>                 
                    
                     </div>
                 
@@ -47,7 +46,6 @@
             function time_dec(){
                 time_left--;
                 $('#countdown').var = time_left;
-                console.log(time_left);
                 if(time_left <= 0){
                     clearInterval(cinterval);
                     window.location.replace('{{url('/')}}');   
