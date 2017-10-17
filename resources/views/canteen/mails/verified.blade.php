@@ -19,7 +19,7 @@
     <body>
         <div class="container verified-box">
             <div class="row">
-                <div class="col-lg-12 col-xl-12 col-md-12 col-sm-12 col-12">
+                <div class="col-lg-12">
                     <div class="brand logo">Rate My Canteen.</div>
                 </div>
                 
@@ -28,8 +28,8 @@
                 <div class="col-lg-12 col-xl-12 col-md-12 col-sm-12 col-12">
                     <div class="verified-content">
                         <p>เรียนคุณ {{$user_username}}</p>
-                        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;คุณได้ทำการสมัครสมาชิกเว็บไซต์ www.ratemycanteen.com เป็นที่เรียบร้อยแล้ว ขอบคุณที่ใช้บริการเว็บไซต์ของเรา</p>
-                        <b><p>Rediecting To Website</p></b>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;คุณได้ทำการสมัครสมาชิกเว็บไซต์ www.ratemycanteen.com เป็นที่เรียบร้อยแล้ว กรุณา Login ที่หน้าหลักของเว็บไซต์</p>
+                        <b><p>กำลังย้ายไปที่หน้าหลักใน <span class="countdown"></span></p></b>
                    
                    
                     </div>
@@ -40,7 +40,21 @@
         </div>
         <!-- Script -->
 
-        
+        <script>
+            var time_left = 3;
+            var cinterval;
+             
+            function time_dec(){
+                time_left--;
+                document.getElementById('countdown').innerHTML = time_left;
+                if(time_left <= 0){
+                    clearInterval(cinterval);
+                    window.location.replace('{{url('/')}}');   
+                }
+            }
+             
+            cinterval = setInterval('time_dec()', 1000);
+        </script>
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
         <script src="//code.jquery.com/jquery-1.12.4.js"></script>
