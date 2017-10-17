@@ -37,8 +37,12 @@ var sign_in = function(sec) {
 			setTimeout((function(){$('#login-modal').remove();}), 1000);
 			setTimeout((function(){$('#register-modal').remove();}), 1000);
 		}
+		else
+		{
+			alert('We have something wrong.');
+		}
 	}).fail(function(html, statusCode) {
-		// errorShow(html.responseText);
+		errorShow(html.responseText);
 	});
 
 	return false;
@@ -70,13 +74,13 @@ var sign_up = function(sec) {
 	})
 	.done(function(data) {
 		console.log(data);
-		if (data.result != 'Succeed')
-			alert(data.result);
+		if (data.result.status != 'true')
+			alert(data.result.error);
 		else
 			location.reload();
 		
 	}).fail(function(html, statusCode) {
-		// errorShow(html.responseText);
+		errorShow(html.responseText);
 	});
 
 	return false;
@@ -94,7 +98,7 @@ var sign_out = function(sec) {
 		},
 	})
 	.fail(function(html, statusCode) {
-		// errorShow(html.responseText);
+		errorShow(html.responseText);
 	});
 
 	return false;
