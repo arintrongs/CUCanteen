@@ -30,7 +30,7 @@ class EmailVerification extends Mailable
         $this->username = $data['username'];
         $this->email = $data['email'];
         $token = EmailToken::addToken($user_id);
-        $this->url = 'verify/' . $user_id . '/' . $token;
+        $this->url = Config::get('app.APP_URL') . '/verify/' . $user_id . '/' . $token;
     }
 
     /**
