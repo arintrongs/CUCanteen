@@ -83,9 +83,9 @@ class User extends Model implements AuthenticatableContract,
      */
     public static function addUser($data = null){
         $result = [
-            'status' => false,
+            'status' => 'false',
             'error' => 'Error: call method with null',
-            'id' => 0,
+            'user' => null,
         ];
         if($data != null)
         {
@@ -125,9 +125,8 @@ class User extends Model implements AuthenticatableContract,
                     $user['user_role'] = 'guest';
                 
                 $user->save();
-                $result = ['status' => true,
-                            'user' => $user,
-                        ];
+                $result['status'] = 'true';
+                $result['user'] = $user;
 
                 $user->delete();
                 return $result;
