@@ -187,7 +187,7 @@ class User extends Model implements AuthenticatableContract,
                 }
 
                 $user->save();
-                return "Succeed";
+                return $user;
             }
         }
         return "Error: call method with null";
