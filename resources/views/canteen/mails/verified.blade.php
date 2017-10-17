@@ -19,13 +19,13 @@
     <body>
         <div class="container verified-box">
             <div class="row">
-                <div class="col-lg-12">
+                <div class="col-lg-12 col-xl-12 col-md-12 col-sm-12 col-12">
                     <div class="brand logo">Rate My Canteen.</div>
                 </div>
                 
             </div>
             <div class="row">
-                <div class="col-lg-12">
+                <div class="col-lg-12 col-xl-12 col-md-12 col-sm-12 col-12">
                     <div class="verified-content">
                         <p>เรียนคุณ {{$user_username}}</p>
                         <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;คุณได้ทำการสมัครสมาชิกเว็บไซต์ www.ratemycanteen.com เป็นที่เรียบร้อยแล้ว ขอบคุณที่ใช้บริการเว็บไซต์ของเรา</p>
