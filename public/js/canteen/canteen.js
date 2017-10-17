@@ -7,6 +7,7 @@ var latitude = '';
 var longitude = '';
 
 var errorShow = function(text) {
+	return;
 	var newWindow = window.open();
 	newWindow.document.write(text);
 }

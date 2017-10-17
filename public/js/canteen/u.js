@@ -73,9 +73,9 @@ var sign_up = function(sec) {
 		},
 	})
 	.done(function(data) {
-		console.log(data);
-		if (data.result.status != 'true')
-			alert(data.result.error);
+		// console.log(data);
+		if (data.status != 'true')
+			alert(data.error);
 		else
 			location.reload();
 		

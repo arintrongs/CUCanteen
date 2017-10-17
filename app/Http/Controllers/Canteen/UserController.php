@@ -107,11 +107,12 @@ class UserController extends Controller
         );
 
         $result = User::addUser($data);
-        if($result['status']) 
+        if($result['status'] == 'true') 
         	Mail::to($data['email'])
         		->send(new EmailVerification($result['user']['user_id'], $data));
         
-        return response()->json(array('result' => $result));
+        unset($result['user']);
+        return response()->json($result);
 	}
 
 	private function signOut($request) {
