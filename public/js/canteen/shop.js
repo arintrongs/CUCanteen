@@ -78,7 +78,7 @@ var commentSubmit = function() {
 		return;
 	}
 
-	if(!food) {
+	if(!food && (! $('input#food').val())) {
 		alert('Please, insert favorite food with this shop.');
 		return;
 	}
@@ -97,11 +97,11 @@ var commentSubmit = function() {
 			'shop_id': shop_id,
 			'comment': comment,
 			'rating' : rate,
-			'food'	 : food.id,
+			'food'	 : (food)? food.id: $('input#food').val(),
 		},
 	})
 	.done(function(data) {
-		console.log(data);
+		// console.log(data);
 		if (data == 'logon')
 			$('#login-modal').modal('show');
 		else if (data == 'true')
@@ -110,7 +110,7 @@ var commentSubmit = function() {
 			alert('The system have something wrong.');
 	})
 	.fail(function(html, statusCode) {
-		// errorShow(html.responseText);
+		errorShow(html.responseText);
 	});
 	
 }

@@ -10,6 +10,7 @@ use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 use App\User;
+use App\Food;
 
 class Comment extends Model{
     /**
@@ -100,7 +101,14 @@ class Comment extends Model{
             $comment['user_id'] = $data['user_id'];
             $comment['shop_id'] = $data['shop_id'];
             $comment['comment_rating'] = $data['rating'];
-            $comment['food_id'] = $data['food_id'];
+
+            if (is_numeric($data['food_id']))
+                $comment['food_id'] = $data['food_id'];
+            else
+            {
+                $food = Food::updateFood($data['shop_id'], array('val' => $data['food_id']));
+                $comment['food_id'] = $food['food_id'];
+            }
             $comment['comment_text'] = $data['comment'];
             $comment->save();
             return 'true';
