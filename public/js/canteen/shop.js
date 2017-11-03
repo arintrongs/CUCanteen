@@ -71,19 +71,19 @@ var commentSubmit = function() {
 	var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
 	var comment = $('#comment').val();
 	var rate = $('#rate').val();
-	var food = $('input#food').typeahead("getActive");
+	var food = $('input#food').val();
 
-	if(comment == '') {
-		alert('Please, insert comment.');
+	if(/^$|\s+/.test(comment)) { //if string contained only whitespace
+		alert('Please type your comment.');
 		return;
 	}
 
-	if(!food && (! $('input#food').val())) {
+	if(/^$|\s+/.test(comment)) {
 		alert('Please, insert favorite food with this shop.');
 		return;
 	}
 
-	if(rate == '') {
+	if(isNaN(rate)) {
 		alert('Please, rate this shop.');
 		return;
 	}
@@ -97,7 +97,7 @@ var commentSubmit = function() {
 			'shop_id': shop_id,
 			'comment': comment,
 			'rating' : rate,
-			'food'	 : (food)? food.id: $('input#food').val(),
+			'food'	 : ($('input#food').typeahead("getActive").name == food)? food.id: $('input#food').val(),
 		},
 	})
 	.done(function(data) {
