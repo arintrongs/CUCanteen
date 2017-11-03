@@ -9304,12 +9304,12 @@ button:focus {
   font-family: "Athiti", sans-serif;
 }
 
-.navbar .login .icon {
+.navbar .icon {
   font-size: 28px;
   color: rgba(0, 0, 0, 0.3);
 }
 
-.navbar .login .icon:hover {
+.navbar .icon:hover {
   color: black;
 }
 
