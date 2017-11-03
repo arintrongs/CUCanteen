@@ -22,7 +22,7 @@
         <!-- NAV -->
         <nav class="navbar navbar-light fixed-top" >
             <div class="col-lg-1 col-xl-1 col-md-1 col-sm-1 col-4">
-                <a href="#" toggle>
+                <a href="\home">
                     <i class="fa fa-home icon" aria-hidden="true"></i>
                 </a>
             </div>
@@ -31,16 +31,25 @@
             </div>
             <div class="col-lg-3 col-xl-3 col-md-3 col-sm-2 col-2">
                 <div class="login">
+                    @if(!isset($user))
+                    <i class="fa fa-key icon" aria-hidden="true"></i> 
                     <a href="#" data-toggle="modal" data-target="#login-modal">
-                        <i class="fa fa-user icon" aria-hidden="true"></i> @isset($user) {{ $user }} @endisset
+                        Login
                     </a>               
+                    @endif
+                    @if(isset($user))
+                    <i class="fa fa-user icon" aria-hidden="true"></i> 
+                    <a href="/signout">
+                        {{ $user }} 
+                    </a>               
+                    @endif
                 </div>
             </div>
         </nav>
 
         <!-- Header -->
         <div class="container-fluid header pad-bot">
-
+            <img src="cover.png">
         </div>
         @if (!isset($user))
         <!-- Login Modal -->
