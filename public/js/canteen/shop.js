@@ -142,7 +142,13 @@ var shop_show = function(id) {
 
 var shop_hide = function() {
 	shop_id = 0;
+	//Reset Value from shop_show
+	$('div.container-fluid.store').html("");
+	$('div.container-fluid.rating').html("");
+	$("input#food").typeahead('destroy');
+
 	$('div.container.card-content').fadeIn("slow");
 	$('div.container-fluid.store-content').hide();
+	
 	$('div.row.comment-content').hide();
 }
