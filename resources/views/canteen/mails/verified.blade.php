@@ -29,8 +29,7 @@
                     <div class="verified-content">
                         <p>เรียนคุณ {{$user_username}}</p>
                         <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;คุณได้ทำการสมัครสมาชิกเว็บไซต์ www.ratemycanteen.com เป็นที่เรียบร้อยแล้ว กรุณา Login ที่หน้าหลักของเว็บไซต์</p>
-                        <b><p>กำลังย้ายไปที่หน้าหลักใน <span class="countdown"></span></p></b>
-                   
+                        <b><p>กำลังย้ายไปที่หน้าหลักใน <span id="countdown"></span></p></b>                 
                    
                     </div>
                 
@@ -46,7 +45,7 @@
              
             function time_dec(){
                 time_left--;
-                document.getElementById('countdown').innerHTML = time_left;
+                $('#countdown').var = time_left;
                 if(time_left <= 0){
                     clearInterval(cinterval);
                     window.location.replace('{{url('/')}}');   
@@ -62,7 +61,7 @@
         <script src="http://momentjs.com/downloads/moment.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
-        <script src="js/bootstrap3-typeahead.js"></script>
+        <script src="{{url('/')}}/js/bootstrap3-typeahead.js"></script>
 
     </body>
 </html>

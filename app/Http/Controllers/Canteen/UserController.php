@@ -115,7 +115,11 @@ class UserController extends Controller
         return response()->json($result);
 	}
 
-	private function signOut($request) {
+	public function logOut(Request $request) {
+        return $this->signOut($request);
+    }
+
+    private function signOut($request) {
         $request->session()->forget('logon');
 		$request->session()->forget('uid');
 		$request->session()->forget('un');

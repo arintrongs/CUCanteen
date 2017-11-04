@@ -71,19 +71,19 @@ var commentSubmit = function() {
 	var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
 	var comment = $('#comment').val();
 	var rate = $('#rate').val();
-	var food = $('input#food').typeahead("getActive");
+	var food = $('input#food').val();
 
-	if(comment == '') {
-		alert('Please, insert comment.');
+	if(/^$|\s+/.test(comment)) { //if string contained only whitespace
+		alert('Please type your comment.');
 		return;
 	}
 
-	if(!food) {
+	if(/^$|\s+/.test(comment)) {
 		alert('Please, insert favorite food with this shop.');
 		return;
 	}
 
-	if(rate == '') {
+	if(isNaN(rate)) {
 		alert('Please, rate this shop.');
 		return;
 	}
@@ -97,11 +97,11 @@ var commentSubmit = function() {
 			'shop_id': shop_id,
 			'comment': comment,
 			'rating' : rate,
-			'food'	 : food.id,
+			'food'	 : ($('input#food').typeahead("getActive").name == food)? food.id: $('input#food').val(),
 		},
 	})
 	.done(function(data) {
-		console.log(data);
+		// console.log(data);
 		if (data == 'logon')
 			$('#login-modal').modal('show');
 		else if (data == 'true')
@@ -110,7 +110,7 @@ var commentSubmit = function() {
 			alert('The system have something wrong.');
 	})
 	.fail(function(html, statusCode) {
-		// errorShow(html.responseText);
+		errorShow(html.responseText);
 	});
 	
 }
@@ -142,7 +142,13 @@ var shop_show = function(id) {
 
 var shop_hide = function() {
 	shop_id = 0;
+	//Reset Value from shop_show
+	$('div.container-fluid.store').html("");
+	$('div.container-fluid.rating').html("");
+	$("input#food").typeahead('destroy');
+
 	$('div.container.card-content').fadeIn("slow");
 	$('div.container-fluid.store-content').hide();
+	
 	$('div.row.comment-content').hide();
 }

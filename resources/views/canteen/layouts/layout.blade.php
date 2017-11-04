@@ -14,29 +14,42 @@
         <!-- CSS-->
         <link rel="stylesheet" type="text/css" href="{{ URL :: asset('css/app.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ URL :: asset('css/font-awesome.min.css')}}">
-          
+        <!-- Scripts -->
+        <script src='https://www.google.com/recaptcha/api.js' async defer></script>
+
     </head>
     <body>
         <!-- NAV -->
         <nav class="navbar navbar-light fixed-top" >
-            <div class="col-lg-3 col-xl-3 col-md-3 col-sm-4 col-4">
-                <div class="brand float-right" href="#">Rate My Canteen.</div>
+            <div class="col-lg-1 col-xl-1 col-md-1 col-sm-1 col-4">
+                <a href="\home">
+                    <i class="fa fa-home icon" aria-hidden="true"></i>
+                </a>
             </div>
-            <div class="col-lg-6 col-xl-6 col-md-6 col-sm-6 col-6">
+            <div class="col-lg-8 col-xl-8 col-md-8 col-sm-8 col-6">
                 <input class="form-control form-control-lg mr-sm-2" type="text" placeholder="Search" aria-label="Search">
             </div>
             <div class="col-lg-3 col-xl-3 col-md-3 col-sm-2 col-2">
                 <div class="login">
+                    @if(!isset($user))
+                    <i class="fa fa-key icon" aria-hidden="true"></i> 
                     <a href="#" data-toggle="modal" data-target="#login-modal">
-                        <i class="fa fa-user icon" aria-hidden="true"></i> @isset($user) {{ $user }} @endisset
+                        Login
                     </a>               
+                    @endif
+                    @if(isset($user))
+                    <i class="fa fa-user icon" aria-hidden="true"></i> 
+                    <a href="/signout">
+                        {{ $user }} 
+                    </a>               
+                    @endif
                 </div>
             </div>
         </nav>
 
         <!-- Header -->
         <div class="container-fluid header pad-bot">
-
+            <img src="cover.png">
         </div>
         @if (!isset($user))
         <!-- Login Modal -->
@@ -65,9 +78,10 @@
               <form method="post" onsubmit="return false;">
                 <input type="text" name="user" placeholder="Username" maxlength="30">
                 <input type="password" name="pass" placeholder="Password">
-                <input type="password" name="re-pass" placeholder="Re-type Password">
+                <input type="password" name="re-pass" placeholder="Retype Password">
                 <input type="text" name="email" placeholder="E-mail" maxlength="60">
                 <input type="submit" name="register" class="login regismodal-submit" value="Register" onclick="">
+                <div class="g-recaptcha"  data-sitekey="6LcR-TYUAAAAAMOudFIugLPTC9nD0QLUVGhL78On" data-size="invisible" data-badge="inline"></div>
               </form>
             </div>
         </div>
