@@ -96,7 +96,13 @@ class Comment extends Model{
             if (!$data['rating'])  return 'false';
             if (!$data['food_id']) return 'false';
             if (!$data['comment']) return 'false';
-            $comment = new Comment;
+            
+            $result = self::where(['user_id' => $data['user_id'], 'shop_id' => $data['shop_id']]);
+            
+            if(count($result->get()) != 0)
+                $comment = $result->first();
+            else 
+                $comment = new Comment;
             
             $comment['user_id'] = $data['user_id'];
             $comment['shop_id'] = $data['shop_id'];
