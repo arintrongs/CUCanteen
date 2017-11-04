@@ -32,7 +32,7 @@
             <div class="col-lg-3 col-xl-3 col-md-3 col-sm-2 col-2">
                 <div class="login">
                     @if(!isset($user))
-                    <i class="fa fa-key icon" aria-hidden="true"></i> 
+                    <i class="fa fa-sign-in icon" aria-hidden="true"></i> 
                     <a href="#" data-toggle="modal" data-target="#login-modal">
                         Login
                     </a>               

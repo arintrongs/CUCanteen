@@ -32,7 +32,7 @@ var sign_in = function(sec) {
 		// console.log(data);
 		if (data.success == 'ok')
 		{
-			$('div.login').empty().append('<i class="fa fa-user icon" aria-hidden="true"></i>').append($('<a>').attr('href', '/signout').text(data.name));
+			$('div.login').empty().append('<i class="fa fa-user icon" aria-hidden="true"></i>').append($('<a>').attr('href', '/signout').text(" "+data.name));
 			
 			$('#login-modal').modal('hide');
 			setTimeout((function(){$('#login-modal').remove();}), 1000);
