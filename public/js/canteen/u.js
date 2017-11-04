@@ -32,7 +32,8 @@ var sign_in = function(sec) {
 		// console.log(data);
 		if (data.success == 'ok')
 		{
-			$('a[data-target="#login-modal"]').append(data.name);
+			$('div.login').empty().append('<i class="fa fa-user icon" aria-hidden="true"></i>').append($('<a>').attr('href', '/signout').text(data.name));
+			
 			$('#login-modal').modal('hide');
 			setTimeout((function(){$('#login-modal').remove();}), 1000);
 			setTimeout((function(){$('#register-modal').remove();}), 1000);
@@ -115,6 +116,9 @@ var sign_out = function(sec) {
 			_token: $('meta[name="csrf-token"]').attr('content'),
 			action: 'signout',
 		},
+	})
+	.done(function(data) {
+		location.reload();
 	})
 	.fail(function(html, statusCode) {
 		errorShow(html.responseText);

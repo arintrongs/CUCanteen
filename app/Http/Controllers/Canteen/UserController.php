@@ -125,7 +125,7 @@ class UserController extends Controller
 		$request->session()->forget('un');
 		$request->session()->forget('r');
 		$request->session()->flush();
-		return response()->json(array('success' => 'ok'));
+		return redirect('/');
     }
 
 }
