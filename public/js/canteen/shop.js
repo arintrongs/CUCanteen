@@ -79,13 +79,16 @@ var commentSubmit = function() {
 	}
 
 	if(/^$|\s+/.test(comment)) {
-		alert('Please, insert favorite food with this shop.');
+		alert('Please specify your favourite food.');
 		return;
 	}
 
 	if(isNaN(rate)) {
-		alert('Please, rate this shop.');
+		alert('Please rate this shop.');
 		return;
+	}
+	if(typeof $('input#food').typeahead('getActive') != 'undefined'){
+		if($('input#food').typeahead('getActive').name == food)food = $('input#food').typeahead('getActive').id;
 	}
 
 	$.ajax({
@@ -97,7 +100,7 @@ var commentSubmit = function() {
 			'shop_id': shop_id,
 			'comment': comment,
 			'rating' : rate,
-			'food'	 : ($('input#food').typeahead("getActive").name == food)? food.id: $('input#food').val(),
+			'food'	 : food,
 		},
 	})
 	.done(function(data) {
@@ -107,7 +110,7 @@ var commentSubmit = function() {
 		else if (data == 'true')
 			location.reload();
 		else
-			alert('The system have something wrong.');
+			alert('Error occurred. Please contact administrator');
 	})
 	.fail(function(html, statusCode) {
 		errorShow(html.responseText);

@@ -40,7 +40,7 @@ var sign_in = function(sec) {
 		}
 		else
 		{
-			alert('Error occurred. Sorry for inconvenience.');
+			alert('Error occurred. Please contact administrator.');
 		}
 	}).fail(function(html, statusCode) {
 		errorShow(html.responseText);
