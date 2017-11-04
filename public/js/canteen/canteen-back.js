@@ -122,11 +122,6 @@ var set = function(data) {
 	}
 }
 
-var errorShow = function(text) {
-	var newWindow = window.open();
-	newWindow.document.write(text);
-}
-
 var ondelete = function (id) {
 	$.ajax({
 		url: '/backdoor/' + id,

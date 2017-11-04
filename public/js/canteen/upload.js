@@ -57,9 +57,3 @@ var changePic = function(uid) {
     picture = null;
     $.cookie('uidPic', picture);
 }
-
-var errorShow = function(text) {
-    return;
-    var newWindow = window.open();
-    newWindow.document.write(text);
-}
