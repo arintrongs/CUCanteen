@@ -28,7 +28,11 @@ return array(
     'App\\Http\\Middleware\\VerifyCsrfToken' => $baseDir . '/app/Http/Middleware/VerifyCsrfToken.php',
     'App\\ImageRepository' => $baseDir . '/app/ImageRepository.php',
     'App\\Images' => $baseDir . '/app/Images.php',
+<<<<<<< HEAD
+    'App\\Mail\\EmailVerification' => $baseDir . '/app/Mail/EmailVerification.php',
+=======
     'App\\Mail\\EmailVerification' => $baseDir . '/app/Mail/EmailVerifican.php',
+>>>>>>> 0e537e1b4f58dbf8d667467307f85453a29731ab
     'App\\Providers\\AppServiceProvider' => $baseDir . '/app/Providers/AppServiceProvider.php',
     'App\\Providers\\AuthServiceProvider' => $baseDir . '/app/Providers/AuthServiceProvider.php',
     'App\\Providers\\BroadcastServiceProvider' => $baseDir . '/app/Providers/BroadcastServiceProvider.php',

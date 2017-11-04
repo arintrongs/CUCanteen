@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit5f929b9fc91542a21debda0724d1c936
+class ComposerStaticInit610e0463496ee414b19ebb848b9aafa9
 {
     public static $files = array (
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
@@ -14,8 +14,14 @@ class ComposerStaticInit5f929b9fc91542a21debda0724d1c936
         '5255c38a0faeba867671b61dfda6d864' => __DIR__ . '/..' . '/paragonie/random_compat/lib/random.php',
         'a0edc8309cc5e1d60e3047b5df6b7052' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/functions_include.php',
         'c964ee0ededf28c96ebd9db5099ef910' => __DIR__ . '/..' . '/guzzlehttp/promises/src/functions_include.php',
+<<<<<<< HEAD
+        'e7223560d890eab89cda23685e711e2c' => __DIR__ . '/..' . '/psy/psysh/src/Psy/functions.php',
+        '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
+        '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
+=======
         '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
         'e7223560d890eab89cda23685e711e2c' => __DIR__ . '/..' . '/psy/psysh/src/Psy/functions.php',
+>>>>>>> 0e537e1b4f58dbf8d667467307f85453a29731ab
         'f0906e6318348a765ffb6eb24e0d0938' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/helpers.php',
         '58571171fd5812e6e447dce228f52f4d' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/helpers.php',
         '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
@@ -324,7 +330,11 @@ class ComposerStaticInit5f929b9fc91542a21debda0724d1c936
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
         'App\\ImageRepository' => __DIR__ . '/../..' . '/app/ImageRepository.php',
         'App\\Images' => __DIR__ . '/../..' . '/app/Images.php',
+<<<<<<< HEAD
+        'App\\Mail\\EmailVerification' => __DIR__ . '/../..' . '/app/Mail/EmailVerification.php',
+=======
         'App\\Mail\\EmailVerification' => __DIR__ . '/../..' . '/app/Mail/EmailVerifican.php',
+>>>>>>> 0e537e1b4f58dbf8d667467307f85453a29731ab
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
         'App\\Providers\\BroadcastServiceProvider' => __DIR__ . '/../..' . '/app/Providers/BroadcastServiceProvider.php',
@@ -3645,10 +3655,10 @@ class ComposerStaticInit5f929b9fc91542a21debda0724d1c936
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit5f929b9fc91542a21debda0724d1c936::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit5f929b9fc91542a21debda0724d1c936::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInit5f929b9fc91542a21debda0724d1c936::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInit5f929b9fc91542a21debda0724d1c936::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit610e0463496ee414b19ebb848b9aafa9::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit610e0463496ee414b19ebb848b9aafa9::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit610e0463496ee414b19ebb848b9aafa9::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInit610e0463496ee414b19ebb848b9aafa9::$classMap;
 
         }, null, ClassLoader::class);
     }
