@@ -39,7 +39,7 @@ var sign_in = function(sec) {
 		}
 		else
 		{
-			alert('We have something wrong.');
+			alert('Error occurred. Sorry for inconvenience.');
 		}
 	}).fail(function(html, statusCode) {
 		errorShow(html.responseText);
@@ -56,32 +56,51 @@ var sign_up = function(sec) {
 
 	if (pass1 !== pass2)
 	{
-		alert('Password mismatch, check your password again.');
+		alert('Password mismatch, check your password in both field again.');
 		return;
 	}
 
-	$.ajax({
-		url: '/user',
-		type: 'POST',
-		dataType: 'json',
-		data: {
-			_token: $('meta[name="csrf-token"]').attr('content'),
-			action: 'signup',
-			a: that.children('input[name="user"]').val(),
-			b: pass1,
-			c: that.children('input[name="email"]').val(),
-		},
-	})
-	.done(function(data) {
-		// console.log(data);
-		if (data.status != 'true')
-			alert(data.error);
-		else
-			location.reload();
-		
-	}).fail(function(html, statusCode) {
-		errorShow(html.responseText);
+	grecaptcha.execute();
+
+	$.ajax({url: '/user',
+			type: 'POST',
+			dataType: 'json',
+			data: {
+				_token: $('meta[name="csrf-token"]').attr('content'),
+				request: grecaptcha.getResponse(),
+			},
+		}).done(function(data){
+			console.log(data);
+			if(data.success==true)
+			{
+				console.log("reCaptcha passed");
+				$.ajax({
+					url: '/user',
+					type: 'POST',
+					dataType: 'json',
+					data: {
+						_token: $('meta[name="csrf-token"]').attr('content'),
+						action: 'signup',
+						a: that.children('input[name="user"]').val(),
+						b: pass1,
+						c: that.children('input[name="email"]').val(),
+					},
+				}).done(function(data) {
+					// console.log(data);
+					if (data.status != 'true')
+						alert(data.error);
+					else
+						location.reload();
+					
+				}).fail(function(html, statusCode) {
+					errorShow(html.responseText);
+				});
+			}
+			else{
+				alert(data.error-codes);
+			}
 	});
+	
 
 	return false;
 }
