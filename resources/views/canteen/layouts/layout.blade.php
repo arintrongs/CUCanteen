@@ -49,7 +49,6 @@
 
         <!-- Header -->
         <div class="container-fluid header pad-bot">
-            <img src="cover.png">
         </div>
         @if (!isset($user))
         <!-- Login Modal -->

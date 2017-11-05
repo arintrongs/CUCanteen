@@ -9320,7 +9320,10 @@ button:focus {
 
 .header {
   min-height: 400px;
-  background-color: #1ca5b7;
+  background-image: url("../img/banner.png");
+  background-position: center 70px;
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 .card {
