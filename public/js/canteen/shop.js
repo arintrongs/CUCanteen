@@ -57,7 +57,7 @@ var shop_box = function(data) {
 var shop_rating = function(data) {
 	var dcfr = $('<div>').addClass('container-fluid rating');
 	dcfr.append('<div class="row"><div class="col-lg-12 col-xl-12 col-md-12 col-sm-12 col-12 rating_header no-padding"><h3>Rating</h3></div></div>')
-	dcfr.append('<div class="row"><div class="col-xl-12 col-lg-12 col-md-12 col-sm-12"><div class="container-fluid star-ratings-css"><div class="star-ratings-css-top" style="width: '+data.rating/5*125+'%">★★★★★</div><div class="star-ratings-css-bottom">★★★★★</div></div><br>'+'<h4>'+data.rating+'</h4><br></div></div>' );
+	dcfr.append('<div class="row"><div class="col-xl-12 col-lg-12 col-md-12 col-sm-12"><div class="container-fluid star-ratings-css"><div class="star-ratings-css-top" style="width: '+data.rating/5*100+'%">★★★★★</div><div class="star-ratings-css-bottom">★★★★★</div></div><br>'+'<h4>'+data.rating+'</h4><br></div></div>' );
 	return dcfr;
 }
 
