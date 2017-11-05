@@ -22,7 +22,7 @@
         <!-- NAV -->
         <nav class="navbar navbar-light fixed-top" >
             <div class="col-lg-1 col-xl-1 col-md-1 col-sm-1 col-4">
-                <a href="\">
+                <a href="#" onclick="shop_hide();">
                     <i class="fa fa-home icon" aria-hidden="true"></i>
                 </a>
             </div>
