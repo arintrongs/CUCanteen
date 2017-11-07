@@ -29,7 +29,6 @@ var sign_in = function(sec) {
 		},
 	})
 	.done(function(data) {
-		// console.log(data);
 		if (data.success == 'ok')
 		{
 			$('div.login').empty().append('<i class="fa fa-user icon" aria-hidden="true"></i>').append($('<a>').attr('href', '/signout').text(" "+data.name));
@@ -49,6 +48,28 @@ var sign_in = function(sec) {
 	return false;
 }
 
+function checkCaptcha() {
+  	var response = '';
+  	if(typeof $("#g-recaptcha-response") == 'undefined'){
+		alert("Please wait until reCaptcha is loaded.");
+		return false;
+	}
+
+    $.ajax({
+      url: "/reCaptcha",
+      dataType: "json",
+      data:{
+      	response: $("#g-recaptcha-response").val(),
+      },
+      async: false,
+	  success : function(data)
+	  {
+	    response = data;
+	  }
+    });
+  	return response;
+}
+
 var sign_up = function(sec) {
 	that = sec.parent();
 
@@ -61,47 +82,36 @@ var sign_up = function(sec) {
 		return;
 	}
 
-	grecaptcha.execute();
+	var checkresult = checkCaptcha();
 
-	$.ajax({url: '/user',
+	if(checkresult.success == true){
+		$.ajax({
+			url: '/user',
 			type: 'POST',
 			dataType: 'json',
 			data: {
 				_token: $('meta[name="csrf-token"]').attr('content'),
-				request: grecaptcha.getResponse(),
+				action: 'signup',
+				a: that.children('input[name="user"]').val(),
+				b: pass1,
+				c: that.children('input[name="email"]').val(),
 			},
-		}).done(function(data){
-			console.log(data);
-			if(data.success==true)
-			{
-				console.log("reCaptcha passed");
-				$.ajax({
-					url: '/user',
-					type: 'POST',
-					dataType: 'json',
-					data: {
-						_token: $('meta[name="csrf-token"]').attr('content'),
-						action: 'signup',
-						a: that.children('input[name="user"]').val(),
-						b: pass1,
-						c: that.children('input[name="email"]').val(),
-					},
-				}).done(function(data) {
-					// console.log(data);
-					if (data.status != 'true')
-						alert(data.error);
-					else
-						location.reload();
-					
-				}).fail(function(html, statusCode) {
-					errorShow(html.responseText);
-				});
-			}
-			else{
-				alert(data.error-codes);
-			}
-	});
-	
+		}).done(function(data) {
+			if (data.status != 'true')
+				alert(data.error);
+			else
+				location.reload();
+			
+		}).fail(function(html, statusCode) {
+			errorShow(html.responseText);
+		});
+	}else if(checkresult != false){
+		if(checkresult['error-codes'][0] == 'timeout-or-duplicate')alert('reCaptcha token has been used. Please refresh this page and try again.');
+		else if(checkresult['error-codes'][0] == 'missing-input-response')alert('Please check on the reCaptcha checkbox.');
+		else alert('recaptcha error. Please contact administrator.');
+	}else {
+		alert()
+	}
 
 	return false;
 }
