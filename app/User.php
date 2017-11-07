@@ -110,6 +110,9 @@ class User extends Model implements AuthenticatableContract,
                 if(array_key_exists('studentid', $data)) 
                     $user['user_studentid'] = $data['studentid'];
                 
+                if(array_key_exists('email', $data)) 
+                    $user['user_email'] = $data['email'];
+
                 if(array_key_exists('fbid', $data)) 
                     $user['user_fbid'] = $data['fbid'];
                 
