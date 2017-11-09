@@ -7,6 +7,43 @@ $color_cyprus: #002d40;
 $font_color: #383838;
 $font_Pacifico: 'Pacifico' ,cursive;
 $font_Athiti: 'Athiti',sans-serif;
+$get-path-to-assets : "http://ratemycanteen.ojudge.in.th/img";
+
+.ratings {
+    position: relative;
+    vertical-align: middle;
+    display: inline-block;
+    color: #b1b1b1;
+    overflow: hidden;
+    margin-top: 1em;
+}
+.full-stars {
+    position: absolute;
+    left: 0;
+    top: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    color: #fde16d;
+}
+.empty-stars:before, .full-stars:before {
+    content:"\2605\2605\2605\2605\2605";
+    font-size: 18pt;
+}
+.empty-stars:before {
+    -webkit-text-stroke: 1px #848484;
+}
+.full-stars:before {
+    -webkit-text-stroke: 1px orange;
+}
+
+@-moz-document url-prefix() {
+    .full-stars {
+        color: #ECBE24;
+    }
+}
+.full-stars {
+    color: #ECBE24;
+}
 
 html ,body {
     font-size: 14px;
@@ -66,6 +103,9 @@ html ,body {
   .login{
     font-size: 1.7em;
   }
+  .home{
+    font-size: 1.7em;
+  }
 }
 @include media-breakpoint-up(xl) {
   html,body {
@@ -75,6 +115,9 @@ html ,body {
     font-size:2em;
   }
   .login{
+    font-size: 2em;
+  }
+  .home{
     font-size: 2em;
   }
 }
@@ -113,6 +156,17 @@ button:focus {
         color: black;
       }
     }
+    .home{
+      text-align: center;
+      font-family: $font_Athiti;
+      .icon{
+        font-size: 28px;
+        color: rgba(0,0,0,0.3);
+      }
+      .icon:hover{
+        color: black;
+      }
+    }
 }
 
 .brand {
@@ -122,7 +176,10 @@ button:focus {
 
 .header {
     min-height: 400px;
-    background-color: $color_seafloor;
+    background-image: url(#{$get-path-to-assets}/banner.png);
+    background-position: center 70px;   
+    background-repeat: no-repeat; 
+    background-size: auto 330px;
 }
 
 .card {
@@ -266,6 +323,11 @@ $columns in $card_columns_set {
     .input-group-addon{
       background-color: #FFFFFF;
     }
+    .rating_star{
+      padding-top: 0.5em;
+      font-size: 1.7em;
+      text-align: center;
+    }
 
 }
 
@@ -282,6 +344,11 @@ $columns in $card_columns_set {
     .comment_area{
       width: 100%;
     }
+}
+.comment-star{
+    padding-top: 0.5em;
+    font-size: 1.7em;
+    text-align: center;
 }
 .likes{
     height: 50px;
