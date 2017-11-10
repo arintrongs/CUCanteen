@@ -18,8 +18,12 @@
 		</div>
 		<div class="col-lg-3 col-md-3 col-sm-3 col-3 rate " >
 			<div class="input-group">
-				<div class="input-group-addon"><i class="fa fa-star-o" aria-hidden="true"></i></div>
-    			<input type="text" class="form-control" id="rate" placeholder="0-5">
+    			<input type="text" class="form-control" id="rate" hidden>
+    			<span class="comment-star" value="1">&#9733</span>
+    			<span class="comment-star" value="2">&#9733</span>
+    			<span class="comment-star" value="3">&#9733</span>
+    			<span class="comment-star" value="4">&#9733</span>
+    			<span class="comment-star" value="5">&#9733</span>
   			</div>
 		</div>
 		<div class="col-lg-2  col-md-2 col-sm-2 col-2 "><button type="button" class="btn btn-outline-success " onclick="commentSubmit();">Success</button></div>
