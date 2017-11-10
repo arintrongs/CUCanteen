@@ -14,6 +14,7 @@
         <!-- CSS-->
         <link rel="stylesheet" type="text/css" href="{{ URL :: asset('css/app.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ URL :: asset('css/font-awesome.min.css')}}">
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
         <!-- Scripts -->
         <script src='https://www.google.com/recaptcha/api.js' async defer></script>
 
@@ -127,17 +128,17 @@
         <!-- Script -->
 
         
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
-        <script src="//code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="{{ URL :: asset('js/jquery-3.2.1.slim.min.js') }}"></script>
+        <script src="{{ URL :: asset('js/popper.min.js') }}"></script>
+        <script src="{{ URL :: asset('js/bootstrap.min.js') }}"></script>
         <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-        <script src="http://momentjs.com/downloads/moment.js"></script>
+        <script src="{{ URL :: asset('js/moment.js') }}"></script>
+        <script src="{{ URL :: asset('js/bootstrap3-typeahead.js') }}"></script>
         <script src="{{ URL :: asset('js/canteen/canteen.js') }}"></script>
         <script src="{{ URL :: asset('js/canteen/autocomplete.js') }}"></script>
         <script src="{{ URL :: asset('js/canteen/shop.js') }}"></script>
         <script src="{{ URL :: asset('js/canteen/u.js') }}"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
-        <script src="js/bootstrap3-typeahead.js"></script>
+        
         @yield('footer')
     </body>
 </html>
