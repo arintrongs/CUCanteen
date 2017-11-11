@@ -60,6 +60,10 @@ function checkCaptcha() {
       dataType: "json",
       data:{
       	response: $("#g-recaptcha-response").val(),
+      	action: 'signup',
+		a: that.children('input[name="user"]').val(),
+		b: pass1,
+		c: that.children('input[name="email"]').val(),
       },
       async: false,
 	  success : function(data)
@@ -110,11 +114,9 @@ var sign_up = function(sec) {
 		else if(checkresult['error-codes'][0] == 'missing-input-response')alert('Please check on the reCaptcha checkbox.');
 		else alert('recaptcha error. Please contact administrator.');
 	}else {
-		alert()
+		alert('Error occurred. Please contact administrator.');
 	}
-
-	return false;
-}
+};
 
 var sign_out = function(sec) {
 	that = sec.parent();
@@ -135,4 +137,4 @@ var sign_out = function(sec) {
 	});
 
 	return false;
-}
+};

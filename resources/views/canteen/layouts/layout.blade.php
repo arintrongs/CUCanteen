@@ -80,8 +80,8 @@
                 <input type="password" name="pass" placeholder="Password">
                 <input type="password" name="re-pass" placeholder="Retype Password">
                 <input type="text" name="email" placeholder="E-mail" maxlength="60">
+                <div class="g-recaptcha" data-sitekey="6Ld2zDYUAAAAAP2giUxo-4Iq28DSYZhmdwvCG6pL"></div>
                 <input type="submit" name="register" class="login regismodal-submit" value="Register" onclick="">
-                <div class="g-recaptcha"  data-sitekey="6LcR-TYUAAAAAMOudFIugLPTC9nD0QLUVGhL78On" data-size="invisible" data-badge="inline"></div>
               </form>
             </div>
         </div>
@@ -126,9 +126,7 @@
             </div>
         </div>
         <!-- Script -->
-
-        
-        <script src="{{ URL :: asset('js/jquery-3.2.1.slim.min.js') }}"></script>
+        <script src="{{ URL :: asset('js/jquery-3.2.1.min.js') }}"></script>
         <script src="{{ URL :: asset('js/popper.min.js') }}"></script>
         <script src="{{ URL :: asset('js/bootstrap.min.js') }}"></script>
         <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
