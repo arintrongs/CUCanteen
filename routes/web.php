@@ -17,6 +17,7 @@ Route::group(['domain' => 'ratemycanteen.ojudge.in.th'], function() {
 
 		Route::get('/', 'CanteenController@index');
 		Route::get('verify/{id}/{token}', 'UserController@verify');
+		Route::get('/reCaptcha', 'ReCaptchaController@index');
 
 		Route::get('/signout', 'UserController@logOut');
 		Route::post('/user', 'UserController@index');
