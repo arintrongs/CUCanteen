@@ -3,12 +3,12 @@ namespace App\Http\Controllers\Canteen;
 
 use App\User;
 use App\EmailToken;
+use App\Jobs\ProcessEmail;
 use App\Mail\EmailVerification;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
-// use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller 
 {
@@ -17,6 +17,7 @@ class UserController extends Controller
 		$data = array(
 			'username' => 'admin',
 			'password' => 'admin',
+			'email' => 'panukorn1400@naver.com',
 			'role' => 'admin',
 		);
 		User::addUser($data);
@@ -108,8 +109,7 @@ class UserController extends Controller
 
         $result = User::addUser($data);
         if($result['status'] == 'true') 
-        	Mail::to($data['email'])
-        		->send(new EmailVerification($result['user']['user_id'], $data));
+        	return ProcessEmail::dispatch(new EmailVerification($result['user']['user_id'], $data));
         
         unset($result['user']);
         return response()->json($result);

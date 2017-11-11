@@ -7,10 +7,9 @@ var latitude = '';
 var longitude = '';
 
 var errorShow = function(text) {
-	return;
 	var newWindow = window.open();
 	newWindow.document.write(text);
-}
+};
 
 var getShop = function() {
 	var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
