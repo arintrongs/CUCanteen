@@ -94,6 +94,11 @@ class User extends Model implements AuthenticatableContract,
                 $result['error'] = "Error: user exist";
                 return $result;
             }
+            if(count(self::where('user_email', $data['email'])->get()) != 0 || count(self::onlyTrashed()->where('user_email', $data['email'])->get()) != 0)
+            {
+                $result['error'] = "Error: email is already in use, please use another email";
+                return $result;
+            }
             else 
             {
                 $user = new User;
