@@ -3,6 +3,7 @@
 namespace App\Mail;
 
 use App\EmailToken;
+use App\Job\EmailVerification;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
@@ -41,7 +42,7 @@ class EmailVerification extends Mailable
     public function build()
     {
         return $this->subject('อีเมล์ยืนยันการสมัครเว็บไซต์ ratemycanteen.com')
-                ->markdown('canteen.mails.verifican')
+                ->markdown('canteen.mails.verification')
                 ->with([
                     'user_username' => $this->username,
                     'user_email' => $this->email,
