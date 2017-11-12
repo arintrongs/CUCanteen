@@ -83,7 +83,6 @@ var sign_up = function(sec) {
 	}
 
 	var checkresult = checkCaptcha();
-	checkresult.success = true;
 
 	if(checkresult.success == true){
 		$.ajax({
