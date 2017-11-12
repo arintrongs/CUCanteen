@@ -109,7 +109,7 @@ class UserController extends Controller
 
         $result = User::addUser($data);
         if($result['status'] == 'true') 
-        	return ProcessEmail::dispatch(new EmailVerification($result['user']['user_id'], $data));
+        	ProcessEmail::dispatch(new EmailVerification($result['user']['user_id'], $data));
         
         unset($result['user']);
         return response()->json($result);

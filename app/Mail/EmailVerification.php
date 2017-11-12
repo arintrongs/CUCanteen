@@ -3,7 +3,7 @@
 namespace App\Mail;
 
 use App\EmailToken;
-use App\Job\EmailVerification;
+use App\Job\ProcessEmail;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
@@ -49,4 +49,9 @@ class EmailVerification extends Mailable
                     'url' => $this->url,
                 ]);
     }
+
+    public function getEmail(){
+        return $this->email;
+    }
+
 }
