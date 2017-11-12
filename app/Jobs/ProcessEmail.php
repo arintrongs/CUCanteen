@@ -3,6 +3,7 @@
 namespace App\Jobs;
 
 use App\Mail\EmailVerification;
+use App\User;
 use Illuminate\Mail\Mailable;
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\SerializesModels;
@@ -23,7 +24,7 @@ class ProcessEmail implements ShouldQueue
      *
      * @var int
      */
-    public $tries = 2*24*7; //2 times an hour, 24 hours and keep doing it for a week
+    public $tries = 2*24*3; //2 times an hour, 24 hours and keep doing it for 3 days
 
     /**
      * Create a new job instance.
@@ -49,6 +50,17 @@ class ProcessEmail implements ShouldQueue
             throw $e;
         }
         
+    }
+
+    /**
+     * Handle a job failure.
+     *
+     * @return void
+     */
+    public function failed()
+    {
+        $user = User::where('user_email',$this->ev->getEmail())->first();
+        $user->forceDelete();
     }
 
     /**
