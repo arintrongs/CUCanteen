@@ -94,7 +94,7 @@ class EnsureQueueListenerIsRunning extends Command
      */
     private function startQueueListener()
     {
-        $command = 'php-cli ' . base_path() . '/artisan queue:listen --timeout=60 --sleep=5 --tries=3 > /dev/null & echo $!';
+        $command = 'php-cli ' . base_path() . '/artisan queue:listen database --timeout=60 --sleep=5 --tries=3 > /dev/null & echo $!';
         $pid = exec($command);
 
         return $pid;
