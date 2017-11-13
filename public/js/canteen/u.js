@@ -85,6 +85,8 @@ var sign_up = function(sec) {
 	var checkresult = checkCaptcha();
 
 	if(checkresult.success == true){
+		$("#register-modal").modal("hide");
+		$("#success-modal").modal();
 		$.ajax({
 			url: '/user',
 			type: 'POST',
