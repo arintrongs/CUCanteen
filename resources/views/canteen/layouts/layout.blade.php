@@ -14,12 +14,14 @@
         <!-- CSS-->
         <link rel="stylesheet" type="text/css" href="{{ URL :: asset('css/app.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ URL :: asset('css/font-awesome.min.css')}}">
+        <link rel="stylesheet" type="text/css" href="{{ URL :: asset('css/bounce.css')}}">
         <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
         <!-- Scripts -->
         <script src='https://www.google.com/recaptcha/api.js' async defer></script>
 
     </head>
     <body>
+
         <!-- NAV -->
         <nav class="navbar navbar-light fixed-top" >
             <div class="col-lg-1 col-xl-1 col-md-1 col-sm-1 col-4">
@@ -81,8 +83,16 @@
                 <input type="password" name="re-pass" placeholder="Retype Password">
                 <input type="text" name="email" placeholder="E-mail" maxlength="60">
                 <div class="g-recaptcha" data-sitekey="6Ld2zDYUAAAAAP2giUxo-4Iq28DSYZhmdwvCG6pL"></div>
-                <input type="submit" name="register" class="login regismodal-submit" value="Register" onclick="">
+                <input type="submit" name="register" class="login regismodal-submit" value="Register">
               </form>
+            </div>
+        </div>
+        </div>
+
+        <div class="modal fade" id="success-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog">
+            <div class="loginmodal-container">
+                <h1>Registered!</h1><br>
             </div>
         </div>
         </div>
