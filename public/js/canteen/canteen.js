@@ -1,6 +1,46 @@
 $(document).ready(function() {
 	getPosition();
 	getShop();
+	var stars = [	$('[class="comment-star"][value="1"]'),
+					$('[class="comment-star"][value="2"]'),
+					$('[class="comment-star"][value="3"]'),
+					$('[class="comment-star"][value="4"]'),
+					$('[class="comment-star"][value="5"]')];
+	
+	stars.forEach(function (item, index){
+		item.mouseover(function(){
+			for(i = 0; i < stars.length; i++){
+			if(stars[i].attr('value') <= $(this).attr('value')){
+				stars[i].addClass('active');
+			}
+			else{
+				stars[i].removeClass('active');
+			}
+		}
+		});
+		item.mouseout(function(){
+			var val = (isNaN($('#rate').val()))?0:$('#rate').val();
+			for(i = 0; i < stars.length; i++){
+				if(stars[i].attr('value') <= val){
+					stars[i].addClass('active');
+				}
+				else{
+					stars[i].removeClass('active');
+				}
+			}
+		});
+		item.click(function(){
+			$('#rate').val(isNaN($(this).attr('value'))?0:$(this).attr('value'));
+			for(i = 0; i < stars.length; i++){
+				if(stars[i].attr('value') <= $(this).attr('value')){
+					stars[i].addClass('active');
+				}
+				else{
+					stars[i].removeClass('active');
+				}
+			}
+		});
+	});
 });
 
 var latitude = '';
@@ -9,6 +49,7 @@ var longitude = '';
 var errorShow = function(text) {
 	var newWindow = window.open();
 	newWindow.document.write(text);
+	return newWindow;
 };
 
 var getShop = function() {
